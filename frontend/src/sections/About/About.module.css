@@ -97,12 +97,19 @@
 
 /* ── Code Block Card ── */
 .codeCard {
+  position: relative;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-subtle);
   padding: 0;
   overflow: hidden;
   transition: all var(--transition-normal);
+}
+
+.tallCard {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
 }
 
 .codeCard:hover {
@@ -151,6 +158,155 @@
 .codeComment { color: var(--color-dark-gray); font-style: italic; }
 .codeProp { color: #61afef; }
 .codeMint { color: var(--color-neon-mint); }
+
+.codeOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-xl);
+  background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scoopLabel {
+  font-size: var(--text-caption);
+  color: var(--color-medium-gray);
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scoopText {
+  font-size: 24px;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  line-height: var(--leading-tight);
+}
+
+/* ── Role Card ── */
+.roleCard {
+  background: var(--color-bg-alt);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-subtle);
+  padding: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 200px;
+  transition: all var(--transition-normal);
+}
+
+.roleCard:hover {
+  border-color: var(--color-mint-border);
+}
+
+.roleText {
+  font-size: 32px;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  line-height: var(--leading-tight);
+  max-width: 80%;
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-mono);
+}
+
+/* UI Mockup Graphic */
+.uiMockup {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 180px;
+  height: 120px;
+  background: #1e1e24;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-subtle);
+  padding: var(--space-md);
+  z-index: 1;
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: -10px -10px 30px rgba(0,0,0,0.5);
+}
+
+.uiMockupHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.uiDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.uiLine {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.uiLineShort { width: 40px; }
+.uiLineLong { width: 100px; }
+.uiLineMedium { width: 70px; margin-top: 4px; }
+
+/* ── Contact Card ── */
+.contactCard {
+  background: linear-gradient(135deg, #4f0088, #2a0044);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-subtle);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-md);
+  transition: all var(--transition-normal);
+}
+
+.contactCard:hover {
+  border-color: var(--color-mint-border);
+  box-shadow: var(--shadow-glow-lg);
+}
+
+.contactText {
+  font-size: 24px;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  line-height: var(--leading-tight);
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: #1a1a1a;
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-subtle);
+  padding: 10px 20px;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.copyButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
 /* ── Stats Row ── */
 .statsRow {
