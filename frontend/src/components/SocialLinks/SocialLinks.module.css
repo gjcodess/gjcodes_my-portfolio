@@ -1,0 +1,31 @@
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  background: transparent;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  color: var(--color-neon-mint);
+  border-color: var(--color-neon-mint);
+  box-shadow: 0 0 12px rgba(0, 255, 153, 0.2);
+  transform: translateY(-2px);
+}
+
+.socialLink:active {
+  transform: translateY(0);
+}

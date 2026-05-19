@@ -1,0 +1,117 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Primary ── */
+.primary {
+  background: var(--color-neon-mint);
+  color: var(--color-deep-ink);
+  font-size: var(--text-btn);
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-pill);
+  border: 0px solid transparent;
+  height: 44px;
+  line-height: 24px;
+}
+
+.primary:hover {
+  opacity: 0.9;
+  box-shadow: var(--shadow-glow);
+}
+
+.primary:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+/* ── Secondary (Ghost Outline) ── */
+.secondary {
+  background: transparent;
+  color: var(--color-neon-mint);
+  font-size: var(--text-btn-sm);
+  padding: 0 var(--space-xl);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-neon-mint);
+  height: 56px;
+  line-height: 20px;
+}
+
+.secondary:hover {
+  background: var(--color-mint-ghost);
+  box-shadow: var(--shadow-glow);
+}
+
+.secondary:active {
+  background: rgba(0, 255, 153, 0.2);
+  border-color: rgba(0, 255, 153, 0.8);
+}
+
+/* ── Tertiary (Text Only) ── */
+.tertiary {
+  background: transparent;
+  color: var(--color-white);
+  font-size: var(--text-btn);
+  font-weight: var(--weight-regular);
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  height: auto;
+  line-height: 32px;
+}
+
+.tertiary:hover {
+  color: var(--color-neon-mint);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.tertiary:active {
+  opacity: 0.8;
+}
+
+/* ── Icon Button ── */
+.icon {
+  background: transparent;
+  color: var(--color-white);
+  font-size: var(--text-btn);
+  padding: 1px;
+  border-radius: var(--radius-subtle);
+  border: none;
+  height: 48px;
+  width: 48px;
+}
+
+.icon:hover {
+  background: var(--color-mint-ghost);
+  color: var(--color-neon-mint);
+}
+
+.icon:active {
+  background: rgba(0, 255, 153, 0.2);
+}
+
+/* ── Disabled State ── */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Icon inside button ── */
+.btnIcon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}

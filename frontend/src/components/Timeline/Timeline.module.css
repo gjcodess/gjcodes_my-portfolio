@@ -1,0 +1,121 @@
+.timeline {
+  position: relative;
+  padding-left: var(--space-2xl);
+}
+
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 11px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--color-neon-mint) 0%,
+    rgba(0, 255, 153, 0.2) 100%
+  );
+}
+
+/* ── Timeline Item ── */
+.item {
+  position: relative;
+  padding-bottom: var(--space-2xl);
+}
+
+.item:last-child {
+  padding-bottom: 0;
+}
+
+/* Node dot */
+.node {
+  position: absolute;
+  left: calc(-1 * var(--space-2xl) + 4px);
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-deep-ink);
+  border: 2px solid var(--color-neon-mint);
+  z-index: 2;
+  box-shadow: 0 0 8px rgba(0, 255, 153, 0.3);
+}
+
+.itemContent {
+  background: var(--color-bg-alt);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-subtle);
+  padding: var(--space-lg);
+  transition: all var(--transition-normal);
+}
+
+.itemContent:hover {
+  border-color: var(--color-mint-border);
+  box-shadow: var(--shadow-glow-lg);
+}
+
+.period {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neon-mint);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-xs);
+}
+
+.role {
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+
+.company {
+  font-size: var(--text-btn-sm);
+  color: var(--color-medium-gray);
+  margin-bottom: var(--space-sm);
+}
+
+.desc {
+  font-size: var(--text-btn-sm);
+  color: var(--color-dark-gray);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.techTag {
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-neon-mint);
+  background: var(--color-mint-ghost);
+  border: 1px solid rgba(0, 255, 153, 0.15);
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+}
+
+@media (max-width: 640px) {
+  .timeline {
+    padding-left: var(--space-xl);
+  }
+
+  .node {
+    left: calc(-1 * var(--space-xl) + 4px);
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline::before {
+    left: 9px;
+  }
+
+  .itemContent {
+    padding: var(--space-md);
+  }
+}

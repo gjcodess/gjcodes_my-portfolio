@@ -1,0 +1,147 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-modal);
+  padding: 20px var(--space-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-normal);
+}
+
+.navScrolled {
+  background: rgba(15, 14, 26, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 14px var(--space-2xl);
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 22px;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  text-decoration: none;
+  z-index: 10;
+}
+
+.logoDot {
+  color: var(--color-neon-mint);
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* ── Desktop Links ── */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.navLink {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: var(--text-btn-sm);
+  font-weight: var(--weight-regular);
+  color: var(--color-medium-gray);
+  text-decoration: none;
+  padding: 8px var(--space-md);
+  border-radius: var(--radius-subtle);
+  transition: all var(--transition-normal);
+}
+
+.navLink:hover {
+  color: var(--color-neon-mint);
+}
+
+.navLinkActive {
+  color: var(--color-neon-mint);
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--color-neon-mint);
+  border-radius: var(--radius-pill);
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  gap: 6px;
+  padding: 0;
+}
+
+.hamburgerLine {
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  border-radius: 2px;
+  transition: all var(--transition-normal);
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* ── CTA Button in Nav ── */
+.navCta {
+  margin-left: var(--space-md);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .nav {
+    padding: 16px var(--space-lg);
+  }
+
+  .navScrolled {
+    padding: 12px var(--space-lg);
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .navCta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 14px var(--space-md);
+  }
+}

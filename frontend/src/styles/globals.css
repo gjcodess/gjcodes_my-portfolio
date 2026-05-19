@@ -1,0 +1,168 @@
+/* ============================================
+   Global Styles — Base Reset & Typography
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import './variables.css';
+@import './animations.css';
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-white);
+  background-color: var(--color-deep-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-deep-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-charcoal);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-mint);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-charcoal) var(--color-deep-ink);
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(0, 255, 153, 0.3);
+  color: var(--color-white);
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 153, 0.3);
+  color: var(--color-white);
+}
+
+/* ── Typography Defaults ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  color: var(--color-white);
+}
+
+h1 {
+  font-size: var(--text-h1);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  font-weight: var(--weight-regular);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  font-weight: var(--weight-bold);
+}
+
+h4 {
+  font-size: var(--text-h4);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-loose);
+}
+
+p {
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--color-light-gray);
+}
+
+a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  transition: color var(--transition-normal);
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--color-neon-mint);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: var(--font-mono);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input, textarea {
+  font-family: var(--font-mono);
+  outline: none;
+  border: none;
+}
+
+/* ── Utility Classes ── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-2xl);
+}
+
+.text-mint {
+  color: var(--color-neon-mint);
+}
+
+.text-gray {
+  color: var(--color-medium-gray);
+}
+
+/* ── Responsive Container Padding ── */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 var(--space-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+}

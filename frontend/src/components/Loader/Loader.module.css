@@ -1,0 +1,58 @@
+.loaderOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+  background: var(--color-deep-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-lg);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loaderHidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loaderLogo {
+  font-family: var(--font-mono);
+  font-size: var(--text-h3);
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  position: relative;
+}
+
+.loaderDot {
+  color: var(--color-neon-mint);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loaderBar {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+}
+
+.loaderProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--color-neon-mint);
+  border-radius: var(--radius-pill);
+  animation: loadProgress 1.8s ease-in-out forwards;
+  box-shadow: 0 0 8px rgba(0, 255, 153, 0.5);
+}
+
+@keyframes loadProgress {
+  0% { width: 0%; }
+  40% { width: 60%; }
+  80% { width: 90%; }
+  100% { width: 100%; }
+}

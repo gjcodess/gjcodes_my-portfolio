@@ -1,0 +1,48 @@
+.card {
+  background: var(--color-deep-ink);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-subtle);
+  padding: var(--space-lg);
+  color: var(--color-white);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--color-mint-border);
+  box-shadow: var(--shadow-glow-lg);
+}
+
+/* ── Accent Variant ── */
+.accent {
+  border: 1px solid var(--color-neon-mint);
+  box-shadow: var(--shadow-glow);
+}
+
+.accent:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Glass Variant ── */
+.glass {
+  background: rgba(15, 14, 26, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass:hover {
+  border-color: rgba(0, 255, 153, 0.15);
+  background: rgba(15, 14, 26, 0.8);
+}
+
+/* ── Alt Background Variant ── */
+.alt {
+  background: var(--color-bg-alt);
+}
+
+/* ── Hover lift effect ── */
+.hoverable:hover {
+  transform: translateY(-4px);
+}
