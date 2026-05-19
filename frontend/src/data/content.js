@@ -4,7 +4,7 @@
    ============================================ */
 
 export const personalInfo = {
-  name: 'Glenn Joshua',
+  name: 'Glenn Joshua Corpus',
   lastName: 'Corpus',
   role: 'Web Developer & Technical Support',
   tagline: 'IT Specialist & Full-Stack Web Developer | Technical Support | Pragmatic, Delivery-oriented',

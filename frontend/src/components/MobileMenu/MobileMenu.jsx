@@ -1,7 +1,12 @@
 import { navLinks } from '../../data/content';
+import { personalNavLinks } from '../../data/personalContent';
+import { useMode } from '../../context/ModeContext';
 import styles from './MobileMenu.module.css';
 
 function MobileMenu({ isOpen, onClose, activeSection, onNavClick }) {
+  const { mode } = useMode();
+  const currentLinks = mode === 'personal' ? personalNavLinks : navLinks;
+
   return (
     <div
       className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ''}`}
@@ -9,7 +14,7 @@ function MobileMenu({ isOpen, onClose, activeSection, onNavClick }) {
       aria-modal="true"
       aria-label="Navigation menu"
     >
-      {navLinks.map((link) => (
+      {currentLinks.map((link) => (
         <a
           key={link.href}
           href={link.href}
@@ -23,7 +28,9 @@ function MobileMenu({ isOpen, onClose, activeSection, onNavClick }) {
           {link.label}
         </a>
       ))}
-      <span className={styles.menuFooter}>Glenn • Portfolio</span>
+      <span className={styles.menuFooter}>
+        Glenn • {mode === 'personal' ? 'Personal' : 'Portfolio'}
+      </span>
     </div>
   );
 }

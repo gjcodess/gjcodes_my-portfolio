@@ -15,7 +15,7 @@ function Hero() {
     const el = contentRef.current;
     if (!el) return;
 
-    const tl = gsap.timeline({ delay: 2.4 });
+    const tl = gsap.timeline({ delay: 1 });
 
     tl.fromTo(
       el.querySelector(`.${styles.avatarWrapper}`),
