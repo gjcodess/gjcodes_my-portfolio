@@ -8,12 +8,12 @@ export const personalInfo = {
   lastName: 'Corpus',
   role: 'Web Developer & Technical Support',
   tagline: 'IT Specialist & Full-Stack Web Developer | Pragmatic, delivery-oriented | Technical Support',
-  bio: `I build clean, scalable, and reliable web applications. Passionate about crafting digital experiences that combine technical precision with thoughtful design. Focused on delivering production-ready systems that make a real impact.`,
+  bio: `I build clean, scalable, and reliable web applications rooted in a deep understanding of computer systems and hardware. Passionate about crafting digital experiences that combine technical precision with thoughtful design. Focused on delivering production-ready systems that make a real impact.`,
   email: 'glennjoshuacorpus@gmail.com',
   location: 'Philippines, Parañaque City',
   currentPosition: 'Full Stack Developer',
   resumeUrl: '#',
-  avatar: null, // Will be replaced with actual image path
+  avatar: '\my-photo.jpg', // Will be replaced with actual image path
 };
 
 export const socialLinks = [
@@ -37,23 +37,23 @@ export const navLinks = [
 export const skills = [
   {
     category: 'Frontend',
-    items: ['React.js', 'Next.js', 'HTML5', 'CSS3', 'JavaScript', 'TypeScript'],
+    items: ['React.js', 'Next.js', 'HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express.js', 'Python', 'PHP', 'REST APIs', 'GraphQL'],
+    items: ['Node.js', 'Express.js', 'Python', 'JavaScript', 'REST APIs'],
   },
   {
     category: 'Database',
-    items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'Redis'],
+    items: ['MySQL', 'PostgreSQL', 'NeonDB', 'Supabase'],
   },
   {
     category: 'DevOps & Tools',
-    items: ['Git', 'Docker', 'Linux', 'Nginx', 'Vercel', 'GitHub Actions'],
+    items: ['Git', 'Linux', 'Vercel', "Railway", 'GitHub Actions', "n8n Automation"],
   },
   {
     category: 'Design',
-    items: ['Figma', 'Adobe XD', 'Responsive Design', 'UI/UX', 'Accessibility'],
+    items: ['Figma', 'Adobe Suite', 'Responsive Design', 'UI/UX', "Canva"],
   },
   {
     category: 'Other',
@@ -64,42 +64,53 @@ export const skills = [
 export const projects = [
   {
     id: 1,
-    title: 'Project Alpha',
-    description: 'A full-stack web application with real-time features, authentication, and responsive design. Built for scalability and performance.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
-    image: null,
-    github: 'https://github.com/',
-    live: 'https://example.com/',
+    title: 'LaborConnect',
+    description: 'A full-stack web app for managing labor union membership, services, and administration. Provides a member self-service portal, a department ticket-handling portal, and a comprehensive admin dashboard for union operations.',
+    tags: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway"],
+    images: [
+      '/LaborConnect-1.png',
+      '/LaborConnect-2.png',
+      '/LaborConnect-3.png',
+    ],
+    github: 'https://github.com/imapoopzz/ThesisProj',
+    live: 'https://www.laborconnect.app',
     featured: true,
   },
+
   {
     id: 2,
-    title: 'Project Beta',
-    description: 'An enterprise resource management platform with role-based access control, audit logging, and comprehensive dashboard analytics.',
-    tags: ['Next.js', 'PostgreSQL', 'Express', 'Docker'],
-    image: null,
+    title: 'MangaVerse',
+    description: 'A modern, immersive UI/UX design for MangaVerse — a Japanese comics (manga) and anime reading mobile application.',
+    tags: ['Python', 'FastAPI', 'Redis', 'GitHub Actions'],
+    image: '\MangaVerse-1.png',
     github: 'https://github.com/',
-    live: 'https://example.com/',
+    live: 'https://www.figma.com/proto/y3JbsPe7btzPUtRmEN71ni/MangaVerse?node-id=283-1625&t=tS9s8rszJlWNVM4u-1&starting-point-node-id=285%3A2486',
     featured: true,
   },
+
   {
     id: 3,
-    title: 'Project Gamma',
-    description: 'A cloud-native API gateway with automated testing pipelines, monitoring dashboards, and CI/CD integration.',
-    tags: ['Python', 'FastAPI', 'Redis', 'GitHub Actions'],
-    image: null,
-    github: 'https://github.com/',
-    live: 'https://example.com/',
-    featured: true,
+    title: 'Gcorp.',
+    description: 'A full-stack e-commerce web app for a computer systems and gadgets store (Gcorp), featuring product browsing, shopping cart, user accounts, order management, and admin tools.',
+    tags: ['Next.js', 'PostgreSQL', 'Express', 'Docker'],
+    images: [
+      '/Gcorp-1.png',
+      '/Gcorp-2.png',
+      '/Gcorp-3.png',
+    ],
+    github: 'https://github.com/imapoopzz/WebDev_Project',
+    live: ' ',
+    featured: false,
   },
+
   {
     id: 4,
-    title: 'Project Delta',
-    description: 'Mobile-first progressive web application with offline capabilities, push notifications, and optimized performance metrics.',
+    title: 'kAIn',
+    description: 'KAIN (a Filipino word for “eat”) is a smart, intuitive mobile application that helps users effortlessly track their daily food intake, monitor nutrition, and build healthier eating habits with the assistance of Artificial Intelligence.',
     tags: ['React', 'PWA', 'Firebase', 'Workbox'],
-    image: null,
+    image: '\kAIn-1.png',
     github: 'https://github.com/',
-    live: null,
+    live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
     featured: false,
   },
 ];
@@ -175,8 +186,8 @@ export const services = [
 ];
 
 export const stats = [
-  { value: '3+', label: 'Years Experience' },
-  { value: '15+', label: 'Projects Completed' },
+  { value: '2+', label: 'Years Experience' },
+  { value: '10+', label: 'Projects Completed' },
   { value: '20+', label: 'Technologies' },
   { value: '100%', label: 'Commitment' },
 ];

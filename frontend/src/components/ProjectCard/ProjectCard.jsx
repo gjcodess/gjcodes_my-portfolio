@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { ExternalLink } from 'lucide-react';
 import styles from './ProjectCard.module.css';
 
@@ -9,14 +10,58 @@ const GithubIcon = () => (
 );
 
 function ProjectCard({ project }) {
-  const { title, description, tags, image, github, live, featured } = project;
+  const { title, description, tags, image, images, github, live, featured } = project;
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  // Normalize image sources to an array
+  const imgList = Array.isArray(images)
+    ? images.filter(Boolean)
+    : image
+    ? [image]
+    : [];
+
+  useEffect(() => {
+    if (imgList.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentIdx((prevIdx) => (prevIdx + 1) % imgList.length);
+    }, 3500); // Change image every 3.5 seconds
+
+    return () => clearInterval(interval);
+  }, [imgList.length]);
 
   return (
     <article className={styles.projectCard}>
-      {/* Image */}
+      {/* Image / Slideshow */}
       <div className={styles.imageArea}>
-        {image ? (
-          <img src={image} alt={title} className={styles.projectImg} loading="lazy" />
+        {imgList.length > 0 ? (
+          <>
+            {imgList.map((src, idx) => (
+              <img
+                key={src}
+                src={src}
+                alt={`${title} screenshot ${idx + 1}`}
+                className={`${styles.projectImg} ${
+                  idx === currentIdx ? styles.projectImgActive : ''
+                }`}
+                loading="lazy"
+              />
+            ))}
+            
+            {/* Navigation Dots if multiple images */}
+            {imgList.length > 1 && (
+              <div className={styles.dotsContainer}>
+                {imgList.map((_, idx) => (
+                  <span
+                    key={idx}
+                    className={`${styles.dot} ${
+                      idx === currentIdx ? styles.dotActive : ''
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+          </>
         ) : (
           <span className={styles.imagePlaceholder}>{title.charAt(0)}</span>
         )}

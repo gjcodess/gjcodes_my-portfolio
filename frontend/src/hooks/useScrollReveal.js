@@ -43,7 +43,7 @@ export function useScrollReveal(options = {}) {
 
     const targets = stagger ? el.children : el;
 
-    gsap.set(targets, { opacity: 0, x, y });
+    gsap.set(targets, { opacity: 0, x, y, force3D: false });
 
     const animation = gsap.to(targets, {
       opacity: 1,
@@ -53,10 +53,15 @@ export function useScrollReveal(options = {}) {
       delay,
       ease: 'power3.out',
       stagger: stagger ? staggerAmount : 0,
+      force3D: false,
       scrollTrigger: {
         trigger: el,
         start,
         toggleActions: 'play none none none',
+      },
+      onComplete: () => {
+        // Remove transforms after the reveal to keep images crisp.
+        gsap.set(targets, { clearProps: 'transform' });
       },
     });
 

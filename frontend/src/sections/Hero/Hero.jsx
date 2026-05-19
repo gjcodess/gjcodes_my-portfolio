@@ -103,7 +103,7 @@ function Hero() {
 
         {/* Heading */}
         <div className={styles.heading}>
-          <h1 className={styles.headingGreet}>Hello I'm</h1>
+          <h1 className={styles.headingGreet}>Hello, I'm</h1>
           <span className={styles.headingName}>{personalInfo.name}</span>
         </div>
 
