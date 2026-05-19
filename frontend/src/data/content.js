@@ -22,7 +22,6 @@ export const socialLinks = [
   { name: 'Facebook', url: 'https://www.facebook.com/corpus.glenn.joshua.7', icon: 'Facebook' },
   { name: 'Instagram', url: 'https://www.instagram.com/imapoopypie/', icon: 'Instagram' },
   { name: 'X', url: 'https://x.com/nnelgsuproc', icon: 'Twitter' },
-  { name: 'Gmail', url: 'mailto:glennjoshuacorpus@gmail.com', icon: 'Mail' },
 ];
 
 export const navLinks = [

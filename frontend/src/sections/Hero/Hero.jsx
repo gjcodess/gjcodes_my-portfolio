@@ -79,7 +79,41 @@ function Hero() {
           transform: `translate(${parallax.x}px, ${parallax.y}px)`,
         }}
       >
-        {/* Avatar */}
+        {/* Left Side Text Content */}
+        <div className={styles.textContent}>
+          {/* Role Badge */}
+          <span className={styles.roleBadge}>{personalInfo.role}</span>
+
+          {/* Heading */}
+          <div className={styles.heading}>
+            <h1 className={styles.headingGreet}>Hello I'm</h1>
+            <h2 className={styles.headingName}>
+              <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Glenn Joshua</span>
+              <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Corpus</span>
+            </h2>
+          </div>
+
+          {/* Tagline */}
+          <p className={styles.tagline}>{personalInfo.tagline}</p>
+
+          {/* Actions & Socials */}
+          <div className={styles.bottomRow}>
+            <div className={styles.ctaGroup}>
+              <Button
+                variant="secondary"
+                href={personalInfo.resumeUrl}
+                icon={ArrowRight}
+              >
+                VIEW CV
+              </Button>
+            </div>
+            <div className={styles.socialArea}>
+              <SocialLinks />
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side Avatar */}
         <div className={styles.avatarWrapper}>
           <div className={styles.avatarRingOuter} />
           <div className={styles.avatarRingInner} />
@@ -96,42 +130,6 @@ function Hero() {
               </span>
             )}
           </div>
-        </div>
-
-        {/* Role Badge */}
-        <span className={styles.roleBadge}>{personalInfo.role}</span>
-
-        {/* Heading */}
-        <div className={styles.heading}>
-          <h1 className={styles.headingGreet}>Hello, I'm</h1>
-          <span className={styles.headingName}>{personalInfo.name}</span>
-        </div>
-
-        {/* Tagline */}
-        <p className={styles.tagline}>{personalInfo.tagline}</p>
-
-        {/* CTA Buttons */}
-        <div className={styles.ctaGroup}>
-          <Button
-            variant="secondary"
-            href={personalInfo.resumeUrl}
-            icon={ArrowRight}
-          >
-            VIEW RESUME
-          </Button>
-          <Button
-            variant="tertiary"
-            onClick={() => {
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Get in touch
-          </Button>
-        </div>
-
-        {/* Social Links */}
-        <div className={styles.socialArea}>
-          <SocialLinks />
         </div>
       </div>
 
