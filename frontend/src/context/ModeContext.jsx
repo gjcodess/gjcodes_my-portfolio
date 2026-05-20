@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect, useCallback } from 'rea
 const ModeContext = createContext(null);
 
 const TITLES = {
-  corporate: 'Corporate | Glenn Joshua Corpus',
+  portfolio: 'Portfolio | Glenn Joshua Corpus',
   personal: 'Personal | Glenn Joshua Corpus',
 };
 
@@ -13,9 +13,9 @@ export function ModeProvider({ children }) {
   const [mode, setModeState] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      return saved === 'personal' ? 'personal' : 'corporate';
+      return saved === 'personal' ? 'personal' : 'portfolio';
     } catch {
-      return 'corporate';
+      return 'portfolio';
     }
   });
 
@@ -37,13 +37,13 @@ export function ModeProvider({ children }) {
   }, [mode]);
 
   const setMode = useCallback((newMode) => {
-    if ((newMode !== 'corporate' && newMode !== 'personal') || newMode === mode || isTransitioning) {
+    if ((newMode !== 'portfolio' && newMode !== 'personal') || newMode === mode || isTransitioning) {
       return;
     }
 
     setIsTransitioning(true);
     setTransitionText(
-      newMode === 'personal' ? 'Entering Personal Space...' : 'Entering Corporate Space...'
+      newMode === 'personal' ? 'Entering Personal Space...' : 'Entering Portfolio Space...'
     );
 
     // Wait for all 6 panels to fully cover the screen (approx 600ms)
@@ -58,7 +58,7 @@ export function ModeProvider({ children }) {
   }, [mode, isTransitioning]);
 
   const toggleMode = useCallback(() => {
-    const nextMode = mode === 'corporate' ? 'personal' : 'corporate';
+    const nextMode = mode === 'portfolio' ? 'personal' : 'portfolio';
     setMode(nextMode);
   }, [mode, setMode]);
 
