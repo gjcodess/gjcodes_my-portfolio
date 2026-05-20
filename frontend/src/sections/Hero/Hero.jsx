@@ -86,7 +86,7 @@ function Hero() {
 
           {/* Heading */}
           <div className={styles.heading}>
-            <h1 className={styles.headingGreet}>Hello I'm</h1>
+            <h1 className={styles.headingGreet}>Hello, I'm</h1>
             <h2 className={styles.headingName}>
               <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Glenn Joshua</span>
               <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Corpus</span>

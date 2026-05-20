@@ -6,6 +6,20 @@ import styles from './Gallery.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const IMAGE_SIZES = [400, 800, 1200];
+const FALLBACK_SIZE = 800;
+
+const buildSrcSet = (base, ext) =>
+  IMAGE_SIZES.map((size) => `/gallery/${base}-${size}.${ext} ${size}w`).join(', ');
+
+const getSizes = (span) => {
+  if (span === 'wide') {
+    return '(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw';
+  }
+
+  return '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+};
+
 function GalleryItem({ item, index }) {
   const ref = useRef(null);
 
@@ -44,17 +58,38 @@ function GalleryItem({ item, index }) {
       : item.span === 'wide'
         ? styles.spanWide
         : '';
+  const hasImage = Boolean(item.imageBase);
+  const sizes = getSizes(item.span);
 
   return (
     <div className={`${styles.item} ${spanClass}`} ref={ref}>
       <div className={styles.placeholder}>
-        <div className={styles.placeholderIcon}>
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <polyline points="21 15 16 10 5 21" />
-          </svg>
-        </div>
+        {hasImage ? (
+          <picture className={styles.picture}>
+            <source
+              type="image/webp"
+              srcSet={buildSrcSet(item.imageBase, 'webp')}
+              sizes={sizes}
+            />
+            <img
+              className={styles.image}
+              src={`/gallery/${item.imageBase}-${FALLBACK_SIZE}.jpg`}
+              srcSet={buildSrcSet(item.imageBase, 'jpg')}
+              sizes={sizes}
+              alt={item.title}
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        ) : (
+          <div className={styles.placeholderIcon}>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <polyline points="21 15 16 10 5 21" />
+            </svg>
+          </div>
+        )}
       </div>
       <div className={styles.overlay}>
         <span className={styles.category}>{item.category}</span>

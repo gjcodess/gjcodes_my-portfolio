@@ -115,14 +115,15 @@ export const lifeComponents = [
 ];
 
 export const galleryItems = [
-  { id: 1, title: 'Moment One', category: 'Life', span: 'tall' },
-  { id: 2, title: 'Moment Two', category: 'Travel', span: 'normal' },
-  { id: 3, title: 'Moment Three', category: 'Creative', span: 'normal' },
-  { id: 4, title: 'Moment Four', category: 'Life', span: 'wide' },
-  { id: 5, title: 'Moment Five', category: 'Adventure', span: 'normal' },
-  { id: 6, title: 'Moment Six', category: 'Creative', span: 'tall' },
-  { id: 7, title: 'Moment Seven', category: 'Life', span: 'normal' },
-  { id: 8, title: 'Moment Eight', category: 'Travel', span: 'normal' },
+  { id: 1, title: 'Me, Myself and I', category: 'Life', span: 'tall', imageBase: 'pic1' },
+  { id: 2, title: 'Ecosystem', category: 'Interest', span: 'normal', imageBase: 'pic2' },
+  { id: 3, title: 'Personal Space', category: 'Interest', span: 'normal', imageBase: 'pic9' },
+  { id: 4, title: 'Capstone Defended (LaborConnect)', category: 'Success', span: 'wide', imageBase: 'pic11' },
+  { id: 5, title: 'Skyranch, Tagaytay', category: 'Travel', span: 'normal', imageBase: 'pic5' },
+  { id: 6, title: 'Cycling', category: 'Hobby', span: 'tall', imageBase: 'pic13' },
+  { id: 7, title: 'Somewhere in Tagaytay', category: 'Landscape', span: 'normal', imageBase: 'pic7' },
+  { id: 8, title: 'Taal Volcano', category: 'Landscape', span: 'normal', imageBase: 'pic6' },
+  { id: 9, title: 'Rides', category: 'Fun', span: 'normal', imageBase: 'pic4' },
 ];
 
 export const quotes = [
