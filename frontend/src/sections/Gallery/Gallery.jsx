@@ -128,7 +128,7 @@ function Gallery() {
       <div className={styles.inner}>
         <div className={styles.header} ref={headerRef}>
           <span className={styles.label}>// Gallery</span>
-          <h2 className={styles.title}>Moments &<br />Memories</h2>
+          <h2 className={styles.title}>Moments & Memories</h2>
           <p className={styles.subtitle}>
             A visual journal — snapshots of life, travel, and everything in between.
           </p>

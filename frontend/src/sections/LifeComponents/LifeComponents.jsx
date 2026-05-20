@@ -237,7 +237,7 @@ function LifeComponents() {
       <div className={styles.inner}>
         <div className={styles.header} ref={headerRef}>
           <span className={styles.label}>// Components of Life</span>
-          <h2 className={styles.title}>The Pieces<br />That Make Me</h2>
+          <h2 className={styles.title}>The Pieces That Make Me</h2>
           <p className={styles.subtitle}>
             Aspects of life that shape who I am — scroll or drag to explore.
           </p>

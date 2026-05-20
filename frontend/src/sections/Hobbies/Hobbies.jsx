@@ -96,7 +96,7 @@ function Hobbies() {
       <div className={styles.inner}>
         <div className={styles.header} ref={headerRef}>
           <span className={styles.label}>// Hobbies</span>
-          <h2 className={styles.title}>What I Do<br />For Fun</h2>
+          <h2 className={styles.title}>What I Do For Fun</h2>
           <p className={styles.subtitle}>
             Beyond the code — the things that fuel creativity and keep life interesting.
           </p>

@@ -11,7 +11,7 @@ export const personalInfo = {
   bio: `I build clean, scalable, and reliable web applications rooted in a deep understanding of computer systems and hardware. Passionate about crafting digital experiences that combine technical precision with thoughtful design. Focused on delivering production-ready systems that make a real impact.`,
   email: 'glennjoshuacorpus@gmail.com',
   location: 'Philippines, Parañaque City',
-  currentPosition: 'Full Stack Developer',
+  currentPosition: 'Web Developer & Technical Support',
   resumeUrl: '#',
   avatar: '\my-photo.jpg', // Will be replaced with actual image path
 };
@@ -87,7 +87,7 @@ export const projects = [
     id: 3,
     title: 'Gcorp.',
     description: 'A full-stack e-commerce web app for a computer systems and gadgets store (Gcorp), featuring product browsing, shopping cart, user accounts, order management, and admin tools.',
-    tags: ['Next.js', 'PostgreSQL', 'Express', 'Docker'],
+    tags: ['React', 'Node.js', 'CSS', 'MySQL'],
     imageBases: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
     github: 'https://github.com/imapoopzz/WebDev_Project',
     live: ' ',
@@ -153,7 +153,7 @@ export const education = [
     degree: 'Junior High School',
     school: 'Parañaque National High School — Baclaran, Parañaque',
     period: '2016 — 2020',
-    description: 'Completed with High Honors (Valedictorian), Ranked 1st among Grade 10 students (AY. 2020)',
+    description: 'Completed with High Honors (Valedictorian), Ranked 1st among Grade 10 students (A.Y. 2020)',
   },
 
 ];
