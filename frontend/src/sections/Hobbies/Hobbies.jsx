@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
-  Camera, Gamepad2, Music, Cpu, Dumbbell, Plane, Palette,
+  Camera, Gamepad2, Music, Cpu, Dumbbell, Plane, Bike,
 } from 'lucide-react';
 import { hobbies } from '../../data/personalContent';
 import styles from './Hobbies.module.css';
@@ -10,7 +10,7 @@ import styles from './Hobbies.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const iconMap = {
-  Camera, Gamepad2, Music, Cpu, Dumbbell, Plane, Palette,
+  Camera, Gamepad2, Music, Cpu, Dumbbell, Plane, Bike,
 };
 
 function HobbyCard({ hobby, index }) {

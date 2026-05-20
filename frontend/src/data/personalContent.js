@@ -42,23 +42,16 @@ export const hobbies = [
   },
   {
     id: 5,
-    title: 'Fitness',
-    description: 'Discipline starts with the body. Consistency over intensity, always.',
-    icon: 'Dumbbell',
-    accent: 'rgba(34, 197, 94, 0.15)',
-  },
-  {
-    id: 6,
     title: 'Travel',
     description: 'Discovering new places, cultures, and perspectives that shape the way I think.',
     icon: 'Plane',
     accent: 'rgba(234, 179, 8, 0.15)',
   },
   {
-    id: 7,
-    title: 'Creative Design',
-    description: 'From UI concepts to motion graphics — design is where logic meets art.',
-    icon: 'Palette',
+    id: 6,
+    title: 'Cycling',
+    description: 'The freedom of the open road, the rhythm of the pedals, and the thrill of the ride.',
+    icon: 'Bike',
     accent: 'rgba(236, 72, 153, 0.15)',
   },
 ];
