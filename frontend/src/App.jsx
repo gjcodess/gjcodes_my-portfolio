@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer';
 import ModeSwitcher from './components/ModeSwitcher/ModeSwitcher';
 import ModeTransition from './components/ModeTransition/ModeTransition';
 
-// Corporate sections
+// Portfolio sections
 import Hero from './sections/Hero/Hero';
 import About from './sections/About/About';
 import Skills from './sections/Skills/Skills';
@@ -29,7 +29,7 @@ import Quotes from './sections/Quotes/Quotes';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function CorporateContent() {
+function PortfolioContent() {
   return (
     <>
       <Hero />
@@ -86,7 +86,7 @@ function AppContent() {
       <GridBackground />
       <Navbar />
       <main key={mode}>
-        {mode === 'corporate' ? <CorporateContent /> : <PersonalContent />}
+        {mode === 'portfolio' ? <PortfolioContent /> : <PersonalContent />}
       </main>
       <Footer />
       <ModeSwitcher />

@@ -31,13 +31,13 @@ function ModeSwitcher() {
         }}
       />
       <button
-        className={`${styles.option} ${mode === 'corporate' ? styles.active : ''}`}
-        onClick={() => setMode('corporate')}
+        className={`${styles.option} ${mode === 'portfolio' ? styles.active : ''}`}
+        onClick={() => setMode('portfolio')}
         role="tab"
-        aria-selected={mode === 'corporate'}
-        aria-label="Corporate mode"
+        aria-selected={mode === 'portfolio'}
+        aria-label="Portfolio mode"
       >
-        Corporate
+        Portfolio
       </button>
       <button
         className={`${styles.option} ${mode === 'personal' ? styles.active : ''}`}
