@@ -107,7 +107,7 @@ function Quotes() {
       <div className={styles.inner}>
         <div className={styles.header} ref={headerRef}>
           <span className={styles.label}>// Philosophy</span>
-          <h2 className={styles.title}>Words I<br />Live By</h2>
+          <h2 className={styles.title}>Words I Live By</h2>
         </div>
 
         <div className={styles.quotesList}>
@@ -116,8 +116,8 @@ function Quotes() {
           ))}
         </div>
 
-        <div 
-          className={styles.thankYouCard} 
+        <div
+          className={styles.thankYouCard}
           ref={footerRef}
           onMouseMove={handleMouseMove}
         >

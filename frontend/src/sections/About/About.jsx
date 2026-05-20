@@ -196,14 +196,14 @@ function About() {
         </div>
 
         {/* Stats Row */}
-        <div className={styles.statsRow}>
+        {/* <div className={styles.statsRow}>
           {stats.map((stat) => (
             <div key={stat.label} className={styles.statItem}>
               <div className={styles.statValue}>{stat.value}</div>
               <div className={styles.statLabel}>{stat.label}</div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </SectionWrapper>
   );
