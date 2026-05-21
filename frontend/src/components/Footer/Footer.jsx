@@ -8,7 +8,7 @@ function Footer() {
       <div className={styles.inner}>
         <div className={styles.left}>
           <span className={styles.brand}>
-            Glenn<span className={styles.brandDot}>.</span>
+            gjcodes<span className={styles.brandDot}>.</span>
           </span>
           <span className={styles.copy}>
             &copy; {new Date().getFullYear()} All rights reserved.

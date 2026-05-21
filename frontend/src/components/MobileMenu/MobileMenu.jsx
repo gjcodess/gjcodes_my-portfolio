@@ -18,18 +18,17 @@ function MobileMenu({ isOpen, onClose, activeSection, onNavClick }) {
         <a
           key={link.href}
           href={link.href}
-          className={`${styles.menuLink} ${
-            activeSection === link.href.replace('#', '')
-              ? styles.menuLinkActive
-              : ''
-          }`}
+          className={`${styles.menuLink} ${activeSection === link.href.replace('#', '')
+            ? styles.menuLinkActive
+            : ''
+            }`}
           onClick={(e) => onNavClick(e, link.href)}
         >
           {link.label}
         </a>
       ))}
       <span className={styles.menuFooter}>
-        Glenn • {mode === 'personal' ? 'Personal' : 'Portfolio'}
+        gjcodes • {mode === 'personal' ? 'Personal' : 'Portfolio'}
       </span>
     </div>
   );
