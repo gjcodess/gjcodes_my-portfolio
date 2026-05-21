@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { ModeProvider, useMode } from './context/ModeContext';
 
@@ -86,7 +87,12 @@ function AppContent() {
       <GridBackground />
       <Navbar />
       <main key={mode}>
-        {mode === 'portfolio' ? <PortfolioContent /> : <PersonalContent />}
+        <Routes>
+          <Route path="/" element={<Navigate to="/portfolio" replace />} />
+          <Route path="/portfolio" element={<PortfolioContent />} />
+          <Route path="/personal" element={<PersonalContent />} />
+          <Route path="*" element={<Navigate to="/portfolio" replace />} />
+        </Routes>
       </main>
       <Footer />
       <ModeSwitcher />
