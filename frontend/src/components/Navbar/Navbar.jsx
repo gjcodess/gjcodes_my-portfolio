@@ -87,7 +87,7 @@ function Navbar() {
           }}
           aria-label="Go to top"
         >
-          Glenn<span className={styles.logoDot}>.</span>
+          gjcodes<span className={styles.logoDot}>.</span>
         </a>
 
         {/* Desktop Links */}
@@ -96,11 +96,10 @@ function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className={`${styles.navLink} ${
-                activeSection === link.href.replace('#', '')
+              className={`${styles.navLink} ${activeSection === link.href.replace('#', '')
                   ? styles.navLinkActive
                   : ''
-              }`}
+                }`}
               onClick={(e) => handleNavClick(e, link.href)}
             >
               {link.label}
