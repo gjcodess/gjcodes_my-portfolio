@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 
 import { ModeProvider, useMode } from './context/ModeContext';
 
@@ -96,6 +97,7 @@ function AppContent() {
       </main>
       <Footer />
       <ModeSwitcher />
+      <Analytics />
     </>
   );
 }
