@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const ModeContext = createContext(null);
 
@@ -10,17 +11,26 @@ const TITLES = {
 const STORAGE_KEY = 'portfolio-mode';
 
 export function ModeProvider({ children }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [mode, setModeState] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      return saved === 'personal' ? 'personal' : 'portfolio';
-    } catch {
-      return 'portfolio';
-    }
+    // Initial load: parse the route or default to portfolio
+    const path = window.location.pathname;
+    if (path.startsWith('/personal')) return 'personal';
+    return 'portfolio';
   });
 
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionText, setTransitionText] = useState('');
+
+  // Keep state synced if URL changes via back/forward buttons
+  useEffect(() => {
+    const currentMode = location.pathname.startsWith('/personal') ? 'personal' : 'portfolio';
+    if (currentMode !== mode && !isTransitioning) {
+      setModeState(currentMode);
+    }
+  }, [location.pathname, isTransitioning, mode]);
 
   // Persist mode to localStorage
   useEffect(() => {
@@ -49,13 +59,14 @@ export function ModeProvider({ children }) {
     // Wait for all 6 panels to fully cover the screen (approx 600ms)
     setTimeout(() => {
       setModeState(newMode);
+      navigate(`/${newMode}`);
     }, 600);
 
     // Begin exit sequence shortly after content has swapped (650ms)
     setTimeout(() => {
       setIsTransitioning(false);
     }, 650);
-  }, [mode, isTransitioning]);
+  }, [mode, isTransitioning, navigate]);
 
   const toggleMode = useCallback(() => {
     const nextMode = mode === 'portfolio' ? 'personal' : 'portfolio';
