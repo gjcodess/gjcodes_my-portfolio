@@ -6,14 +6,14 @@
 export const personalInfo = {
   name: 'Glenn Joshua Corpus',
   lastName: 'Corpus',
-  role: 'Web Developer & Technical Support',
-  tagline: 'IT Specialist & Full-Stack Web Developer | Technical Support | Pragmatic, Delivery-oriented',
+  role: 'IT Student | Tech Enthusiast | Aspiring Web Developer ',
+  tagline: 'Soon-to-be BSIT Graduate | Full-Stack Web Developer | Pragmatic & Delivery-oriented',
   bio: `I build clean, scalable, and reliable web applications rooted in a deep understanding of computer systems and hardware. Passionate about crafting digital experiences that combine technical precision with thoughtful design. Focused on delivering production-ready systems that make a real impact.`,
   email: 'glennjoshuacorpus@gmail.com',
   location: 'Philippines, Parañaque City',
-  currentPosition: 'Web Developer & Technical Support',
+  currentPosition: 'Soon-to-be IT Graduate',
   resumeUrl: '#',
-  avatar: '\my-photo.jpg', // Will be replaced with actual image path
+  avatar: '\my-photo.jpg',
 };
 
 export const socialLinks = [
@@ -104,6 +104,28 @@ export const projects = [
     live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
     featured: false,
   },
+
+  // {
+  //   id: 5,
+  //   title: 'CSSGen',
+  //   description: 'Visually create advanced CSS effects with real-time previews, instant code generation, and one-click export. Built for developers who want precision without the hassle.',
+  //   tags: ['React', 'CSS', 'JavaScript', 'HTML'],
+  //   // imageBase: 'CSSGen-1',
+  //   github: 'https://github.com/imapoopzz/css-generator',
+  //   live: 'https://css-generator-gamma.vercel.app/',
+  //   featured: false,
+  // },
+
+  // {
+  //   id: 6,
+  //   title: 'Sorting Algorithms Visualization',
+  //   description: 'A full-stack sorting algorithms visualizer web app with interactive animations, adjustable speed and controls, and an API-backed random array generator for learning and demonstrations.',
+  //   tags: ['React', 'CSS', 'JavaScript', 'HTML'],
+  //   // imageBase: 'HSC-1',
+  //   github: 'https://github.com/imapoopzz/SortingAlgo',
+  //   live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
+  //   featured: false,
+  // },
 ];
 
 export const experiences = [
