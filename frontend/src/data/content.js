@@ -182,34 +182,34 @@ export const education = [
 
 export const services = [
   {
-    title: 'Web Development',
-    description: 'Building responsive, performant web applications with modern frameworks and best practices.',
-    icon: 'Globe',
+    title: 'Full-Stack Development',
+    description: 'Developing end-to-end web applications using React.js, Node.js, and HTML/CSS, with robust server integration.',
+    icon: 'Code2',
   },
   {
-    title: 'Backend Systems',
-    description: 'Designing robust APIs, database architectures, and server-side logic for scalable applications.',
-    icon: 'Server',
-  },
-  {
-    title: 'UI/UX Design',
-    description: 'Crafting intuitive, visually appealing interfaces with attention to user experience and accessibility.',
+    title: 'UI/UX Interface Design',
+    description: 'Designing intuitive, user-friendly mobile and web interfaces with Figma, focusing on custom wireframing and prototyping.',
     icon: 'Palette',
   },
   {
-    title: 'API Development',
-    description: 'Building RESTful and GraphQL APIs with authentication, rate limiting, and comprehensive documentation.',
-    icon: 'Zap',
-  },
-  {
-    title: 'Database Design',
-    description: 'Architecting efficient database schemas, optimizing queries, and implementing data migration strategies.',
+    title: 'Database Management',
+    description: 'Designing relational database schemas with MySQL, optimization of queries, and ensuring reliable data persistence.',
     icon: 'Database',
   },
   {
-    title: 'DevOps & Deployment',
-    description: 'Setting up CI/CD pipelines, containerization, cloud deployment, and monitoring infrastructure.',
-    icon: 'Cloud',
+    title: 'Hardware & IT Support',
+    description: 'Hands-on experience in computer assembly, operating system setup (Windows/Ubuntu), and technical troubleshooting.',
+    icon: 'Cpu',
+  },
+  {
+    title: 'Creative Media Design',
+    description: 'Creating graphic designs for marketing and apparel alongside professional video editing for projects.',
+    icon: 'Video',
+  },
+  {
+    title: 'Project Leadership',
+    description: 'Leading technical teams, delegating tasks, managing time tables, and guiding projects to successful delivery.',
+    icon: 'ClipboardList',
   },
 ];
 
