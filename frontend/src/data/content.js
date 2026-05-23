@@ -142,7 +142,7 @@ export const experiences = [
     role: 'Web Developer Intern',
     company: 'Associated Labor Unions - Luzon Region',
     period: 'Feb 2026 - May 2026',
-    description: 'Developed the core LaborConnect web application with a modern, responsive interface. Project Manager & Lead Researcher of the group. Coordinated the overall research and development process. Facilitated communication with ALU, advisers, panelists, and evaluators. Oversaw time management, task delegation, and contributed to full-stack development.',
+    description: 'Developed the core LaborConnect web application with a modern, responsive interface. Project Manager & Lead Researcher of the group. Coordinated the overall research and development process. Oversaw time management, task delegation, and contributed to full-stack development.',
     technologies: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway"],
   },
   {
@@ -161,7 +161,7 @@ export const education = [
     degree: 'College - Bachelor of Science in Information Technology',
     school: 'Technological University of the Philippines, Manila',
     period: '2022 — Present',
-    description: 'Consistent President\'s Lister (A.Y. 2022-Present), 4th Placer in University Hackathon 2025',
+    description: 'Consistent President\'s Lister (A.Y. 2022-Present), 4th Placer in University Hackathon 2025, 2nd Placer in Best Capstone Project 2026',
   },
   {
     id: 2,
