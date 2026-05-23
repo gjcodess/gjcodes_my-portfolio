@@ -119,7 +119,7 @@ function About() {
         {/* Role Card */}
         <div className={styles.roleCard}>
           <h3 className={styles.roleText}>
-            Aspiring Web Developer,<br />Tech Enthusiast
+            Tech Enthusiast,<br />Aspiring Web Developer
           </h3>
           <div className={styles.uiMockup}>
             <div className={styles.uiMockupHeader}>
@@ -146,15 +146,15 @@ function About() {
           <div className={styles.codeBody}>
             <div className={styles.codeLine}>
               <span className={styles.codeNum}>1</span>
-              <span><span className={styles.codeComment}>{'// Importing a single module'}</span></span>
+              <span><span className={styles.codeComment}>{'// Career exploration status'}</span></span>
             </div>
             <div className={styles.codeLine}>
               <span className={styles.codeNum}>2</span>
               <span>
                 <span className={styles.codeKeyword}>import </span>
-                <span className={styles.codeProp}>moduleName </span>
+                {'{ developer } '}
                 <span className={styles.codeKeyword}>from </span>
-                <span className={styles.codeString}>'modulePath'</span>
+                <span className={styles.codeString}>'./profile'</span>
                 {';'}
               </span>
             </div>
@@ -164,16 +164,73 @@ function About() {
             </div>
             <div className={styles.codeLine}>
               <span className={styles.codeNum}>4</span>
-              <span><span className={styles.codeComment}>{'// Importing multiple modules'}</span></span>
+              <span>
+                <span className={styles.codeKeyword}>export async function </span>
+                <span className={styles.codeProp}>exploreOpportunities</span>
+                {'() {'}
+              </span>
             </div>
             <div className={styles.codeLine}>
               <span className={styles.codeNum}>5</span>
               <span>
-                <span className={styles.codeKeyword}>import </span>
-                {'{ module1, module2 } '}
-                <span className={styles.codeKeyword}>from </span>
-                <span className={styles.codeString}>'modulePath'</span>
+                {'  '}
+                <span className={styles.codeKeyword}>const </span>
+                {'status = '}
+                <span className={styles.codeString}>'Graduating Soon'</span>
                 {';'}
+              </span>
+            </div>
+            <div className={styles.codeLine}>
+              <span className={styles.codeNum}>6</span>
+              <span>&nbsp;</span>
+            </div>
+            <div className={styles.codeLine}>
+              <span className={styles.codeNum}>7</span>
+              <span>
+                {'  '}
+                <span className={styles.codeKeyword}>if </span>
+                {'(developer.status === status) {'}
+              </span>
+            </div>
+            <div className={styles.codeLine}>
+              <span className={styles.codeNum}>8</span>
+              <span>
+                {'    '}
+                <span className={styles.codeKeyword}>const </span>
+                {'goals = '}
+                <span className={styles.codeKeyword}>await </span>
+                <span className={styles.codeProp}>fetchGoals</span>
+                {'();'}
+              </span>
+            </div>
+            <div className={styles.codeLine}>
+              <span className={styles.codeNum}>9</span>
+              <span>
+                {'    '}
+                <span className={styles.codeKeyword}>return </span>
+                {'goals.filter(g => g.type === '}
+                <span className={styles.codeString}>'web-dev'</span>
+                {');'}
+              </span>
+            </div>
+            <div className={styles.codeLine}>
+              <span className={styles.codeNum}>10</span>
+              <span>
+                {'  }'}
+              </span>
+            </div>
+            <div className={styles.codeLine}>
+              <span className={styles.codeNum}>11</span>
+              <span>
+                {'  '}
+                <span className={styles.codeKeyword}>return </span>
+                {'[];'}
+              </span>
+            </div>
+            <div className={styles.codeLine}>
+              <span className={styles.codeNum}>12</span>
+              <span>
+                {'}'}
               </span>
             </div>
           </div>
