@@ -1,0 +1,20 @@
+.overlayContainer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  pointer-events: none; /* Let clicks pass when not transitioning */
+}
+
+.panel {
+  flex: 1;
+  height: 100vh;
+  background: var(--color-neon-mint);
+  pointer-events: auto; /* Block clicks during transition */
+  will-change: transform;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.panel:last-child {
+  border-right: none;
+}

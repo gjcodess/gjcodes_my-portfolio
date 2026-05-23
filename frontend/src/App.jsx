@@ -1,12 +1,19 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
+
+import { ModeProvider, useMode } from './context/ModeContext';
 
 import GridBackground from './components/GridBackground/GridBackground';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/Loader/Loader';
 import Footer from './components/Footer/Footer';
+import ModeSwitcher from './components/ModeSwitcher/ModeSwitcher';
+import ModeTransition from './components/ModeTransition/ModeTransition';
 
+// Portfolio sections
 import Hero from './sections/Hero/Hero';
 import About from './sections/About/About';
 import Skills from './sections/Skills/Skills';
@@ -15,11 +22,58 @@ import Experience from './sections/Experience/Experience';
 import Services from './sections/Services/Services';
 import Contact from './sections/Contact/Contact';
 
+// Personal sections
+import PersonalHero from './sections/PersonalHero/PersonalHero';
+import Hobbies from './sections/Hobbies/Hobbies';
+import LifeComponents from './sections/LifeComponents/LifeComponents';
+import Gallery from './sections/Gallery/Gallery';
+import Quotes from './sections/Quotes/Quotes';
+
 gsap.registerPlugin(ScrollTrigger);
 
-function App() {
+function PortfolioContent() {
+  return (
+    <>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Services />
+      <Contact />
+    </>
+  );
+}
+
+function PersonalContent() {
+  return (
+    <>
+      <PersonalHero />
+      <Hobbies />
+      <LifeComponents />
+      <Gallery />
+      <Quotes />
+    </>
+  );
+}
+
+function AppContent() {
+  const { mode } = useMode();
+
+  // Scroll to top and refresh ScrollTrigger on mode change
   useEffect(() => {
-    // Refresh ScrollTrigger after all content loads
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Kill existing ScrollTrigger instances then refresh after new content mounts
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh(true);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [mode]);
+
+  // Initial ScrollTrigger refresh
+  useEffect(() => {
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 2500);
@@ -29,20 +83,30 @@ function App() {
 
   return (
     <>
+      <ModeTransition />
       <Loader />
       <GridBackground />
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Services />
-        <Contact />
+      <main key={mode}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/portfolio" replace />} />
+          <Route path="/portfolio" element={<PortfolioContent />} />
+          <Route path="/personal" element={<PersonalContent />} />
+          <Route path="*" element={<Navigate to="/portfolio" replace />} />
+        </Routes>
       </main>
       <Footer />
+      <ModeSwitcher />
+      <Analytics />
     </>
+  );
+}
+
+function App() {
+  return (
+    <ModeProvider>
+      <AppContent />
+    </ModeProvider>
   );
 }
 

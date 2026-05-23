@@ -119,7 +119,7 @@ function About() {
         {/* Role Card */}
         <div className={styles.roleCard}>
           <h3 className={styles.roleText}>
-            Web Developer,<br />Technical Support
+            Aspiring Web Developer,<br />Tech Enthusiast
           </h3>
           <div className={styles.uiMockup}>
             <div className={styles.uiMockupHeader}>
@@ -196,14 +196,14 @@ function About() {
         </div>
 
         {/* Stats Row */}
-        <div className={styles.statsRow}>
+        {/* <div className={styles.statsRow}>
           {stats.map((stat) => (
             <div key={stat.label} className={styles.statItem}>
               <div className={styles.statValue}>{stat.value}</div>
               <div className={styles.statLabel}>{stat.label}</div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </SectionWrapper>
   );

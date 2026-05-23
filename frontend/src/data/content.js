@@ -4,16 +4,16 @@
    ============================================ */
 
 export const personalInfo = {
-  name: 'Glenn Joshua',
+  name: 'Glenn Joshua Corpus',
   lastName: 'Corpus',
-  role: 'Web Developer & Technical Support',
-  tagline: 'IT Specialist & Full-Stack Web Developer | Technical Support | Pragmatic, Delivery-oriented',
+  role: 'IT Student | Tech Enthusiast | Aspiring Web Developer ',
+  tagline: 'Soon-to-be BSIT Graduate | Full-Stack Web Developer | Pragmatic & Delivery-oriented',
   bio: `I build clean, scalable, and reliable web applications rooted in a deep understanding of computer systems and hardware. Passionate about crafting digital experiences that combine technical precision with thoughtful design. Focused on delivering production-ready systems that make a real impact.`,
   email: 'glennjoshuacorpus@gmail.com',
   location: 'Philippines, Parañaque City',
-  currentPosition: 'Full Stack Developer',
+  currentPosition: 'Soon-to-be IT Graduate',
   resumeUrl: '#',
-  avatar: '\my-photo.jpg', // Will be replaced with actual image path
+  avatar: '\my-photo.jpg',
 };
 
 export const socialLinks = [
@@ -22,7 +22,6 @@ export const socialLinks = [
   { name: 'Facebook', url: 'https://www.facebook.com/corpus.glenn.joshua.7', icon: 'Facebook' },
   { name: 'Instagram', url: 'https://www.instagram.com/imapoopypie/', icon: 'Instagram' },
   { name: 'X', url: 'https://x.com/nnelgsuproc', icon: 'Twitter' },
-  { name: 'Gmail', url: 'mailto:glennjoshuacorpus@gmail.com', icon: 'Mail' },
 ];
 
 export const navLinks = [
@@ -67,11 +66,7 @@ export const projects = [
     title: 'LaborConnect',
     description: 'A full-stack web app for managing labor union membership, services, and administration. Provides a member self-service portal, a department ticket-handling portal, and a comprehensive admin dashboard for union operations.',
     tags: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway"],
-    images: [
-      '/LaborConnect-1.png',
-      '/LaborConnect-2.png',
-      '/LaborConnect-3.png',
-    ],
+    imageBases: ['LaborConnect-1', 'LaborConnect-2', 'LaborConnect-3'],
     github: 'https://github.com/imapoopzz/ThesisProj',
     live: 'https://www.laborconnect.app',
     featured: true,
@@ -82,7 +77,7 @@ export const projects = [
     title: 'MangaVerse',
     description: 'A modern, immersive UI/UX design for MangaVerse — a Japanese comics (manga) and anime reading mobile application.',
     tags: ['Figma', 'User Interface', 'Mobile Application Design', 'Prototyping'],
-    image: '\MangaVerse-1.png',
+    imageBase: 'MangaVerse-1',
     github: ' ',
     live: 'https://www.figma.com/proto/y3JbsPe7btzPUtRmEN71ni/MangaVerse?node-id=283-1625&t=tS9s8rszJlWNVM4u-1&starting-point-node-id=285%3A2486',
     featured: true,
@@ -92,12 +87,8 @@ export const projects = [
     id: 3,
     title: 'Gcorp.',
     description: 'A full-stack e-commerce web app for a computer systems and gadgets store (Gcorp), featuring product browsing, shopping cart, user accounts, order management, and admin tools.',
-    tags: ['Next.js', 'PostgreSQL', 'Express', 'Docker'],
-    images: [
-      '/Gcorp-1.png',
-      '/Gcorp-2.png',
-      '/Gcorp-3.png',
-    ],
+    tags: ['React', 'Node.js', 'CSS', 'MySQL'],
+    imageBases: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
     github: 'https://github.com/imapoopzz/WebDev_Project',
     live: ' ',
     featured: false,
@@ -108,11 +99,33 @@ export const projects = [
     title: 'kAIn',
     description: 'KAIN (a Filipino word for “eat”) is a smart, intuitive mobile application that helps users effortlessly track their daily food intake, monitor nutrition, and build healthier eating habits with the assistance of Artificial Intelligence.',
     tags: ['Figma', 'User Interface', 'Mobile Application Design', 'Prototyping'],
-    image: '\kAIn-1.png',
+    imageBase: 'kAIn-1',
     github: ' ',
     live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
     featured: false,
   },
+
+  // {
+  //   id: 5,
+  //   title: 'CSSGen',
+  //   description: 'Visually create advanced CSS effects with real-time previews, instant code generation, and one-click export. Built for developers who want precision without the hassle.',
+  //   tags: ['React', 'CSS', 'JavaScript', 'HTML'],
+  //   // imageBase: 'CSSGen-1',
+  //   github: 'https://github.com/imapoopzz/css-generator',
+  //   live: 'https://css-generator-gamma.vercel.app/',
+  //   featured: false,
+  // },
+
+  // {
+  //   id: 6,
+  //   title: 'Sorting Algorithms Visualization',
+  //   description: 'A full-stack sorting algorithms visualizer web app with interactive animations, adjustable speed and controls, and an API-backed random array generator for learning and demonstrations.',
+  //   tags: ['React', 'CSS', 'JavaScript', 'HTML'],
+  //   // imageBase: 'HSC-1',
+  //   github: 'https://github.com/imapoopzz/SortingAlgo',
+  //   live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
+  //   featured: false,
+  // },
 ];
 
 export const experiences = [
@@ -162,7 +175,7 @@ export const education = [
     degree: 'Junior High School',
     school: 'Parañaque National High School — Baclaran, Parañaque',
     period: '2016 — 2020',
-    description: 'Completed with High Honors (Valedictorian), Ranked 1st among Grade 10 students (AY. 2020)',
+    description: 'Completed with High Honors (Valedictorian), Ranked 1st among Grade 10 students (A.Y. 2020)',
   },
 
 ];

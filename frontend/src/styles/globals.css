@@ -43,18 +43,19 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-charcoal);
+  background: var(--color-neon-mint);
   border-radius: var(--radius-pill);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-neon-mint);
+  filter: brightness(1.2);
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-charcoal) var(--color-deep-ink);
+  scrollbar-color: var(--color-neon-mint) var(--color-deep-ink);
 }
 
 /* ── Selection ── */
