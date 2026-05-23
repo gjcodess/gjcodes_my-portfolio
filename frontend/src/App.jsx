@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import { ModeProvider, useMode } from './context/ModeContext';
 
@@ -98,6 +99,7 @@ function AppContent() {
       <Footer />
       <ModeSwitcher />
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
