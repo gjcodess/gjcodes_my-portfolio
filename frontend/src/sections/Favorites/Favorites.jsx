@@ -235,9 +235,9 @@ function Favorites() {
 
           <div className={styles.contentColumn}>
             <h3 className={styles.sectionLabel}>
-              {movie.label.split(' ').slice(0, -2).join(' ')}{' '}
+              {movie.label.split(' ').slice(0, -1).join(' ')}{' '}
               <span className={styles.sectionLabelAccent}>
-                {movie.label.split(' ').slice(-2).join(' ')}
+                {movie.label.split(' ').slice(-1).join(' ')}
               </span>
             </h3>
             <span className={styles.sectionSubtitle}>{movie.title}</span>
