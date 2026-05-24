@@ -91,7 +91,7 @@ export const projects = [
     imageBases: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
     github: 'https://github.com/imapoopzz/WebDev_Project',
     live: ' ',
-    featured: false,
+    featured: true,
   },
 
   {
@@ -102,30 +102,74 @@ export const projects = [
     imageBase: 'kAIn-1',
     github: ' ',
     live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
+    featured: true,
+  },
+
+  {
+    id: 5,
+    title: 'CSSGen',
+    description: 'Visually create advanced CSS effects with real-time previews, instant code generation, and one-click export. Built for developers who want precision without the hassle.',
+    tags: ['React', 'CSS', 'JavaScript', 'HTML'],
+    imageBases: ['CSSGen-1', 'CSSGen-2', 'CSSGen-3', 'CSSGen-4'],
+    github: 'https://github.com/imapoopzz/css-generator',
+    live: 'https://css-generator-gamma.vercel.app/',
     featured: false,
   },
 
-  // {
-  //   id: 5,
-  //   title: 'CSSGen',
-  //   description: 'Visually create advanced CSS effects with real-time previews, instant code generation, and one-click export. Built for developers who want precision without the hassle.',
-  //   tags: ['React', 'CSS', 'JavaScript', 'HTML'],
-  //   // imageBase: 'CSSGen-1',
-  //   github: 'https://github.com/imapoopzz/css-generator',
-  //   live: 'https://css-generator-gamma.vercel.app/',
-  //   featured: false,
-  // },
+  {
+    id: 6,
+    title: 'Sorting Algorithms Visualization',
+    description: 'A full-stack sorting algorithms visualizer web app with interactive animations, adjustable speed and controls, and an API-backed random array generator for learning and demonstrations.',
+    tags: ['React', 'CSS', 'JavaScript', 'HTML'],
+    imageBases: ['SortingAlgo-1', 'SortingAlgo-2', 'SortingAlgo-3'],
+    github: 'https://github.com/imapoopzz/SortingAlgo',
+    live: 'https://sorting-algo-visualizer-smoky.vercel.app/',
+    featured: false,
+  },
 
-  // {
-  //   id: 6,
-  //   title: 'Sorting Algorithms Visualization',
-  //   description: 'A full-stack sorting algorithms visualizer web app with interactive animations, adjustable speed and controls, and an API-backed random array generator for learning and demonstrations.',
-  //   tags: ['React', 'CSS', 'JavaScript', 'HTML'],
-  //   // imageBase: 'HSC-1',
-  //   github: 'https://github.com/imapoopzz/SortingAlgo',
-  //   live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
-  //   featured: false,
-  // },
+  {
+    id: 7,
+    title: 'TUP - Academic Information System (AIS)',
+    description: 'A console-based student grading system in C featuring an interactive menu, student record input and file storage, weighted grade calculations, class statistics and summaries, and printable reports for instructors and demonstrations.',
+    tags: ['C Language'],
+    imageBase: 'TupAis-1',
+    github: ' ',
+    live: ' ',
+    featured: false,
+  },
+
+  {
+    id: 8,
+    title: 'Two-dimensional puzzle game: 2048',
+    description: 'A compact, console-based C game with responsive keyboard controls, ASCII-style visuals, randomized levels/challenges, score and lives tracking, and optional high-score persistence for classroom demos and beginner game-development practice.',
+    tags: ['C Language'],
+    imageBase: '2048-1',
+    github: ' ',
+    live: ' ',
+    featured: false,
+  },
+
+  {
+    id: 9,
+    title: 'ATM Simulator',
+    description: 'A console-based ATM simulation in C++ implementing ADT list operations with account registration, encrypted PIN handling, file-backed persistence, balance inquiry, withdraw/deposit, fund transfer, PIN change, an interactive keypad-style UI, and transaction logging for demonstrations and learning.',
+    tags: ['C++ Language'],
+    imageBase: 'ATM-1',
+    github: ' ',
+    live: ' ',
+    featured: false,
+  },
+
+  {
+    id: 10,
+    title: 'Arithmetic Practice Game',
+    description: 'An object-oriented C++ arithmetic-practice game with linked-list player management, secure login, per-operation scoring (add/sub/mul/div), Top-10 leaderboard and averages, file-backed persistence, interactive console UI, and reusable modules for classroom demonstrations and skill-building.',
+    tags: ['C++ Language', 'Object-Oriented Programming'],
+    imageBase: 'Arith-1',
+    github: ' ',
+    live: ' ',
+    featured: false,
+  },
 ];
 
 export const experiences = [
@@ -133,7 +177,7 @@ export const experiences = [
   //   id: 1,
   //   role: 'Full Stack Developer',
   //   company: 'Tech Company A',
-  //   period: '2024 — Present',
+  //   period: '2026 — Present',
   //   description: 'Developing and maintaining scalable web applications. Leading frontend architecture decisions and implementing backend APIs for production systems.',
   //   technologies: ['React', 'Node.js', 'PostgreSQL'],
   // },
