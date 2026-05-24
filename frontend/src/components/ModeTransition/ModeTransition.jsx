@@ -16,10 +16,12 @@ function ModeTransition() {
       isFirstRender.current = false;
       // Initially, hide panels out of view at the bottom (100% yPercent)
       gsap.set(panels, { yPercent: 100 });
+      gsap.set(containerRef.current, { autoAlpha: 0 });
       return;
     }
 
     if (isTransitioning) {
+      gsap.set(containerRef.current, { autoAlpha: 1 });
       // Entry phase: slide from bottom (100) to top (0)
       // Staggered right-to-left (from end to start)
       gsap.fromTo(
@@ -42,7 +44,10 @@ function ModeTransition() {
           yPercent: 100,
           duration: 0.45,
           ease: 'power3.inOut',
-          stagger: { amount: 0.15, from: 'end' }
+          stagger: { amount: 0.15, from: 'end' },
+          onComplete: () => {
+            gsap.set(containerRef.current, { autoAlpha: 0 });
+          }
         }
       );
     }

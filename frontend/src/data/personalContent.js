@@ -73,7 +73,7 @@ export const favoritesData = {
     quote: `"When you go, would you even turn to say, 'I don't love you like I did yesterday?'"`,
     quoteAuthor: 'My Chemical Romance',
     description: `This poignant line captures the bittersweet reality of evolving feelings and the painful inevitability of growth. It taught me to embrace love's complexities and cherish fleeting moments that leave a permanent impact. Most importantly, it reinforces the value of showing affection to those who matter, as every single interaction shapes our journey.`,
-    readMoreUrl: 'https://www.youtube.com/watch?v=pyi0ZfuIIvo',
+    readMoreUrl: 'https://genius.com/My-chemical-romance-i-dont-love-you-lyrics',
     audioSrc: '/i-dont-love-you.mp3',
     albumArt: '/mcr-album-art.jpg',
   },
