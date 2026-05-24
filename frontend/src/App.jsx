@@ -26,7 +26,7 @@ import Contact from './sections/Contact/Contact';
 // Personal sections
 import PersonalHero from './sections/PersonalHero/PersonalHero';
 import Hobbies from './sections/Hobbies/Hobbies';
-import LifeComponents from './sections/LifeComponents/LifeComponents';
+import Favorites from './sections/Favorites/Favorites';
 import Gallery from './sections/Gallery/Gallery';
 import Quotes from './sections/Quotes/Quotes';
 
@@ -51,7 +51,7 @@ function PersonalContent() {
     <>
       <PersonalHero />
       <Hobbies />
-      <LifeComponents />
+      <Favorites />
       <Gallery />
       <Quotes />
     </>
