@@ -413,7 +413,7 @@
 
 @media (max-width: 640px) {
   .playerArtWrapper {
-    flex: 0 0 190px;
+    flex: 0 0 110px;
   }
 
   .inner {
@@ -429,7 +429,11 @@
   }
 
   .playerTitle {
-    font-size: var(--text-body);
+    font-size: 14px;
+  }
+
+  .playerArtist {
+    font-size: 12px;
   }
 
   .waveContainer {
@@ -438,6 +442,17 @@
   }
 
   .playerControls {
-    gap: var(--space-md);
+    gap: var(--space-xs);
+    padding: 0 var(--space-sm);
+  }
+
+  .playBtn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .controlBtn svg {
+    width: 24px;
+    height: 24px;
   }
 }
