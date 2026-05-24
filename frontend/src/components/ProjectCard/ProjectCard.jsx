@@ -10,6 +10,8 @@ const buildSrcSet = (base, ext) =>
 
 const getSizes = () => '(max-width: 768px) 100vw, 50vw';
 
+const isLinkAvailable = (url) => typeof url === 'string' && url.trim().length > 0;
+
 const normalizeProjectImages = ({ imageBase, imageBases, image, images }) => {
   const sources = [];
 
@@ -41,11 +43,38 @@ const GithubIcon = () => (
   </svg>
 );
 
+function LinkUnavailableModal({ linkType, onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        <p className={styles.modalText}>
+          Sorry, there is no {linkType} link available for this project yet.
+        </p>
+        <button className={styles.modalClose} onClick={onClose}>
+          Close
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function ProjectCard({ project }) {
   const { title, description, tags, github, live, featured } = project;
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [modalLinkType, setModalLinkType] = useState(null);
   const imageSources = normalizeProjectImages(project);
   const sizes = getSizes();
+
+  const hasGithub = isLinkAvailable(github);
+  const hasLive = isLinkAvailable(live);
 
   useEffect(() => {
     if (imageSources.length <= 1) return;
@@ -56,6 +85,11 @@ function ProjectCard({ project }) {
 
     return () => clearInterval(interval);
   }, [imageSources.length]);
+
+  const handleUnavailableLink = (e, type) => {
+    e.preventDefault();
+    setModalLinkType(type);
+  };
 
   return (
     <article className={styles.projectCard}>
@@ -137,25 +171,27 @@ function ProjectCard({ project }) {
 
         {/* Links */}
         <div className={styles.links}>
-          {github && (
+          {github !== undefined && (
             <a
-              href={github}
+              href={hasGithub ? github : '#'}
               className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={hasGithub ? '_blank' : undefined}
+              rel={hasGithub ? 'noopener noreferrer' : undefined}
               aria-label={`View ${title} on GitHub`}
+              onClick={hasGithub ? undefined : (e) => handleUnavailableLink(e, 'GitHub')}
             >
               <GithubIcon />
               Code
             </a>
           )}
-          {live && (
+          {live !== undefined && (
             <a
-              href={live}
+              href={hasLive ? live : '#'}
               className={styles.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={hasLive ? '_blank' : undefined}
+              rel={hasLive ? 'noopener noreferrer' : undefined}
               aria-label={`View ${title} live demo`}
+              onClick={hasLive ? undefined : (e) => handleUnavailableLink(e, 'Live')}
             >
               <ExternalLink size={16} />
               Live Demo
@@ -163,6 +199,14 @@ function ProjectCard({ project }) {
           )}
         </div>
       </div>
+
+      {/* Link Unavailable Modal */}
+      {modalLinkType && (
+        <LinkUnavailableModal
+          linkType={modalLinkType}
+          onClose={() => setModalLinkType(null)}
+        />
+      )}
     </article>
   );
 }
