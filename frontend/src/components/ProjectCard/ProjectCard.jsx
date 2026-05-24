@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ExternalLink } from 'lucide-react';
 import styles from './ProjectCard.module.css';
 
@@ -52,7 +53,7 @@ function LinkUnavailableModal({ linkType, onClose }) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  return (
+  return createPortal(
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <p className={styles.modalText}>
@@ -62,7 +63,8 @@ function LinkUnavailableModal({ linkType, onClose }) {
           Close
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
