@@ -8,7 +8,7 @@
 
 .panel {
   flex: 1;
-  height: 100vh;
+  height: 100%;
   background: var(--color-neon-mint);
   pointer-events: auto; /* Block clicks during transition */
   will-change: transform;

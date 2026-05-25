@@ -56,56 +56,28 @@ export const hobbies = [
   },
 ];
 
-export const lifeComponents = [
-  {
-    id: 1,
-    title: 'Mindset',
-    description: 'Growth over comfort. Every challenge is a lesson in disguise. I believe in relentless self-improvement and the power of perspective.',
-    gradient: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+export const favoritesData = {
+  movie: {
+    label: 'Favorite Movie',
+    title: 'A Silent Voice',
+    youtubeId: 'nfK6UgLra7g',
+    quote: `"You don't need to forgive him. But don't you want to know why he apologized?"`,
+    quoteAuthor: 'Yuzuru Nishimiya',
+    description: `Because human relationships are so complex, certain film lines profoundly resonate with me. This quote emphasizes the value of understanding over immediate forgiveness. By seeking to understand why people do what they do, we foster deeper connections and personal growth. Ultimately, that single idea taught me to spread love to my family, friends, and everyone deserving of it.`,
+    readMoreUrl: 'https://myanimelist.net/anime/28851/Koe_no_Katachi',
   },
-  {
-    id: 2,
-    title: 'Creativity',
-    description: 'The intersection of logic and imagination. Creativity isn\'t a talent — it\'s a practice, a way of seeing the world differently.',
-    gradient: 'linear-gradient(135deg, #1a1033 0%, #2d1b69 100%)',
+  music: {
+    label: 'Favorite Music',
+    title: "I Don't Love You",
+    artist: 'My Chemical Romance',
+    quote: `"When you go, would you even turn to say, 'I don't love you like I did yesterday?'"`,
+    quoteAuthor: 'My Chemical Romance',
+    description: `This poignant line captures the bittersweet reality of evolving feelings and the painful inevitability of growth. It taught me to embrace love's complexities and cherish fleeting moments that leave a permanent impact. Most importantly, it reinforces the value of showing affection to those who matter, as every single interaction shapes our journey.`,
+    readMoreUrl: 'https://genius.com/My-chemical-romance-i-dont-love-you-lyrics',
+    audioSrc: '/i-dont-love-you.mp3',
+    albumArt: '/mcr-album-art.jpg',
   },
-  {
-    id: 3,
-    title: 'Discipline',
-    description: 'Motivation fades. Discipline remains. The foundation of every meaningful achievement in my life.',
-    gradient: 'linear-gradient(135deg, #0c1a1a 0%, #1a3a3a 100%)',
-  },
-  {
-    id: 4,
-    title: 'Lifestyle',
-    description: 'Intentional living. Balancing ambition with presence. Finding rhythm in the chaos of modern life.',
-    gradient: 'linear-gradient(135deg, #1a0f0f 0%, #2d1b1b 100%)',
-  },
-  {
-    id: 5,
-    title: 'Learning',
-    description: 'A perpetual student. Technology evolves, industries shift — adaptability is the ultimate skill.',
-    gradient: 'linear-gradient(135deg, #0f1a2e 0%, #1b2d5e 100%)',
-  },
-  {
-    id: 6,
-    title: 'Passion',
-    description: 'Code, design, music, fitness — passion is the thread that connects everything I do.',
-    gradient: 'linear-gradient(135deg, #1a0a2e 0%, #3b1d6e 100%)',
-  },
-  {
-    id: 7,
-    title: 'Personal Goals',
-    description: 'Build something meaningful. Leave an impact. Never stop evolving. The journey matters more than the destination.',
-    gradient: 'linear-gradient(135deg, #0a1a0a 0%, #1d3b1d 100%)',
-  },
-  {
-    id: 8,
-    title: 'Inspirations',
-    description: 'Great minds, bold ideas, and the courage to think differently. Inspiration is everywhere if you look.',
-    gradient: 'linear-gradient(135deg, #1a1a0a 0%, #3b3b1d 100%)',
-  },
-];
+};
 
 export const galleryItems = [
   { id: 1, title: 'Me, Myself and I', category: 'Life', span: 'tall', imageBase: 'pic1' },
@@ -150,7 +122,7 @@ export const quotes = [
 export const personalNavLinks = [
   { label: 'Intro', href: '#personal-hero' },
   { label: 'Hobbies', href: '#hobbies' },
-  { label: 'Life', href: '#life-components' },
+  { label: 'Favorites', href: '#favorites' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Philosophy', href: '#quotes' },
 ];
