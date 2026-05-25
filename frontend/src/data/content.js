@@ -12,7 +12,7 @@ export const personalInfo = {
   email: 'glennjoshuacorpus@gmail.com',
   location: 'Philippines, Parañaque City',
   currentPosition: 'Soon-to-be IT Graduate',
-  resumeUrl: '#',
+  resumeUrl: '/Resume-Glenn.pdf',
   avatar: '\my-photo.jpg',
 };
 
