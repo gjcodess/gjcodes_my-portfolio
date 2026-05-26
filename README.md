@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Logo Placeholder -->
-<img src="https://github.com/imapoopzz/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="120" height="120" />
+<img src="https://github.com/imapoopzz/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="200" height="200" />
 
 # ✦ Interactive Developer Portfolio
 
