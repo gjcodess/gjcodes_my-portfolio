@@ -175,6 +175,33 @@
   color: var(--color-neon-mint);
 }
 
+/* ── Clickable Card (Featured only) ── */
+.clickable {
+  cursor: pointer;
+}
+
+/* ── Learn More Button ── */
+.learnMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-btn-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-neon-mint);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  letter-spacing: 0.5px;
+  margin-left: auto;
+  padding: 0;
+}
+
+.learnMore:hover {
+  color: var(--color-white);
+  transform: translateX(4px);
+}
+
 @media (max-width: 640px) {
   .imageArea {
     height: 210px;

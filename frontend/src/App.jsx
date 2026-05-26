@@ -29,6 +29,7 @@ import Hobbies from './sections/Hobbies/Hobbies';
 import Favorites from './sections/Favorites/Favorites';
 import Gallery from './sections/Gallery/Gallery';
 import Quotes from './sections/Quotes/Quotes';
+import ProjectDetail from './sections/ProjectDetail/ProjectDetail';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,6 +93,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Navigate to="/portfolio" replace />} />
           <Route path="/portfolio" element={<PortfolioContent />} />
+          <Route path="/portfolio/projects/:slug" element={<ProjectDetail />} />
           <Route path="/personal" element={<PersonalContent />} />
           <Route path="*" element={<Navigate to="/portfolio" replace />} />
         </Routes>
