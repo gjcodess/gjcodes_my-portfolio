@@ -1,15 +1,15 @@
 <div align="center">
 
 <!-- Logo Placeholder -->
-<img src="https://via.placeholder.com/150x150/0F0E1A/00FF99?text=Logo" alt="Project Logo" width="120" height="120" />
+<img src="https://github.com/imapoopzz/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="120" height="120" />
 
 # ✦ Interactive Developer Portfolio
 
 **A dual-sided, motion-rich personal and professional portfolio experience.** <br>
 Built with React, GSAP, Vite, and Express to showcase technical capability and personal narrative.
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/portfolio?style=for-the-badge&color=00FF99&labelColor=0F0E1A)](https://github.com/yourusername/portfolio/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/portfolio?style=for-the-badge&color=00FF99&labelColor=0F0E1A)](https://github.com/yourusername/portfolio/network)
+[![GitHub stars](https://img.shields.io/github/stars/imapoopzz/personal-portfolio?style=for-the-badge&color=00FF99&labelColor=0F0E1A)](https://github.com/imapoopzz/personal-portfolio/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/imapoopzz/personal-portfolio?style=for-the-badge&color=00FF99&labelColor=0F0E1A)](https://github.com/imapoopzz/personal-portfolio/network)
 [![License: MIT](https://img.shields.io/badge/License-MIT-00FF99.svg?style=for-the-badge&labelColor=0F0E1A)](https://opensource.org/licenses/MIT)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-00FF99?style=for-the-badge&labelColor=0F0E1A&logo=vercel)](https://vercel.com)
 [![React](https://img.shields.io/badge/React-18.x-00FF99?style=for-the-badge&labelColor=0F0E1A&logo=react)](https://react.dev/)
@@ -248,9 +248,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <div align="center">
 
-**Built with 💻 & ☕ by [Glenn](#)**
+**Built with 💻 & ☕ by [Glenn](https://github.com/imapoopzz)**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](#)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](#)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/glenn-joshua-corpus-671b5b18a/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/imapoopzz)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/corpus.glenn.joshua.7)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/imapoopypie/)
+[![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/nnelgsuproc)
 
 </div>
