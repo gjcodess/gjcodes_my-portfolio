@@ -26,11 +26,12 @@ export function useScrollReveal(options = {}) {
     start = 'top 85%',
     stagger = false,
     staggerAmount = 0.1,
+    disabled = false,
   } = options;
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || disabled) return;
 
     const directionMap = {
       up: { y: distance, x: 0 },

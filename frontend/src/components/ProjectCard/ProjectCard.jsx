@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ExternalLink } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ExternalLink, ArrowRight } from 'lucide-react';
+import { projectDetails } from '../../data/projectDetails';
 import styles from './ProjectCard.module.css';
 
 const PROJECT_IMAGE_SIZES = [400, 800, 1200];
@@ -74,9 +76,17 @@ function ProjectCard({ project }) {
   const [modalLinkType, setModalLinkType] = useState(null);
   const imageSources = normalizeProjectImages(project);
   const sizes = getSizes();
+  const navigate = useNavigate();
 
   const hasGithub = isLinkAvailable(github);
   const hasLive = isLinkAvailable(live);
+
+  // Find slug for the project (if it exists in projectDetails)
+  const detailSlug = (projectDetails.find(
+    (p) =>
+      p.name.toLowerCase() === title.toLowerCase() ||
+      (p.cardTitle && p.cardTitle.toLowerCase() === title.toLowerCase())
+  ) || {}).id;
 
   useEffect(() => {
     if (imageSources.length <= 1) return;
@@ -93,8 +103,28 @@ function ProjectCard({ project }) {
     setModalLinkType(type);
   };
 
+  const handleCardClick = (e) => {
+    // Don't navigate if clicking on links or buttons inside the card
+    if (e.target.closest('a') || e.target.closest('button')) return;
+    if (detailSlug) {
+      sessionStorage.setItem('portfolio_scroll_pos', window.scrollY);
+      navigate(`/portfolio/projects/${detailSlug}`);
+    }
+  };
+
   return (
-    <article className={styles.projectCard}>
+    <article
+      className={`${styles.projectCard} ${detailSlug ? styles.clickable : ''}`}
+      onClick={handleCardClick}
+      role={detailSlug ? 'link' : undefined}
+      tabIndex={detailSlug ? 0 : undefined}
+      onKeyDown={(e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && detailSlug) {
+          e.preventDefault();
+          navigate(`/portfolio/projects/${detailSlug}`);
+        }
+      }}
+    >
       {/* Image / Slideshow */}
       <div className={styles.imageArea}>
         {imageSources.length > 0 ? (
@@ -136,16 +166,15 @@ function ProjectCard({ project }) {
                 />
               );
             })}
-            
+
             {/* Navigation Dots if multiple images */}
             {imageSources.length > 1 && (
               <div className={styles.dotsContainer}>
                 {imageSources.map((_, idx) => (
                   <span
                     key={idx}
-                    className={`${styles.dot} ${
-                      idx === currentIdx ? styles.dotActive : ''
-                    }`}
+                    className={`${styles.dot} ${idx === currentIdx ? styles.dotActive : ''
+                      }`}
                   />
                 ))}
               </div>
@@ -163,41 +192,29 @@ function ProjectCard({ project }) {
         <p className={styles.description}>{description}</p>
 
         {/* Tags */}
-        <div className={styles.tags}>
+        {/* <div className={styles.tags}>
           {tags.map((tag) => (
             <span key={tag} className={styles.tag}>
               {tag}
             </span>
           ))}
-        </div>
+        </div> */}
 
         {/* Links */}
         <div className={styles.links}>
-          {github !== undefined && (
-            <a
-              href={hasGithub ? github : '#'}
-              className={styles.link}
-              target={hasGithub ? '_blank' : undefined}
-              rel={hasGithub ? 'noopener noreferrer' : undefined}
-              aria-label={`View ${title} on GitHub`}
-              onClick={hasGithub ? undefined : (e) => handleUnavailableLink(e, 'GitHub')}
+
+          {/* Learn More Button */}
+          {detailSlug && (
+            <button
+              className={styles.learnMore}
+              onClick={() => {
+                sessionStorage.setItem('portfolio_scroll_pos', window.scrollY);
+                navigate(`/portfolio/projects/${detailSlug}`);
+              }}
+              aria-label={`Learn more about ${title}`}
             >
-              <GithubIcon />
-              Code
-            </a>
-          )}
-          {live !== undefined && (
-            <a
-              href={hasLive ? live : '#'}
-              className={styles.link}
-              target={hasLive ? '_blank' : undefined}
-              rel={hasLive ? 'noopener noreferrer' : undefined}
-              aria-label={`View ${title} live demo`}
-              onClick={hasLive ? undefined : (e) => handleUnavailableLink(e, 'Live')}
-            >
-              <ExternalLink size={16} />
-              Live Demo
-            </a>
+              Learn More <ArrowRight size={16} />
+            </button>
           )}
         </div>
       </div>
