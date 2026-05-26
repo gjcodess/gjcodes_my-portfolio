@@ -157,7 +157,7 @@
   font-size: var(--text-btn-sm);
   color: var(--color-medium-gray);
   line-height: 1.8;
-  max-width: 500px;
+  max-width: 100%;
   margin-top: var(--space-md);
 }
 
@@ -334,6 +334,13 @@
     width: 100%;
   }
 
+  .roleBadge {
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    margin-bottom: var(--space-md);
+  }
+
   .heading {
     align-items: center;
   }
@@ -360,8 +367,8 @@
   }
 
   .avatarWrapper {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
   }
 
   .avatarInitials {

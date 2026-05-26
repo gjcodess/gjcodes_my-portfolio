@@ -1,13 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ArrowRight } from 'lucide-react';
 import { personalInfo } from '../../data/content';
 import useMouseParallax from '../../hooks/useMouseParallax';
 import Button from '../../components/Button/Button';
 import SocialLinks from '../../components/SocialLinks/SocialLinks';
+import Modal from '../../components/Modal/Modal';
 import styles from './Hero.module.css';
 
 function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const contentRef = useRef(null);
   const parallax = useMouseParallax(0.015);
 
@@ -101,7 +103,7 @@ function Hero() {
             <div className={styles.ctaGroup}>
               <Button
                 variant="secondary"
-                href={personalInfo.resumeUrl}
+                onClick={() => setIsModalOpen(true)}
                 icon={ArrowRight}
               >
                 VIEW CV
@@ -140,6 +142,15 @@ function Hero() {
         </div>
         <span>scroll</span>
       </div>
+
+      {/* CV Resume Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        pdfUrl={personalInfo.resumeUrl}
+        title="Curriculum Vitae"
+        subtitle="Resume-Glenn.pdf"
+      />
     </section>
   );
 }

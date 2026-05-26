@@ -6,13 +6,13 @@
 export const personalInfo = {
   name: 'Glenn Joshua Corpus',
   lastName: 'Corpus',
-  role: 'IT Student | Tech Enthusiast | Aspiring Web Developer ',
-  tagline: 'Soon-to-be BSIT Graduate | Full-Stack Web Developer | Pragmatic & Delivery-oriented',
+  role: 'IT Student | Aspiring Web Developer ',
+  tagline: 'Soon-to-be BSIT Graduate | Pragmatic & Delivery-oriented | Tech Enthusiast',
   bio: `I build clean, scalable, and reliable web applications rooted in a deep understanding of computer systems and hardware. Passionate about crafting digital experiences that combine technical precision with thoughtful design. Focused on delivering production-ready systems that make a real impact.`,
   email: 'glennjoshuacorpus@gmail.com',
   location: 'Philippines, Parañaque City',
   currentPosition: 'Soon-to-be IT Graduate',
-  resumeUrl: '#',
+  resumeUrl: '/Resume-Glenn.pdf',
   avatar: '\my-photo.jpg',
 };
 
