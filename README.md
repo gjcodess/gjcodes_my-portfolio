@@ -40,7 +40,7 @@ Powered by **React**, **Vite**, and **GSAP**, the application delivers buttery-s
 
 | Category | Features |
 | :--- | :--- |
-| **🎨 UI / UX** | <ul><li>**Dark/Light Mode:** Dynamic mode switcher with localized context caching.</li><li>**Grid Background:** Custom animated geometric grid backgrounds.</li><li>**Typography:** Monospace-driven aesthetic for a "developer-first" feel.</li></ul> |
+| **🎨 UI / UX** | <ul><li>**Portfolio/Personal Modes:** Dynamic mode switcher with localized context caching.</li><li>**Grid Background:** Custom animated geometric grid backgrounds.</li><li>**Typography:** Monospace-driven aesthetic for a "developer-first" feel.</li></ul> |
 | **⚡ Performance** | <ul><li>**Vite Optimized:** Instant HMR and hyper-fast build times.</li><li>**Image Optimization:** Built-in Sharp scripts for Gallery and Project assets.</li><li>**Asset Lazy Loading:** Route-level component lazy loading.</li></ul> |
 | **🧠 Interactive** | <ul><li>**GSAP ScrollTrigger:** Elements reveal intelligently based on viewport position.</li><li>**Custom Cursor/Loader:** Bespoke loading states and transitions.</li></ul> |
 | **⚙️ Backend & APIs**| <ul><li>**Contact Form API:** Secure Express backend for handling inquiries.</li><li>**Vercel Serverless:** Support for Resend email API integration.</li></ul> |
@@ -78,7 +78,7 @@ The repository is structured as a decoupled full-stack application:
 <summary><b>Click to expand UI Showcase</b></summary>
 <br>
 
-| Portfolio View (Dark Mode) | Personal View (Light Mode) |
+| Portfolio View | Personal View |
 | :---: | :---: |
 | <img src="https://via.placeholder.com/600x400/0F0E1A/00FF99?text=Portfolio+Dashboard" alt="Portfolio Dashboard" /> | <img src="https://via.placeholder.com/600x400/FFFFFF/3B82F6?text=Personal+Gallery" alt="Personal View" /> |
 
