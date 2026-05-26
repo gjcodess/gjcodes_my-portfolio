@@ -1,22 +1,19 @@
 <div align="center">
 
 <!-- Logo Placeholder -->
-<img src="https://github.com/imapoopzz/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="200" height="200" />
+<img src="https://github.com/imapoopzz/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="250" height="100" />
 
 # ✦ Interactive Developer Portfolio
 
 **A dual-sided, motion-rich personal and professional portfolio experience.** <br>
 Built with React, GSAP, Vite, and Express to showcase technical capability and personal narrative.
 
-[![GitHub stars](https://img.shields.io/github/stars/imapoopzz/personal-portfolio?style=for-the-badge&color=00FF99&labelColor=0F0E1A)](https://github.com/imapoopzz/personal-portfolio/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/imapoopzz/personal-portfolio?style=for-the-badge&color=00FF99&labelColor=0F0E1A)](https://github.com/imapoopzz/personal-portfolio/network)
-[![License: MIT](https://img.shields.io/badge/License-MIT-00FF99.svg?style=for-the-badge&labelColor=0F0E1A)](https://opensource.org/licenses/MIT)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-00FF99?style=for-the-badge&labelColor=0F0E1A&logo=vercel)](https://vercel.com)
 [![React](https://img.shields.io/badge/React-18.x-00FF99?style=for-the-badge&labelColor=0F0E1A&logo=react)](https://react.dev/)
 
 <br>
 
-[**View Live Demo**](#) • [**Read Documentation**](#installation) • [**Report Bug**](#) • [**Request Feature**](#)
+[**View Live Demo**](https://www.gjcodes.me)
 
 <br>
 </div>
@@ -237,12 +234,6 @@ Contributions are what make the open source community such an amazing place to l
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
----
-
-## 📝 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
