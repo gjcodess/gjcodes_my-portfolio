@@ -13,9 +13,8 @@
 }
 
 .skillCard:hover {
-  border-color: var(--color-mint-border);
-  box-shadow: var(--shadow-glow-lg);
-  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px) scale(1.02);
 }
 
 .categoryName {
@@ -26,6 +25,11 @@
   display: flex;
   align-items: center;
   gap: var(--space-xs);
+  transition: transform var(--transition-normal);
+}
+
+.skillCard:hover .categoryName {
+  transform: translateX(4px);
 }
 
 .categoryName::before {

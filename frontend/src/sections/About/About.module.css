@@ -51,8 +51,8 @@
 }
 
 .infoCard:hover {
-  border-color: var(--color-mint-border);
-  box-shadow: var(--shadow-glow-lg);
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .infoLabel {
@@ -62,6 +62,11 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: var(--space-sm);
+  transition: transform var(--transition-normal);
+}
+
+.infoCard:hover .infoLabel {
+  transform: translateX(4px);
 }
 
 .infoValue {
@@ -113,7 +118,8 @@
 }
 
 .codeCard:hover {
-  border-color: var(--color-mint-border);
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .codeHeader {
@@ -207,7 +213,12 @@
 }
 
 .roleCard:hover {
-  border-color: var(--color-mint-border);
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.roleCard:hover .uiMockup {
+  transform: translate(-8px, -8px) scale(1.04);
 }
 
 .roleText {
@@ -238,6 +249,7 @@
   flex-direction: column;
   gap: 12px;
   box-shadow: -10px -10px 30px rgba(0,0,0,0.5);
+  transition: transform var(--transition-normal);
 }
 
 .uiMockupHeader {
@@ -278,8 +290,8 @@
 }
 
 .contactCard:hover {
-  border-color: var(--color-mint-border);
-  box-shadow: var(--shadow-glow-lg);
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .contactText {
@@ -326,7 +338,8 @@
 }
 
 .statItem:hover {
-  border-color: var(--color-mint-border);
+  transform: translateY(-4px) scale(1.03);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .statValue {
@@ -335,6 +348,11 @@
   color: var(--color-neon-mint);
   line-height: 1;
   margin-bottom: var(--space-xs);
+  transition: transform var(--transition-normal);
+}
+
+.statItem:hover .statValue {
+  transform: scale(1.08);
 }
 
 .statLabel {

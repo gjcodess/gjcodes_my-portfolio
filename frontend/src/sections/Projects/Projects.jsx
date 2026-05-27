@@ -51,7 +51,16 @@ function Projects() {
         gsap.fromTo(
           children,
           { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power3.out' }
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.5, 
+            stagger: 0.08, 
+            ease: 'power3.out',
+            onComplete: () => {
+              gsap.set(children, { clearProps: 'transform' });
+            }
+          }
         );
       }, 0);
     } else {
