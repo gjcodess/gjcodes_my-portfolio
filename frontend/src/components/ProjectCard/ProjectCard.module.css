@@ -1,17 +1,116 @@
 .projectCard {
   background: var(--color-deep-ink);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-subtle);
-  overflow: hidden;
-  transition: all var(--transition-normal);
+  border-radius: 14px;
+  overflow: visible;
+  transition:
+    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(0deg) translateY(0) translateZ(0);
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.projectCardWrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .projectCard:hover {
-  border-color: var(--color-mint-border);
-  box-shadow: var(--shadow-glow-lg);
-  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: perspective(500px) rotateX(15deg) translateY(-6px) translateZ(-150px);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(0, 255, 153, 0.015);
+}
+
+/* ── Floating Type Popup ── */
+.typePopup {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -10px) scale(0.85) rotateX(0deg) translateZ(0px);
+  opacity: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  transition:
+    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.projectCard:hover .typePopup {
+  transform: translate(-50%, -65px) scale(1) rotateX(-15deg) translateZ(40px);
+  opacity: 1;
+}
+
+.typeText {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  background: rgba(10, 9, 18, 0.95);
+  border: 1px solid rgba(0, 255, 153, 0.25);
+  padding: 7px 18px;
+  border-radius: var(--radius-pill);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(0, 255, 153, 0.15);
+  white-space: nowrap;
+  letter-spacing: 0.75px;
+}
+
+.typeLine {
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(to bottom,
+      var(--color-neon-mint) 20%,
+      rgba(0, 255, 153, 0.4) 60%,
+      transparent 100%);
+  box-shadow: 0 0 6px rgba(0, 255, 153, 0.6);
+}
+
+/* Card Inner Container */
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 13px;
+}
+
+/* Card Sweeping Shine Effect */
+.cardInner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg,
+      transparent 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.03) 40%,
+      rgba(255, 255, 255, 0.08) 45%,
+      rgba(255, 255, 255, 0.03) 50%,
+      transparent 55%,
+      transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.projectCard:hover .cardInner::after {
+  transform: translateX(100%);
 }
 
 /* ── Image Area ── */
@@ -27,6 +126,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 
 .imageArea::before {
@@ -35,10 +139,11 @@
   inset: 0;
   background: repeating-linear-gradient(0deg,
       transparent,
-  transparent 4px,
-  rgba(0, 255, 153, 0.012) 4px,
-  rgba(0, 255, 153, 0.012) 6px);
-  z-index: 2; /* Keep grid lines on top of sliding images */
+      transparent 4px,
+      rgba(0, 255, 153, 0.012) 4px,
+      rgba(0, 255, 153, 0.012) 6px);
+  z-index: 2;
+  /* Keep grid lines on top of sliding images */
   pointer-events: none;
 }
 
@@ -58,8 +163,12 @@
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   z-index: 1;
+}
+
+.projectCard:hover .projectImg {
+  transform: scale(1.06) translateY(-2px);
 }
 
 .projectPicture {
@@ -134,72 +243,75 @@
   flex: 1;
 }
 
-/* ── Tags ── */
-.tags {
+/* ── Card Footer ── */
+.cardFooter {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  margin-bottom: var(--space-md);
-}
-
-.tag {
-  font-size: 11px;
-  font-weight: var(--weight-semibold);
-  color: var(--color-neon-mint);
-  background: var(--color-mint-ghost);
-  border: 1px solid rgba(0, 255, 153, 0.2);
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  white-space: nowrap;
-}
-
-/* ── Links ── */
-.links {
-  display: flex;
-  gap: var(--space-md);
+  align-items: center;
+  justify-content: space-between;
   margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.link {
-  display: inline-flex;
+/* ── Tech Badges ── */
+.techBadges {
+  display: flex;
   align-items: center;
   gap: 6px;
-  font-size: var(--text-btn-sm);
-  font-weight: var(--weight-medium);
-  color: var(--color-medium-gray);
-  text-decoration: none;
-  transition: color var(--transition-normal);
 }
 
-.link:hover {
-  color: var(--color-neon-mint);
+.techBadgeCircle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(15, 14, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  padding: 5px;
 }
 
-/* ── Clickable Card (Featured only) ── */
+.techBadgeCircle:hover {
+  transform: translateY(-3px) scale(1.15);
+  border-color: var(--color-neon-mint);
+  background: var(--color-deep-ink);
+  box-shadow: 0 0 8px rgba(0, 255, 153, 0.25);
+}
+
+/* ── Action Links ── */
+.actionLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.detailCircleBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-neon-mint);
+  border: none;
+  color: var(--color-deep-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 0 8px rgba(0, 255, 153, 0.2);
+}
+
+.detailCircleBtn:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--color-white);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* ── Clickable Card ── */
 .clickable {
   cursor: pointer;
-}
-
-/* ── Learn More Button ── */
-.learnMore {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: var(--text-btn-sm);
-  font-weight: var(--weight-semibold);
-  color: var(--color-neon-mint);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  letter-spacing: 0.5px;
-  margin-left: auto;
-  padding: 0;
-}
-
-.learnMore:hover {
-  color: var(--color-white);
-  transform: translateX(4px);
 }
 
 @media (max-width: 640px) {
@@ -264,8 +376,13 @@
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modalSlideUp {
@@ -273,6 +390,7 @@
     opacity: 0;
     transform: translateY(16px) scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);

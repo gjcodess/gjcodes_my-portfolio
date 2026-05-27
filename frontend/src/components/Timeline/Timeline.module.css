@@ -40,6 +40,13 @@
   border: 2px solid var(--color-neon-mint);
   z-index: 2;
   box-shadow: 0 0 8px rgba(0, 255, 153, 0.3);
+  transition: all var(--transition-normal);
+}
+
+.item:hover .node {
+  transform: scale(1.25);
+  background: var(--color-neon-mint);
+  box-shadow: 0 0 12px rgba(0, 255, 153, 0.5);
 }
 
 .itemContent {
@@ -51,8 +58,8 @@
 }
 
 .itemContent:hover {
-  border-color: var(--color-mint-border);
-  box-shadow: var(--shadow-glow-lg);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px) scale(1.015);
 }
 
 .period {
@@ -62,6 +69,12 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: var(--space-xs);
+  display: inline-block;
+  transition: transform var(--transition-normal);
+}
+
+.itemContent:hover .period {
+  transform: translateX(4px);
 }
 
 .role {

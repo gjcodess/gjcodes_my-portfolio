@@ -226,7 +226,12 @@
 /* Responsive Handling */
 @media (max-width: 768px) {
   .modal {
-    height: 90vh;
+    height: auto;
+    max-height: 80vh;
+  }
+
+  .body {
+    overflow-y: auto;
   }
 
   .header {
@@ -257,6 +262,8 @@
 
   .mobileFallback {
     display: flex;
+    height: auto;
+    padding: var(--space-xl) var(--space-md);
   }
 }
 

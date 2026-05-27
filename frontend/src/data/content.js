@@ -70,6 +70,7 @@ export const projects = [
     github: 'https://github.com/imapoopzz/ThesisProj',
     live: 'https://www.laborconnect.app',
     featured: true,
+    type: 'Web Application',
   },
 
   {
@@ -81,6 +82,7 @@ export const projects = [
     github: ' ',
     live: 'https://www.figma.com/proto/y3JbsPe7btzPUtRmEN71ni/MangaVerse?node-id=283-1625&t=tS9s8rszJlWNVM4u-1&starting-point-node-id=285%3A2486',
     featured: true,
+    type: 'Mobile UI/UX Design',
   },
 
   {
@@ -92,6 +94,7 @@ export const projects = [
     github: 'https://github.com/imapoopzz/WebDev_Project',
     live: ' ',
     featured: true,
+    type: 'E-Commerce Store',
   },
 
   {
@@ -103,6 +106,7 @@ export const projects = [
     github: ' ',
     live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
     featured: true,
+    type: 'AI Mobile UI/UX',
   },
 
   {
@@ -114,6 +118,7 @@ export const projects = [
     github: 'https://github.com/imapoopzz/css-generator',
     live: 'https://css-generator-gamma.vercel.app/',
     featured: false,
+    type: 'Frontend Tool',
   },
 
   {
@@ -125,6 +130,7 @@ export const projects = [
     github: 'https://github.com/imapoopzz/SortingAlgo',
     live: 'https://sorting-algo-visualizer-smoky.vercel.app/',
     featured: false,
+    type: 'Educational Tool',
   },
 
   {
@@ -136,6 +142,7 @@ export const projects = [
     github: ' ',
     live: ' ',
     featured: false,
+    type: 'Console Grading System',
   },
 
   {
@@ -147,6 +154,7 @@ export const projects = [
     github: ' ',
     live: ' ',
     featured: false,
+    type: 'Console Terminal Game',
   },
 
   {
@@ -158,6 +166,7 @@ export const projects = [
     github: ' ',
     live: ' ',
     featured: false,
+    type: 'Console ATM Simulation',
   },
 
   {
@@ -169,6 +178,7 @@ export const projects = [
     github: ' ',
     live: ' ',
     featured: false,
+    type: 'Console Arithmetic Game',
   },
 ];
 
