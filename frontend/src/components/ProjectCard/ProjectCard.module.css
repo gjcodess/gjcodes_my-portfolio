@@ -24,6 +24,7 @@
   -ms-user-select: none;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 .projectCard * {
@@ -199,7 +200,7 @@
 /* ── Image Area ── */
 .imageArea {
   width: 100%;
-  height: 260px;
+  aspect-ratio: 16 / 9;
   background: linear-gradient(135deg,
       var(--color-bg-alt) 0%,
       var(--color-deep-ink) 50%,
@@ -304,7 +305,7 @@
 
 /* ── Content ── */
 .content {
-  padding: var(--space-lg);
+  padding: 16px 20px 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -320,18 +321,23 @@
 }
 
 .title {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: var(--weight-semibold);
   color: var(--color-white);
   margin-bottom: var(--space-sm);
+  line-height: 1.25;
 }
 
 .description {
-  font-size: var(--text-btn-sm);
+  font-size: 17px;
   color: var(--color-medium-gray);
   line-height: 1.6;
   margin-bottom: var(--space-md);
-  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ── Card Footer ── */
@@ -348,22 +354,30 @@
 .techBadges {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
 
 .techBadgeCircle {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(15, 14, 26, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #000;
+  border: 2px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: all var(--transition-fast);
-  padding: 6.5px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), z-index 0s;
+  padding: 8px;
+  flex-shrink: 0;
+  margin-left: -8px;
+  position: relative;
+  z-index: 1;
+}
+
+.techBadgeCircle:first-child {
+  margin-left: 0;
 }
 
 .techBadgeCircle img,
@@ -371,7 +385,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
@@ -381,10 +395,10 @@
 }
 
 .techBadgeCircle:hover {
-  transform: translateY(-3px) scale(1.15);
+  transform: translateY(-4px) scale(1.18);
   border-color: var(--color-neon-mint);
-  background: var(--color-deep-ink);
-  box-shadow: 0 0 8px rgba(0, 255, 153, 0.25);
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+  z-index: 10;
 }
 
 .techBadgeCircle:hover img,
@@ -430,9 +444,6 @@
 }
 
 @media (max-width: 640px) {
-  .imageArea {
-    height: 210px;
-  }
 }
 
 /* ── Link Unavailable Modal ── */

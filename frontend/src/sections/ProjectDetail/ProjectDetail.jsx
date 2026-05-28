@@ -3,6 +3,7 @@ import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ArrowLeft, ExternalLink, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projectDetails } from '../../data/projectDetails';
+import { useMode } from '../../context/ModeContext';
 import styles from './ProjectDetail.module.css';
 
 const PROJECT_IMAGE_SIZES = [400, 800, 1200];
@@ -24,6 +25,7 @@ const GithubIcon = ({ size = 18 }) => (
 function ProjectDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { triggerTransition } = useMode();
   const pageRef = useRef(null);
   const headerRef = useRef(null);
   const sectionsRef = useRef([]);
@@ -88,14 +90,15 @@ function ProjectDetail() {
   };
 
   const handleBack = () => {
-    navigate('/portfolio');
-    // Scroll to projects section after navigation only if we don't have an exact scroll position to restore
-    if (!sessionStorage.getItem('portfolio_scroll_pos')) {
-      setTimeout(() => {
-        const el = document.getElementById('projects');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
+    triggerTransition(() => {
+      navigate('/portfolio');
+      if (!sessionStorage.getItem('portfolio_scroll_pos')) {
+        setTimeout(() => {
+          const el = document.getElementById('projects');
+          if (el) el.scrollIntoView({ behavior: 'instant' });
+        }, 100);
+      }
+    });
   };
 
   const nextImage = () => {

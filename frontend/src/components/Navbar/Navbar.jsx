@@ -8,7 +8,7 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import styles from './Navbar.module.css';
 
 function Navbar() {
-  const { mode } = useMode();
+  const { mode, triggerTransition } = useMode();
   const location = useLocation();
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
@@ -71,12 +71,12 @@ function Navbar() {
     
     if (location.pathname !== targetPath) {
       sessionStorage.setItem('scroll_to_section', sectionId);
-      navigate(targetPath);
+      triggerTransition(() => navigate(targetPath));
     } else {
       scrollToSection(sectionId);
     }
     setMenuOpen(false);
-  }, [location.pathname, mode, navigate]);
+  }, [location.pathname, mode, navigate, triggerTransition]);
 
   // Close menu on mode switch
   useEffect(() => {
@@ -108,7 +108,7 @@ function Navbar() {
             e.preventDefault();
             const targetPath = mode === 'personal' ? '/personal' : '/portfolio';
             if (location.pathname !== targetPath) {
-              navigate(targetPath);
+              triggerTransition(() => navigate(targetPath));
             } else {
               scrollToTop();
             }

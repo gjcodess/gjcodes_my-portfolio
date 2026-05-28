@@ -462,7 +462,7 @@
   }
 
   .logo.logoEnlarged {
-    height: 38px;
+    height: clamp(52px, 10vw, 85px);
     width: auto;
     max-width: 100%;
   }
