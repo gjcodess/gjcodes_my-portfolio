@@ -37,7 +37,7 @@
   flex-direction: column;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .projectCard {
     transform-style: preserve-3d;
     transform: perspective(500px) rotateX(0deg) translateY(0) translateZ(0) rotateZ(0.01deg);
@@ -84,7 +84,7 @@
     opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .projectCard:hover .typePopup {
     transform: translate(-50%, -65px) scale(1) rotateX(-15deg) translateZ(40px);
     opacity: 1;
@@ -194,7 +194,7 @@
   z-index: 5;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .projectCard:hover .cardInner::after {
     transform: translateX(100%);
   }
@@ -259,7 +259,7 @@
   pointer-events: none;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .projectCard:hover .projectImg {
     transform: scale(1.06) translateY(-2px);
   }
