@@ -28,8 +28,18 @@ function ProjectDetail() {
   const headerRef = useRef(null);
   const sectionsRef = useRef([]);
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   const project = projectDetails.find((p) => p.id === slug);
+
+  // Track scroll position to show/hide floating back button
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 150);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     // Scroll to top on mount
@@ -109,6 +119,15 @@ function ProjectDetail() {
           <span>Back to Projects</span>
         </button>
 
+        {/* ── Floating Sticky Back Button ── */}
+        <button 
+          className={`${styles.floatingBackBtn} ${scrolled ? styles.floatingBackBtnVisible : ''}`} 
+          onClick={handleBack} 
+          aria-label="Back to portfolio"
+        >
+          <ArrowLeft size={18} />
+        </button>
+
         {/* ── Header ── */}
         <header className={styles.header} ref={headerRef}>
           <div className={styles.headerContent}>
@@ -125,34 +144,7 @@ function ProjectDetail() {
               )}
             </div>
 
-            {(hasLive || hasGithub) && (
-              <div className={styles.headerActions}>
-                {hasLive && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${styles.ctaPrimary} ${styles.iconBtn}`}
-                    aria-label="View Live Demo"
-                    title="Live Demo"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
-                )}
-                {hasGithub && (
-                  <a
-                    href={project.githubRepo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${styles.ctaSecondary} ${styles.iconBtn}`}
-                    aria-label="View GitHub Repo"
-                    title="GitHub Repo"
-                  >
-                    <GithubIcon size={20} />
-                  </a>
-                )}
-              </div>
-            )}
+            
           </div>
           <div className={styles.headerAccent} />
         </header>
@@ -162,8 +154,8 @@ function ProjectDetail() {
           <section className={styles.carouselSection} ref={addSectionRef}>
             <div className={styles.carouselContainer}>
               {project.screenshots.map((base, idx) => (
-                <div 
-                  key={base} 
+                <div
+                  key={base}
                   className={`${styles.carouselSlide} ${idx === currentImageIdx ? styles.activeSlide : ''}`}
                 >
                   <picture>
@@ -193,11 +185,11 @@ function ProjectDetail() {
                   <button className={`${styles.carouselBtn} ${styles.nextBtn}`} onClick={nextImage} aria-label="Next image">
                     <ChevronRight size={24} />
                   </button>
-                  
+
                   <div className={styles.carouselIndicators}>
                     {project.screenshots.map((_, idx) => (
-                      <span 
-                        key={idx} 
+                      <span
+                        key={idx}
                         className={`${styles.indicatorDot} ${idx === currentImageIdx ? styles.activeDot : ''}`}
                         onClick={() => setCurrentImageIdx(idx)}
                       />
@@ -234,6 +226,34 @@ function ProjectDetail() {
                 <p className={styles.roleText}>{project.role}</p>
               </div>
             </section>
+
+            {/* Desktop Actions (visible on large screen) */}
+            {(hasLive || hasGithub) && (
+              <div className={`${styles.ctaRow} ${styles.desktopActions}`}>
+                {hasLive && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.ctaPrimary}
+                  >
+                    <ExternalLink size={16} />
+                    <span>Live Demo</span>
+                  </a>
+                )}
+                {hasGithub && (
+                  <a
+                    href={project.githubRepo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.ctaSecondary}
+                  >
+                    <GithubIcon size={16} />
+                    <span>GitHub Repository</span>
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Right Column */}
@@ -256,11 +276,11 @@ function ProjectDetail() {
               </div>
             </section>
 
-            {/* ── Tech Stack ── */}
+            {/* ── Tech Stack (Tags) ── */}
             <section className={styles.section} ref={addSectionRef}>
               <div className={styles.sectionLabel}>
                 <span className={styles.labelDot} />
-                Tech Stack
+                Tags
               </div>
               <div className={styles.techGrid}>
                 {project.techStack.map((tech) => (
@@ -270,6 +290,34 @@ function ProjectDetail() {
                 ))}
               </div>
             </section>
+
+            {/* Mobile Actions (visible on small screen) */}
+            {(hasLive || hasGithub) && (
+              <div className={`${styles.ctaRow} ${styles.mobileActions}`}>
+                {hasLive && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.ctaPrimary}
+                  >
+                    <ExternalLink size={16} />
+                    <span>Live Demo</span>
+                  </a>
+                )}
+                {hasGithub && (
+                  <a
+                    href={project.githubRepo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.ctaSecondary}
+                  >
+                    <GithubIcon size={16} />
+                    <span>GitHub Repository</span>
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
 

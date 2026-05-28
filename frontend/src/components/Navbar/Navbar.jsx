@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { navLinks } from '../../data/content';
 import { personalNavLinks } from '../../data/personalContent';
 import { useMode } from '../../context/ModeContext';
@@ -8,11 +9,26 @@ import styles from './Navbar.module.css';
 
 function Navbar() {
   const { mode } = useMode();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
 
   const currentLinks = mode === 'personal' ? personalNavLinks : navLinks;
+
+  // Handle redirect scroll if we came from another page
+  useEffect(() => {
+    const targetSection = sessionStorage.getItem('scroll_to_section');
+    const targetPath = mode === 'personal' ? '/personal' : '/portfolio';
+    if (targetSection && location.pathname === targetPath) {
+      const timer = setTimeout(() => {
+        scrollToSection(targetSection);
+        sessionStorage.removeItem('scroll_to_section');
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname, mode]);
 
   // Track scroll position for nav background
   useEffect(() => {
@@ -51,9 +67,16 @@ function Navbar() {
   const handleNavClick = useCallback((e, href) => {
     e.preventDefault();
     const sectionId = href.replace('#', '');
-    scrollToSection(sectionId);
+    const targetPath = mode === 'personal' ? '/personal' : '/portfolio';
+    
+    if (location.pathname !== targetPath) {
+      sessionStorage.setItem('scroll_to_section', sectionId);
+      navigate(targetPath);
+    } else {
+      scrollToSection(sectionId);
+    }
     setMenuOpen(false);
-  }, []);
+  }, [location.pathname, mode, navigate]);
 
   // Close menu on mode switch
   useEffect(() => {
@@ -83,7 +106,12 @@ function Navbar() {
           className={styles.logo}
           onClick={(e) => {
             e.preventDefault();
-            scrollToTop();
+            const targetPath = mode === 'personal' ? '/personal' : '/portfolio';
+            if (location.pathname !== targetPath) {
+              navigate(targetPath);
+            } else {
+              scrollToTop();
+            }
           }}
           aria-label="Go to top"
         >

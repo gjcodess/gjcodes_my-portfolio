@@ -75,7 +75,7 @@
   width: 72px;
   height: 72px;
   object-fit: contain;
-  padding: 6px;
+  padding: 6px 6px 6px 0;
   flex-shrink: 0;
   animation: float 6s ease-in-out infinite;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
@@ -83,9 +83,9 @@
 
 .logoEnlarged {
   width: auto;
-  height: 120px;
+  height: 85px;
   max-width: 100%;
-  padding: 12px;
+  padding: 6px 12px 6px 0;
 }
 
 .logoFallback {
@@ -114,12 +114,10 @@
 
 .headerAccent {
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--color-neon-mint) 0%,
-    rgba(0, 255, 153, 0.3) 40%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      var(--color-neon-mint) 0%,
+      rgba(0, 255, 153, 0.3) 40%,
+      transparent 100%);
   border-radius: var(--radius-pill);
 }
 
@@ -212,7 +210,8 @@
 @media (max-width: 768px) {
   .contentGrid {
     grid-template-columns: 1fr;
-    gap: 0; /* sections inside already have bottom margins */
+    gap: 0;
+    /* sections inside already have bottom margins */
   }
 }
 
@@ -377,6 +376,14 @@
   gap: var(--space-md);
 }
 
+.desktopActions {
+  display: flex;
+}
+
+.mobileActions {
+  display: none;
+}
+
 .ctaPrimary,
 .ctaSecondary {
   display: inline-flex;
@@ -455,7 +462,7 @@
   }
 
   .logo.logoEnlarged {
-    height: 80px;
+    height: 38px;
     width: auto;
     max-width: 100%;
   }
@@ -490,11 +497,19 @@
     width: 100%;
     flex: 1;
   }
-  
+
   .ctaPrimary.iconBtn,
   .ctaSecondary.iconBtn {
     width: 44px;
     flex: none;
+  }
+
+  .desktopActions {
+    display: none !important;
+  }
+
+  .mobileActions {
+    display: flex !important;
   }
 }
 
@@ -510,5 +525,88 @@
   .techBadge {
     font-size: 12px;
     padding: 6px 14px;
+  }
+}
+
+/* ── Floating Sticky Back Button ── */
+.floatingBackBtn {
+  position: fixed;
+  top: calc(var(--nav-height) + 16px);
+  left: var(--space-2xl);
+  z-index: 99;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-white);
+  background: rgba(22, 22, 30, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.5), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: 
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.floatingBackBtnVisible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.floatingBackBtn:hover {
+  background: rgba(22, 22, 30, 0.85);
+  border-color: var(--color-neon-mint);
+  color: var(--color-neon-mint);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.5), 
+    0 0 15px rgba(0, 255, 153, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.floatingBackBtn svg {
+  transition: transform var(--transition-normal);
+}
+
+.floatingBackBtn:hover svg {
+  transform: translateX(-3px);
+}
+
+@media (min-width: 1200px) {
+  .floatingBackBtn {
+    left: calc((100vw - 1200px) / 2 + var(--space-2xl));
+  }
+}
+
+@media (max-width: 1024px) {
+  .floatingBackBtn {
+    left: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .floatingBackBtn {
+    top: calc(var(--nav-height) + 12px);
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floatingBackBtn {
+    left: var(--space-md);
   }
 }
