@@ -73,124 +73,140 @@ function LinkUnavailableModal({ linkType, onClose }) {
 const getTechIcon = (tag) => {
   const normalized = tag.toLowerCase().trim();
   
-  if (normalized === 'react' || normalized === 'react.js') {
+  const deviconPaths = {
+    'react': 'react/react-original.svg',
+    'react.js': 'react/react-original.svg',
+    'next.js': 'nextjs/nextjs-original.svg',
+    'next': 'nextjs/nextjs-original.svg',
+    'node.js': 'nodejs/nodejs-original.svg',
+    'node': 'nodejs/nodejs-original.svg',
+    'express': 'express/express-original.svg',
+    'express.js': 'express/express-original.svg',
+    'typescript': 'typescript/typescript-original.svg',
+    'ts': 'typescript/typescript-original.svg',
+    'javascript': 'javascript/javascript-original.svg',
+    'js': 'javascript/javascript-original.svg',
+    'css': 'css3/css3-original.svg',
+    'css3': 'css3/css3-original.svg',
+    'html': 'html5/html5-original.svg',
+    'html5': 'html5/html5-original.svg',
+    'mysql': 'mysql/mysql-original.svg',
+    'figma': 'figma/figma-original.svg',
+    'c++': 'cplusplus/cplusplus-original.svg',
+    'c++ language': 'cplusplus/cplusplus-original.svg',
+    'python': 'python/python-original.svg',
+    'java': 'java/java-original.svg',
+    'bootstrap': 'bootstrap/bootstrap-original.svg',
+  };
+
+  const path = deviconPaths[normalized];
+  if (path) {
     return (
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <circle cx="50" cy="50" r="8" fill="#58C4DC" />
-        <ellipse cx="50" cy="50" rx="38" ry="14" stroke="#58C4DC" strokeWidth="3" transform="rotate(0 50 50)" />
-        <ellipse cx="50" cy="50" rx="38" ry="14" stroke="#58C4DC" strokeWidth="3" transform="rotate(60 50 50)" />
-        <ellipse cx="50" cy="50" rx="38" ry="14" stroke="#58C4DC" strokeWidth="3" transform="rotate(120 50 50)" />
-      </svg>
+      <img
+        src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${path}`}
+        alt={`${tag} logo`}
+        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        loading="lazy"
+      />
     );
   }
-  if (normalized === 'next.js' || normalized === 'next') {
-    return (
-      <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <circle cx="90" cy="90" r="90" fill="black" />
-        <path d="M140.08 141.6L79.16 63.4H69.6v53.2h9.2V74.8l52.12 67.2c3.48-4 6.52-8.36 9.16-12.8" fill="white" />
-        <path d="M117 63.4h9.2v53.2H117V63.4z" fill="white" />
-      </svg>
-    );
-  }
-  if (normalized === 'node.js' || normalized === 'node') {
-    return (
-      <div style={{ background: '#339933', color: 'white', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 'bold', borderRadius: '50%', fontFamily: 'var(--font-mono)' }}>JS</div>
-    );
-  }
-  if (normalized === 'express' || normalized === 'express.js') {
-    return (
-      <div style={{ background: '#303030', color: 'white', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 'bold', borderRadius: '50%', fontFamily: 'var(--font-mono)' }}>ex</div>
-    );
-  }
-  if (normalized === 'typescript' || normalized === 'ts') {
-    return (
-      <div style={{ background: '#3178C6', color: 'white', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold', borderRadius: '50%' }}>TS</div>
-    );
-  }
-  if (normalized === 'javascript' || normalized === 'js') {
-    return (
-      <div style={{ background: '#F7DF1E', color: 'black', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold', borderRadius: '50%' }}>JS</div>
-    );
-  }
-  if (normalized === 'css' || normalized === 'css3') {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="#264de4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '80%', height: '80%' }}>
-        <path d="M2 2h20l-2 18-8 2-8-2z" fill="#264de4" />
-        <path d="M12 5H6.5l.5 4.5h5zm0 9H8.5l-.2-2H12zm0-4.5h4.5l-.5 4.5L12 17v-3z" stroke="white" strokeWidth="1.5" />
-      </svg>
-    );
-  }
-  if (normalized === 'mysql') {
-    return (
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <circle cx="50" cy="50" r="48" fill="#00758F" />
-        <g transform="translate(26, 26) scale(2)" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none">
-          <ellipse cx="6" cy="3" rx="5" ry="2" />
-          <path d="M1 3v8c0 1.1 2.2 2 5 2s5-.9 5-2V3" />
-          <path d="M1 8c0 1.1 2.2 2 5 2s5-.9 5-2" />
-        </g>
-      </svg>
-    );
-  }
-  if (normalized === 'figma') {
-    return (
-      <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '70%', height: '70%' }}>
-        <path d="M19 0C10.7 0 4 6.7 4 15c0 8.3 6.7 15 15 15h19V15C38 6.7 31.3 0 19 0z" fill="#F24E1E"/>
-        <path d="M4 30c0-8.3 6.7-15 15-15h19v30H19c-8.3 0-15-6.7-15-15z" fill="#A259FF"/>
-        <path d="M4 45c0-8.3 6.7-15 15-15h19v15c0 8.3-6.7 15-15 15s-15-6.7-15-15z" fill="#1ABCFE"/>
-        <path d="M19 30c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15V30H19z" fill="#0ACF83"/>
-        <path d="M19 15c0-8.3 6.7-15 15-15s15 6.7 15 15-6.7 15-15 15-15-6.7-15-15z" fill="#FF7262"/>
-      </svg>
-    );
-  }
-  if (normalized === 'c language' || normalized === 'c') {
-    return (
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <circle cx="50" cy="50" r="48" fill="#3949AB" />
-        <path d="M68 65C62.5 71 54.5 74 45 74C28.5 74 15 60.5 15 44C15 27.5 28.5 14 45 14C54.5 14 62.5 17 68 23L58.5 32.5C55.5 29.5 50.5 27.5 45 27.5C36 27.5 28.5 35 28.5 44C28.5 53 36 60.5 45 60.5C50.5 60.5 55.5 58.5 58.5 55.5L68 65Z" fill="white" />
-      </svg>
-    );
-  }
-  if (normalized === 'c++' || normalized === 'c++ language') {
-    return (
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <circle cx="50" cy="50" r="48" fill="#00599C" />
-        <path d="M50 63C45.5 68 39 70.5 31.5 70.5C18.5 70.5 8 60 8 47C8 34 18.5 23.5 31.5 23.5C39 23.5 45.5 26 50 31L42.5 38.5C40 36 36 34.5 31.5 34.5C24.5 34.5 18.5 40.5 18.5 47C18.5 53.5 24.5 59.5 31.5 59.5C36 59.5 40 58 42.5 55.5L50 63Z" fill="white" />
-        <path d="M63 43h-6v-6h-4v6h-6v4h6v6h4v-6h6v-4zM86 43h-6v-6h-4v6h-6v4h6v6h4v-6h6v-4z" fill="#00FF99" />
-      </svg>
-    );
-  }
+
   if (normalized === 'n8n') {
     return (
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <circle cx="50" cy="50" r="48" fill="#FF6D5A" />
-        <circle cx="35" cy="50" r="10" fill="white" />
-        <circle cx="65" cy="50" r="10" fill="white" />
-        <path d="M35 50h30" stroke="white" strokeWidth="4" />
+      <svg viewBox="0 121.3 512.1 269.6" xmlns="http://www.w3.org/2000/svg" style={{ width: '85%', height: '85%' }}>
+        <path 
+          d="M458.1 229.1c-25.1 0-46.2-17.2-52.2-40.4h-61.8c-13.2 0-24.4 9.5-26.6 22.5l-2.2 13.3c-2 12.2-8.2 23.4-17.5 31.6 9.3 8.2 15.5 19.3 17.5 31.6l2.2 13.3c2.2 13 13.4 22.5 26.6 22.5h7.9c6-23.2 27.1-40.4 52.2-40.4 29.8 0 53.9 24.1 53.9 53.9s-24.1 53.9-53.9 53.9c-25.1 0-46.2-17.2-52.2-40.4h-7.9c-26.3 0-48.8-19-53.2-45l-2.2-13.3c-2.2-13-13.4-22.5-26.6-22.5h-21.4c-6 23.2-27.1 40.4-52.2 40.4s-46.2-17.2-52.2-40.4H106c-6 23.2-27.1 40.4-52.2 40.4C24.1 309.9 0 285.8 0 256s24.1-53.9 53.9-53.9c25.1 0 46.2 17.2 52.2 40.4h30.3c6-23.2 27.1-40.4 52.2-40.4s46.2 17.2 52.2 40.4h21.4c13.2 0 24.4-9.5 26.6-22.5l2.2-13.3c4.3-26 26.8-45 53.2-45H406c6-23.2 27.1-40.4 52.2-40.4 29.8 0 53.9 24.1 53.9 53.9s-24.2 53.9-54 53.9m0-27c14.9 0 26.9-12.1 26.9-26.9s-12.1-26.9-26.9-26.9-26.9 12.1-26.9 26.9 12 26.9 26.9 26.9M53.9 282.9c14.9 0 26.9-12.1 26.9-26.9s-12.1-26.9-26.9-26.9-27 12-27 26.9 12.1 26.9 27 26.9M215.6 256c0 14.9-12.1 26.9-26.9 26.9s-26.9-12.1-26.9-26.9 12.1-26.9 26.9-26.9 26.9 12 26.9 26.9m215.6 80.8c0 14.9-12.1 26.9-26.9 26.9-14.9 0-26.9-12.1-26.9-26.9s12.1-26.9 26.9-26.9 26.9 12.1 26.9 26.9" 
+          fill="#ea4b71" 
+          fillRule="evenodd" 
+          clipRule="evenodd" 
+        />
       </svg>
     );
   }
+
+  if (normalized === 'c' || normalized === 'c language') {
+    return (
+      <svg viewBox="0 0 38.000089 42.000031" xmlns="http://www.w3.org/2000/svg" style={{ width: '85%', height: '85%' }}>
+        <path
+          fill="#004482"
+          fillRule="evenodd"
+          d="m 17.903,0.28628166 c 0.679,-0.381 1.515,-0.381 2.193,0 C 23.451,2.1692817 33.547,7.8372817 36.903,9.7202817 37.582,10.100282 38,10.804282 38,11.566282 c 0,3.766 0,15.101 0,18.867 0,0.762 -0.418,1.466 -1.097,1.847 -3.355,1.883 -13.451,7.551 -16.807,9.434 -0.679,0.381 -1.515,0.381 -2.193,0 -3.355,-1.883 -13.451,-7.551 -16.807,-9.434 -0.678,-0.381 -1.096,-1.084 -1.096,-1.846 0,-3.766 0,-15.101 0,-18.867 0,-0.762 0.418,-1.466 1.097,-1.8470003 3.354,-1.883 13.452,-7.551 16.806,-9.43400004 z"
+          clipRule="evenodd"
+        />
+        <path
+          fill="#659ad2"
+          fillRule="evenodd"
+          d="m 0.304,31.404282 c -0.266,-0.356 -0.304,-0.694 -0.304,-1.149 0,-3.744 0,-15.014 0,-18.759 0,-0.758 0.417,-1.458 1.094,-1.8360003 3.343,-1.872 13.405,-7.507 16.748,-9.38000004 0.677,-0.379 1.594,-0.371 2.271,0.008 3.343,1.87200004 13.371,7.45900004 16.714,9.33100004 0.27,0.152 0.476,0.335 0.66,0.5760003 z"
+          clipRule="evenodd"
+        />
+        <path
+          fill="#ffffff"
+          fillRule="evenodd"
+          d="m 19,7.0002817 c 7.727,0 14,6.2730003 14,14.0000003 0,7.727 -6.273,14 -14,14 -7.727,0 -14,-6.273 -14,-14 0,-7.727 6.273,-14.0000003 14,-14.0000003 z m 0,7.0000003 c 3.863,0 7,3.136 7,7 0,3.863 -3.137,7 -7,7 -3.863,0 -7,-3.137 -7,-7 0,-3.864 3.136,-7 7,-7 z"
+          clipRule="evenodd"
+        />
+        <path
+          fill="#00599c"
+          fillRule="evenodd"
+          d="m 37.485,10.205282 c 0.516,0.483 0.506,1.211 0.506,1.784 0,3.795 -0.032,14.589 0.009,18.384 0.004,0.396 -0.127,0.813 -0.323,1.127 l -19.084,-10.5 z"
+          clipRule="evenodd"
+        />
+      </svg>
+    );
+  }
+
   if (normalized === 'vercel') {
     return (
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <circle cx="50" cy="50" r="48" fill="black" />
-        <polygon points="50,22 78,72 22,72" fill="white" />
+      <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style={{ width: '85%', height: '85%' }}>
+        <circle cx="256" cy="256" r="256" fill="#000000" />
+        <polygon points="256,130 396,366 116,366" fill="#ffffff" stroke="#ffffff" strokeWidth="30" strokeLinejoin="round" />
       </svg>
     );
   }
+
   if (normalized === 'railway') {
     return (
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-        <circle cx="50" cy="50" r="48" fill="#131415" />
-        <path d="M25 30l25 40 25-40H25z" fill="#00FF99" />
-        <path d="M35 30l15 24 15-24H35z" fill="#131415" />
+      <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" style={{ width: '85%', height: '85%' }}>
+        <path d="M2.368 219.093A260.486 260.486 0 000 244.864h388.907a44.635 44.635 0 00-5.035-7.381c-66.475-85.888-102.25-78.443-153.387-80.64-17.066-.683-28.65-.982-96.533-.982-36.352 0-75.84.107-114.325.214-4.971 13.44-9.771 26.453-12.118 37.056h199.296v25.962H2.347h.021zm389.59 51.755H.213c.427 6.933 1.067 13.76 2.006 20.501h361.685c16.128 0 25.152-9.152 28.075-20.48l-.021-.02zM22.507 362.155S82.453 509.398 255.723 512c103.552 0 192.533-61.504 232.96-149.845H22.507z" fill="#ffffff" />
+        <path d="M255.723 0C160 0 76.65 52.587 32.66 130.304c34.368-.064 101.334-.107 101.334-.107h.021v-.02c79.147 0 82.09.34 97.557.98l9.6.363c33.323 1.11 74.326 4.693 106.582 29.099 17.493 13.226 42.773 42.453 57.856 63.253 13.93 19.243 17.92 41.387 8.448 62.592-8.704 19.477-27.456 31.104-50.176 31.104H8.32s2.133 8.96 5.29 18.88h485.334c8.619-25.92 12.992-53.035 13.014-80.341C512 114.667 397.29 0 255.744 0h-.021z" fill="#ffffff" />
+      </svg>
+    );
+  }
+
+  if (normalized === 'c' || normalized === 'c language') {
+    return (
+      <svg viewBox="0 0 38.000089 42.000031" xmlns="http://www.w3.org/2000/svg" style={{ width: '85%', height: '85%' }}>
+        <path
+          fill="#004482"
+          fillRule="evenodd"
+          d="m 17.903,0.28628166 c 0.679,-0.381 1.515,-0.381 2.193,0 C 23.451,2.1692817 33.547,7.8372817 36.903,9.7202817 37.582,10.100282 38,10.804282 38,11.566282 c 0,3.766 0,15.101 0,18.867 0,0.762 -0.418,1.466 -1.097,1.847 -3.355,1.883 -13.451,7.551 -16.807,9.434 -0.679,0.381 -1.515,0.381 -2.193,0 -3.355,-1.883 -13.451,-7.551 -16.807,-9.434 -0.678,-0.381 -1.096,-1.084 -1.096,-1.846 0,-3.766 0,-15.101 0,-18.867 0,-0.762 0.418,-1.466 1.097,-1.8470003 3.354,-1.883 13.452,-7.551 16.806,-9.43400004 z"
+          clipRule="evenodd"
+        />
+        <path
+          fill="#659ad2"
+          fillRule="evenodd"
+          d="m 0.304,31.404282 c -0.266,-0.356 -0.304,-0.694 -0.304,-1.149 0,-3.744 0,-15.014 0,-18.759 0,-0.758 0.417,-1.458 1.094,-1.8360003 3.343,-1.872 13.405,-7.507 16.748,-9.38000004 0.677,-0.379 1.594,-0.371 2.271,0.008 3.343,1.87200004 13.371,7.45900004 16.714,9.33100004 0.27,0.152 0.476,0.335 0.66,0.5760003 z"
+          clipRule="evenodd"
+        />
+        <path
+          fill="#ffffff"
+          fillRule="evenodd"
+          d="m 19,7.0002817 c 7.727,0 14,6.2730003 14,14.0000003 0,7.727 -6.273,14 -14,14 -7.727,0 -14,-6.273 -14,-14 0,-7.727 6.273,-14.0000003 14,-14.0000003 z m 0,7.0000003 c 3.863,0 7,3.136 7,7 0,3.863 -3.137,7 -7,7 -3.863,0 -7,-3.137 -7,-7 0,-3.864 3.136,-7 7,-7 z"
+          clipRule="evenodd"
+        />
+        <path
+          fill="#00599c"
+          fillRule="evenodd"
+          d="m 37.485,10.205282 c 0.516,0.483 0.506,1.211 0.506,1.784 0,3.795 -0.032,14.589 0.009,18.384 0.004,0.396 -0.127,0.813 -0.323,1.127 l -19.084,-10.5 z"
+          clipRule="evenodd"
+        />
       </svg>
     );
   }
   
   return (
-    <span style={{ fontSize: '12px', fontWeight: 'bold', color: 'var(--color-medium-gray)', textTransform: 'uppercase' }}>
-      {tag.charAt(0)}
+    <span style={{ fontSize: '11px', fontWeight: 'bold', color: 'inherit', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>
+      {tag.substring(0, 2)}
     </span>
   );
 };
@@ -199,6 +215,7 @@ function ProjectCard({ project }) {
   const { title, description, tags, github, live, featured } = project;
   const [currentIdx, setCurrentIdx] = useState(0);
   const [modalLinkType, setModalLinkType] = useState(null);
+  const [isTouched, setIsTouched] = useState(false);
   const imageSources = normalizeProjectImages(project);
   const sizes = getSizes();
   const navigate = useNavigate();
@@ -240,8 +257,11 @@ function ProjectCard({ project }) {
   return (
     <div className={styles.projectCardWrapper}>
       <article
-        className={`${styles.projectCard} ${detailSlug ? styles.clickable : ''}`}
+        className={`${styles.projectCard} ${detailSlug ? styles.clickable : ''} ${isTouched ? styles.touched : ''}`}
         onClick={handleCardClick}
+        onTouchStart={() => setIsTouched(true)}
+        onTouchEnd={() => setIsTouched(false)}
+        onTouchCancel={() => setIsTouched(false)}
         role={detailSlug ? 'link' : undefined}
         tabIndex={detailSlug ? 0 : undefined}
         onKeyDown={(e) => {
@@ -331,7 +351,7 @@ function ProjectCard({ project }) {
               {/* Tech Badges */}
               {tags && tags.length > 0 && (
                 <div className={styles.techBadges}>
-                  {tags.slice(0, 5).map((tag, idx) => (
+                  {tags.map((tag, idx) => (
                     <div key={`${tag}-${idx}`} className={styles.techBadgeCircle} title={tag}>
                       {getTechIcon(tag)}
                     </div>

@@ -129,7 +129,7 @@ export const projectDetails = [
       'Reusable UI components with responsive design principles',
       'Designed under hackathon time constraints with rapid collaborative ideation',
     ],
-    role: 'UI/UX Designer & Team Lead. Conceptualized and designed the complete kAIn interface in Figma, leading rapid ideation and collaborative design during the University Hackathon 2025. Successfully presented the concept, earning 4th Place.',
+    role: 'UI/UX Designer. Conceptualized and designed the complete kAIn interface in Figma, leading rapid ideation and collaborative design during the University Hackathon 2025. Successfully presented the concept, earning 4th Place.',
     techStack: [
       'Figma',
       'Mobile UI Design',

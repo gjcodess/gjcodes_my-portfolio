@@ -17,11 +17,13 @@ function Skills() {
       <div className={styles.skillsGrid} ref={gridRef}>
         {skills.map((category) => (
           <div key={category.category} className={styles.skillCard}>
-            <h3 className={styles.categoryName}>{category.category}</h3>
-            <div className={styles.skillList}>
-              {category.items.map((item) => (
-                <span key={item} className={styles.skillPill}>{item}</span>
-              ))}
+            <div className={styles.cardContent}>
+              <h3 className={styles.categoryName}>{category.category}</h3>
+              <div className={styles.skillList}>
+                {category.items.map((item) => (
+                  <span key={item} className={styles.skillPill}>{item}</span>
+                ))}
+              </div>
             </div>
           </div>
         ))}

@@ -59,7 +59,6 @@
 
 .itemContent:hover {
   border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-4px) scale(1.015);
 }
 
 .period {
@@ -73,8 +72,16 @@
   transition: transform var(--transition-normal);
 }
 
-.itemContent:hover .period {
-  transform: translateX(4px);
+.cardContent {
+  transition: transform var(--transition-normal);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemContent:hover .cardContent {
+  transform: translateX(8px);
 }
 
 .role {
