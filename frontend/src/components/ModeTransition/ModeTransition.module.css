@@ -4,6 +4,13 @@
   z-index: 9999;
   display: flex;
   pointer-events: none; /* Let clicks pass when not transitioning */
+  visibility: hidden;
+  transition: visibility 0s linear 0.6s; /* Delay hiding container until animation completes */
+}
+
+.overlayContainer.active {
+  visibility: visible;
+  transition-delay: 0s; /* Show container instantly */
 }
 
 .panel {
@@ -13,8 +20,51 @@
   pointer-events: auto; /* Block clicks during transition */
   will-change: transform;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
+  margin-right: -1px;
+  position: relative;
+  
+  /* Initial state: out of screen at the bottom */
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .panel:last-child {
   border-right: none;
+  margin-right: 0;
 }
+
+/* Stacking contexts to ensure borders are drawn on top of adjacent panels */
+.panel:nth-child(1) { z-index: 6; }
+.panel:nth-child(2) { z-index: 5; }
+.panel:nth-child(3) { z-index: 4; }
+.panel:nth-child(4) { z-index: 3; }
+.panel:nth-child(5) { z-index: 2; }
+.panel:nth-child(6) { z-index: 1; }
+
+/* Entry Phase: slide up */
+.overlayContainer.active .panel {
+  transform: translateY(0%);
+  transition-duration: 0.45s;
+}
+
+/* Entry Stagger Delays (right-to-left: from end to start) */
+.overlayContainer.active .panel:nth-child(6) { transition-delay: 0s; }
+.overlayContainer.active .panel:nth-child(5) { transition-delay: 0.03s; }
+.overlayContainer.active .panel:nth-child(4) { transition-delay: 0.06s; }
+.overlayContainer.active .panel:nth-child(3) { transition-delay: 0.09s; }
+.overlayContainer.active .panel:nth-child(2) { transition-delay: 0.12s; }
+.overlayContainer.active .panel:nth-child(1) { transition-delay: 0.15s; }
+
+/* Exit Phase: slide down */
+.overlayContainer:not(.active) .panel {
+  transform: translateY(100%);
+  transition-duration: 0.4s;
+}
+
+/* Exit Stagger Delays (right-to-left: from end to start) */
+.overlayContainer:not(.active) .panel:nth-child(6) { transition-delay: 0s; }
+.overlayContainer:not(.active) .panel:nth-child(5) { transition-delay: 0.02s; }
+.overlayContainer:not(.active) .panel:nth-child(4) { transition-delay: 0.04s; }
+.overlayContainer:not(.active) .panel:nth-child(3) { transition-delay: 0.06s; }
+.overlayContainer:not(.active) .panel:nth-child(2) { transition-delay: 0.08s; }
+.overlayContainer:not(.active) .panel:nth-child(1) { transition-delay: 0.10s; }
