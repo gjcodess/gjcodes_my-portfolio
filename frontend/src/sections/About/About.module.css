@@ -51,7 +51,6 @@
 }
 
 .infoCard:hover {
-  transform: translateY(-4px) scale(1.02);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -74,6 +73,10 @@
   font-weight: var(--weight-semibold);
   color: var(--color-white);
   line-height: var(--leading-snug);
+}
+
+.techPills + .infoValue {
+  margin-top: var(--space-lg);
 }
 
 /* ── Tech Stack Pills ── */
@@ -118,7 +121,6 @@
 }
 
 .codeCard:hover {
-  transform: translateY(-4px) scale(1.01);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -213,7 +215,6 @@
 }
 
 .roleCard:hover {
-  transform: translateY(-4px) scale(1.02);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -290,7 +291,6 @@
 }
 
 .contactCard:hover {
-  transform: translateY(-4px) scale(1.02);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -367,6 +367,24 @@
   font-size: var(--text-body);
   color: var(--color-light-gray);
   line-height: 1.8;
+}
+
+.cardContent {
+  transition: transform var(--transition-normal);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: inherit;
+  align-items: inherit;
+  gap: inherit;
+}
+
+.infoCard:hover .cardContent,
+.codeCard:hover .cardContent,
+.roleCard:hover .cardContent,
+.contactCard:hover .cardContent {
+  transform: translateX(8px);
 }
 
 @media (max-width: 1024px) {

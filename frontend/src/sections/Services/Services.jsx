@@ -19,11 +19,13 @@ function Services() {
           const Icon = LucideIcons[service.icon];
           return (
             <div key={service.title} className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>
-                {Icon && <Icon size={24} />}
+              <div className={styles.cardContent}>
+                <div className={styles.serviceIcon}>
+                  {Icon && <Icon size={24} />}
+                </div>
+                <h3 className={styles.serviceTitle}>{service.title}</h3>
+                <p className={styles.serviceDesc}>{service.description}</p>
               </div>
-              <h3 className={styles.serviceTitle}>{service.title}</h3>
-              <p className={styles.serviceDesc}>{service.description}</p>
             </div>
           );
         })}

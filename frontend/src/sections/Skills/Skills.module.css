@@ -14,7 +14,6 @@
 
 .skillCard:hover {
   border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-4px) scale(1.02);
 }
 
 .categoryName {
@@ -28,8 +27,16 @@
   transition: transform var(--transition-normal);
 }
 
-.skillCard:hover .categoryName {
-  transform: translateX(4px);
+.cardContent {
+  transition: transform var(--transition-normal);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.skillCard:hover .cardContent {
+  transform: translateX(8px);
 }
 
 .categoryName::before {
