@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const ModeContext = createContext(null);
@@ -23,6 +23,7 @@ export function ModeProvider({ children }) {
 
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionText, setTransitionText] = useState('');
+  const transitionCallbackRef = useRef(null);
 
   // Keep state synced if URL changes via back/forward buttons
   useEffect(() => {
@@ -68,13 +69,30 @@ export function ModeProvider({ children }) {
     }, 650);
   }, [mode, isTransitioning, navigate]);
 
+  // Generic page transition — fires green bars then calls the callback mid-animation
+  const triggerTransition = useCallback((callback, label = '') => {
+    if (isTransitioning) return;
+    transitionCallbackRef.current = callback;
+    setTransitionText(label);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      if (transitionCallbackRef.current) {
+        transitionCallbackRef.current();
+        transitionCallbackRef.current = null;
+      }
+    }, 600);
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 650);
+  }, [isTransitioning]);
+
   const toggleMode = useCallback(() => {
     const nextMode = mode === 'portfolio' ? 'personal' : 'portfolio';
     setMode(nextMode);
   }, [mode, setMode]);
 
   return (
-    <ModeContext.Provider value={{ mode, setMode, toggleMode, isTransitioning, transitionText }}>
+    <ModeContext.Provider value={{ mode, setMode, toggleMode, isTransitioning, transitionText, triggerTransition }}>
       {children}
     </ModeContext.Provider>
   );

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import { projectDetails } from '../../data/projectDetails';
+import { useMode } from '../../context/ModeContext';
 import styles from './ProjectCard.module.css';
 
 const PROJECT_IMAGE_SIZES = [400, 800, 1200];
@@ -216,9 +217,12 @@ function ProjectCard({ project }) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [modalLinkType, setModalLinkType] = useState(null);
   const [isTouched, setIsTouched] = useState(false);
+  const touchStartY = useRef(null);
+  const touchScrolled = useRef(false);
   const imageSources = normalizeProjectImages(project);
   const sizes = getSizes();
   const navigate = useNavigate();
+  const { triggerTransition } = useMode();
 
   const hasGithub = isLinkAvailable(github);
   const hasLive = isLinkAvailable(live);
@@ -246,11 +250,12 @@ function ProjectCard({ project }) {
   };
 
   const handleCardClick = (e) => {
-    // Don't navigate if clicking on links or buttons inside the card
     if (e.target.closest('a') || e.target.closest('button')) return;
     if (detailSlug) {
-      sessionStorage.setItem('portfolio_scroll_pos', window.scrollY);
-      navigate(`/portfolio/projects/${detailSlug}`);
+      triggerTransition(() => {
+        sessionStorage.setItem('portfolio_scroll_pos', window.scrollY);
+        navigate(`/portfolio/projects/${detailSlug}`);
+      });
     }
   };
 
@@ -259,9 +264,27 @@ function ProjectCard({ project }) {
       <article
         className={`${styles.projectCard} ${detailSlug ? styles.clickable : ''} ${isTouched ? styles.touched : ''}`}
         onClick={handleCardClick}
-        onTouchStart={() => setIsTouched(true)}
-        onTouchEnd={() => setIsTouched(false)}
-        onTouchCancel={() => setIsTouched(false)}
+        onTouchStart={(e) => {
+          touchStartY.current = e.touches[0].clientY;
+          touchScrolled.current = false;
+          setIsTouched(true);
+        }}
+        onTouchMove={(e) => {
+          if (touchStartY.current === null) return;
+          const deltaY = Math.abs(e.touches[0].clientY - touchStartY.current);
+          if (deltaY > 8) {
+            touchScrolled.current = true;
+            setIsTouched(false);
+          }
+        }}
+        onTouchEnd={() => {
+          setIsTouched(false);
+          touchStartY.current = null;
+        }}
+        onTouchCancel={() => {
+          setIsTouched(false);
+          touchStartY.current = null;
+        }}
         role={detailSlug ? 'link' : undefined}
         tabIndex={detailSlug ? 0 : undefined}
         onKeyDown={(e) => {
@@ -368,10 +391,12 @@ function ProjectCard({ project }) {
                 {detailSlug && (
                   <button
                     className={styles.detailCircleBtn}
-                    onClick={(e) => {
+                  onClick={(e) => {
                       e.stopPropagation();
-                      sessionStorage.setItem('portfolio_scroll_pos', window.scrollY);
-                      navigate(`/portfolio/projects/${detailSlug}`);
+                      triggerTransition(() => {
+                        sessionStorage.setItem('portfolio_scroll_pos', window.scrollY);
+                        navigate(`/portfolio/projects/${detailSlug}`);
+                      });
                     }}
                     title="View Project Details"
                     aria-label="View details"
