@@ -264,27 +264,6 @@ function ProjectCard({ project }) {
       <article
         className={`${styles.projectCard} ${detailSlug ? styles.clickable : ''} ${isTouched ? styles.touched : ''}`}
         onClick={handleCardClick}
-        onTouchStart={(e) => {
-          touchStartY.current = e.touches[0].clientY;
-          touchScrolled.current = false;
-          setIsTouched(true);
-        }}
-        onTouchMove={(e) => {
-          if (touchStartY.current === null) return;
-          const deltaY = Math.abs(e.touches[0].clientY - touchStartY.current);
-          if (deltaY > 8) {
-            touchScrolled.current = true;
-            setIsTouched(false);
-          }
-        }}
-        onTouchEnd={() => {
-          setIsTouched(false);
-          touchStartY.current = null;
-        }}
-        onTouchCancel={() => {
-          setIsTouched(false);
-          touchStartY.current = null;
-        }}
         role={detailSlug ? 'link' : undefined}
         tabIndex={detailSlug ? 0 : undefined}
         onKeyDown={(e) => {
@@ -391,12 +370,33 @@ function ProjectCard({ project }) {
                 {detailSlug && (
                   <button
                     className={styles.detailCircleBtn}
-                  onClick={(e) => {
+                    onClick={(e) => {
                       e.stopPropagation();
                       triggerTransition(() => {
                         sessionStorage.setItem('portfolio_scroll_pos', window.scrollY);
                         navigate(`/portfolio/projects/${detailSlug}`);
                       });
+                    }}
+                    onTouchStart={(e) => {
+                      touchStartY.current = e.touches[0].clientY;
+                      touchScrolled.current = false;
+                      setIsTouched(true);
+                    }}
+                    onTouchMove={(e) => {
+                      if (touchStartY.current === null) return;
+                      const deltaY = Math.abs(e.touches[0].clientY - touchStartY.current);
+                      if (deltaY > 8) {
+                        touchScrolled.current = true;
+                        setIsTouched(false);
+                      }
+                    }}
+                    onTouchEnd={() => {
+                      setIsTouched(false);
+                      touchStartY.current = null;
+                    }}
+                    onTouchCancel={() => {
+                      setIsTouched(false);
+                      touchStartY.current = null;
                     }}
                     title="View Project Details"
                     aria-label="View details"
