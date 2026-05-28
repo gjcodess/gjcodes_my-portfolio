@@ -275,7 +275,11 @@ function ProjectCard({ project }) {
         {project.type && (
           <div className={styles.typePopup}>
             <span className={styles.typeText}>{project.type}</span>
-            <div className={styles.typeLine} />
+            <div className={styles.typeLine}>
+              <span className={styles.ripple} />
+              <span className={styles.ripple} />
+              <span className={styles.ripple} />
+            </div>
           </div>
         )}
         {/* Inner Container to clip the glare effect and apply rounded corners */}
