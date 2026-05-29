@@ -6,7 +6,7 @@ import styles from './PersonalHero.module.css';
 
 function PersonalHero() {
   const contentRef = useRef(null);
-  const parallax = useMouseParallax(0.012);
+  useMouseParallax(contentRef, 0.012);
   const [wordIndex, setWordIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -85,9 +85,6 @@ function PersonalHero() {
       <div
         className={styles.content}
         ref={contentRef}
-        style={{
-          transform: `translate(${parallax.x}px, ${parallax.y}px)`,
-        }}
       >
         <span className={styles.greeting}>{personalHeroData.greeting}</span>
 

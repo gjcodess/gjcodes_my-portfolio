@@ -11,7 +11,7 @@ import styles from './Hero.module.css';
 function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const contentRef = useRef(null);
-  const parallax = useMouseParallax(0.015);
+  useMouseParallax(contentRef, 0.015);
 
   useEffect(() => {
     const el = contentRef.current;
@@ -20,7 +20,7 @@ function Hero() {
     const tl = gsap.timeline({ delay: 1 });
 
     tl.fromTo(
-      el.querySelector(`.${styles.avatarWrapper}`),
+      el.querySelector(`.${styles.splineWrapper}`),
       { scale: 0.8, opacity: 0 },
       { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' }
     )
@@ -64,6 +64,21 @@ function Hero() {
     return () => tl.kill();
   }, []);
 
+  // Force hide Spline logo by accessing its shadow DOM
+  useEffect(() => {
+    const hideLogo = () => {
+      const viewer = document.querySelector('spline-viewer');
+      if (viewer && viewer.shadowRoot) {
+        const logo = viewer.shadowRoot.querySelector('#logo');
+        if (logo) logo.style.display = 'none';
+      }
+    };
+    
+    // Check multiple times as the 3D model takes time to load
+    const intervals = [500, 1500, 3000, 5000];
+    intervals.forEach(time => setTimeout(hideLogo, time));
+  }, []);
+
   return (
     <section className={styles.hero} id="hero">
       {/* Floating Particles */}
@@ -77,9 +92,6 @@ function Hero() {
       <div
         className={styles.heroContent}
         ref={contentRef}
-        style={{
-          transform: `translate(${parallax.x}px, ${parallax.y}px)`,
-        }}
       >
         {/* Left Side Text Content */}
         <div className={styles.textContent}>
@@ -115,23 +127,15 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right Side Avatar */}
-        <div className={styles.avatarWrapper}>
-          <div className={styles.avatarRingOuter} />
-          <div className={styles.avatarRingInner} />
-          <div className={styles.avatarCircle}>
-            {personalInfo.avatar ? (
-              <img
-                src={personalInfo.avatar}
-                alt={personalInfo.name}
-                className={styles.avatarImg}
-              />
-            ) : (
-              <span className={styles.avatarInitials}>
-                {personalInfo.name.charAt(0)}
-              </span>
-            )}
-          </div>
+        {/* Right Side Spline 3D Model */}
+        <div 
+          className={styles.splineWrapper}
+          onWheelCapture={(e) => {
+            // Prevent zooming by stopping wheel events from reaching the Spline viewer
+            e.stopPropagation();
+          }}
+        >
+          <spline-viewer url="https://prod.spline.design/dIei1GwXDuVMhVV4/scene.splinecode" events-target="global"></spline-viewer>
         </div>
       </div>
 

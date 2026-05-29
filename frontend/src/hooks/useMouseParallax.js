@@ -1,30 +1,26 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 
 /**
- * Custom hook for mouse-based parallax effect
+ * Custom hook for mouse-based parallax effect without re-rendering
+ * @param {React.MutableRefObject} ref - Ref to the element to animate
  * @param {number} sensitivity - Movement sensitivity multiplier (default: 0.02)
- * @returns {{ x: number, y: number }} - Offset values for CSS transforms
  */
-export function useMouseParallax(sensitivity = 0.02) {
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
+export function useMouseParallax(ref, sensitivity = 0.02) {
+  useEffect(() => {
+    const el = ref?.current;
+    if (!el) return;
 
-  const handleMouseMove = useCallback(
-    (e) => {
+    const handleMouseMove = (e) => {
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
       const x = (e.clientX - centerX) * sensitivity;
       const y = (e.clientY - centerY) * sensitivity;
-      setOffset({ x, y });
-    },
-    [sensitivity]
-  );
+      el.style.transform = `translate(${x}px, ${y}px)`;
+    };
 
-  useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [handleMouseMove]);
-
-  return offset;
+  }, [ref, sensitivity]);
 }
 
 export default useMouseParallax;

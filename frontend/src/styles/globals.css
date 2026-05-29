@@ -70,7 +70,12 @@ body {
 }
 
 /* ── Typography Defaults ── */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-mono);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
@@ -115,7 +120,8 @@ a:hover {
   color: var(--color-neon-mint);
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -133,7 +139,8 @@ button {
   background: none;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: var(--font-mono);
   outline: none;
   border: none;
@@ -166,4 +173,9 @@ input, textarea {
   .container {
     padding: 0 var(--space-md);
   }
+}
+
+/* ── Overrides ── */
+spline-viewer::part(logo) {
+  display: none !important;
 }
