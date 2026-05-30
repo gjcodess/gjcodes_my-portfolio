@@ -8,6 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { ModeProvider, useMode } from './context/ModeContext';
 
 import GridBackground from './components/GridBackground/GridBackground';
+import KineticGridBackground from './components/KineticGridBackground/KineticGridBackground';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/Loader/Loader';
 import Footer from './components/Footer/Footer';
@@ -87,7 +88,16 @@ function AppContent() {
     <>
       <ModeTransition />
       <Loader />
-      <GridBackground />
+      <KineticGridBackground
+        gridSize={60}
+        interactionRadius={200}
+        strength={30}
+        damping={0.15}
+        lineColor="rgba(0, 255, 153, 0.06)"
+        highlightColor="rgba(0, 255, 153, 0.7)"
+        highlightLineWidth={1.5}
+        lineWidth={1}
+      />
       <Navbar />
       <main key={mode}>
         <Routes>
