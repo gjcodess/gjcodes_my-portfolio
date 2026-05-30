@@ -354,15 +354,19 @@ function Hero() {
             <div
               className={`${styles.avatarWrapper} ${
                 !show3D || !isDesktop ? styles.visualActive : styles.visualInactive
-              }`}
-              onClick={() => setShow3D(true)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  setShow3D(true);
-                }
-              }}
+              } ${!isDesktop ? styles.avatarDisabled : ''}`}
+              onClick={isDesktop ? () => setShow3D(true) : undefined}
+              role={isDesktop ? 'button' : undefined}
+              tabIndex={isDesktop ? 0 : -1}
+              onKeyDown={
+                isDesktop
+                  ? (e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setShow3D(true);
+                      }
+                    }
+                  : undefined
+              }
             >
               <div className={styles.avatarRingOuter} />
               <div className={styles.avatarRingInner} />
@@ -379,9 +383,11 @@ function Hero() {
                   </span>
                 )}
                 {/* Hover Badge */}
-                <div className={styles.hoverBadge}>
-                  <span>CLICK ME ⌨️</span>
-                </div>
+                {isDesktop && (
+                  <div className={styles.hoverBadge}>
+                    <span>CLICK ME ⌨️</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>

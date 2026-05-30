@@ -38,6 +38,10 @@
   outline: none;
 }
 
+.avatarDisabled {
+  cursor: default !important;
+}
+
 .avatarRingOuter {
   position: absolute;
   inset: -16px;

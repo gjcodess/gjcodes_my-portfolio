@@ -79,11 +79,18 @@
 
 @media (max-width: 640px) {
   .inner {
+    position: relative;
     flex-direction: column;
     text-align: center;
     padding: var(--space-xl) var(--space-md);
   }
   .right {
     flex-direction: column;
+  }
+  .topBtn {
+    position: absolute;
+    right: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
