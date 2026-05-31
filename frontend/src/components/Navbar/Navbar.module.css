@@ -37,6 +37,14 @@
   line-height: 1;
 }
 
+/* ── Nav Actions (Links + Theme Toggle + Hamburger) ── */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  z-index: 10;
+}
+
 /* ── Desktop Links ── */
 .navLinks {
   display: flex;
@@ -145,3 +153,9 @@
     padding: 14px var(--space-md);
   }
 }
+
+[data-theme='light'] .navScrolled {
+  background: rgba(248, 250, 252, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+

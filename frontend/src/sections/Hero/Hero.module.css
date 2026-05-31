@@ -58,6 +58,11 @@
   animation: localRotate 30s linear infinite reverse;
 }
 
+/* Light mode override for inner ring visibility */
+:global([data-theme='light']) .avatarRingInner {
+  border-color: rgba(13, 148, 136, 0.6); /* Darker teal for better contrast in light mode */
+}
+
 @keyframes localRotate {
   from {
     transform: rotate(0deg);
@@ -123,6 +128,14 @@
 .avatarWrapper:hover .hoverBadge {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* Light mode override for hoverBadge */
+:global([data-theme='light']) .hoverBadge {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--color-mint-border);
+  color: var(--color-neon-mint);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Visual Layout Wrappers ── */

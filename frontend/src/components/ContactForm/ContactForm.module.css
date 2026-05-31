@@ -88,3 +88,16 @@
     align-self: stretch;
   }
 }
+
+/* Light Mode Overrides */
+:global([data-theme='light']) .input,
+:global([data-theme='light']) .textarea {
+  background: var(--color-bg-alt) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: var(--color-white) !important;
+}
+
+:global([data-theme='light']) .input::placeholder,
+:global([data-theme='light']) .textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4) !important;
+}

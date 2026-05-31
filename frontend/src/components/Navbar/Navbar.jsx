@@ -5,6 +5,7 @@ import { personalNavLinks } from '../../data/personalContent';
 import { useMode } from '../../context/ModeContext';
 import { scrollToSection, scrollToTop } from '../../utils/smoothScroll';
 import MobileMenu from '../MobileMenu/MobileMenu';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import styles from './Navbar.module.css';
 
 function Navbar() {
@@ -118,34 +119,40 @@ function Navbar() {
           gjcodes<span className={styles.logoDot}>.</span>
         </a>
 
-        {/* Desktop Links */}
-        <div className={styles.navLinks}>
-          {currentLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`${styles.navLink} ${activeSection === link.href.replace('#', '')
-                  ? styles.navLinkActive
-                  : ''
-                }`}
-              onClick={(e) => handleNavClick(e, link.href)}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
+        {/* Nav Actions (Desktop Links + Theme Toggle + Mobile Hamburger) */}
+        <div className={styles.navActions}>
+          {/* Desktop Links */}
+          <div className={styles.navLinks}>
+            {currentLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`${styles.navLink} ${activeSection === link.href.replace('#', '')
+                    ? styles.navLinkActive
+                    : ''
+                  }`}
+                onClick={(e) => handleNavClick(e, link.href)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
 
-        {/* Hamburger */}
-        <button
-          className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-        >
-          <span className={styles.hamburgerLine} />
-          <span className={styles.hamburgerLine} />
-          <span className={styles.hamburgerLine} />
-        </button>
+          {/* Theme Toggle Button */}
+          <ThemeToggle />
+
+          {/* Hamburger */}
+          <button
+            className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}

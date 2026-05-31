@@ -610,3 +610,46 @@
     left: var(--space-md);
   }
 }
+
+/* ── Light Mode Overrides ── */
+:global([data-theme='light']) .glassCard {
+  background: var(--color-bg-alt);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
+}
+
+:global([data-theme='light']) .glassCard:hover {
+  border-color: rgba(13, 148, 136, 0.25);
+  box-shadow: var(--shadow-md), 0 0 15px rgba(13, 148, 136, 0.1);
+}
+
+:global([data-theme='light']) .carouselBtn {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--color-light-gray);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+:global([data-theme='light']) .carouselBtn:hover {
+  background: var(--color-neon-mint);
+  color: #fff;
+  border-color: var(--color-neon-mint);
+}
+
+:global([data-theme='light']) .floatingBackBtn {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-light-gray);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+:global([data-theme='light']) .floatingBackBtn:hover {
+  background: #ffffff;
+  border-color: var(--color-neon-mint);
+  color: var(--color-neon-mint);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 0 15px rgba(13, 148, 136, 0.15);
+}
+
+:global([data-theme='light']) .logo {
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+}

@@ -288,3 +288,10 @@
     gap: var(--space-lg);
   }
 }
+
+/* Light Mode Overrides */
+:global([data-theme='light']) .skillCard {
+  background: var(--color-bg-alt) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important;
+}
