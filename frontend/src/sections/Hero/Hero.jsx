@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useLayoutEffect } from 'react';
 import { Application } from '@splinetool/runtime';
 import { gsap } from 'gsap';
 import { ArrowRight } from 'lucide-react';
@@ -7,10 +7,12 @@ import Button from '../../components/Button/Button';
 import SocialLinks from '../../components/SocialLinks/SocialLinks';
 import Modal from '../../components/Modal/Modal';
 import { useMode } from '../../context/ModeContext';
+import { useTheme } from '../../context/ThemeContext';
 import styles from './Hero.module.css';
 
 function Hero() {
   const { toggleKineticGrid, setKineticGridDisabled } = useMode();
+  const { setTheme } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -170,6 +172,26 @@ function Hero() {
       return false;
     };
 
+    const isNetBtn = (obj) => {
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (name === 'net-btn' || name.includes('net-btn') || name.includes('icons8-net')) return true;
+        current = current.parent;
+      }
+      return false;
+    };
+
+    const isCssBtn = (obj) => {
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (name === 'css-btn' || name.includes('css-btn') || name.includes('icons8-css')) return true;
+        current = current.parent;
+      }
+      return false;
+    };
+
     const handleSplineMouseDown = (e) => {
       if (!e.target) return;
       console.log('[Spline] mouseDown object:', e.target.name, e.target.id);
@@ -198,6 +220,16 @@ function Hero() {
       if (isHtmlBtn(e.target)) {
         console.log('[Spline] HTML button clicked, enabling kinetic grid.');
         setKineticGridDisabled(false);
+      }
+
+      if (isNetBtn(e.target)) {
+        console.log('[Spline] NET button clicked, setting dark mode.');
+        setTheme('dark');
+      }
+
+      if (isCssBtn(e.target)) {
+        console.log('[Spline] CSS button clicked, setting light mode.');
+        setTheme('light');
       }
     };
 
@@ -298,7 +330,7 @@ function Hero() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = contentRef.current;
     if (!el) return;
 
@@ -463,7 +495,8 @@ function Hero() {
                 {/* Hover Badge */}
                 {isDesktop && (
                   <div className={styles.hoverBadge}>
-                    <span>CLICK ME ⌨️</span>
+                    <span>CLICK ME</span>
+                    <span style={{ display: 'flex', alignItems: 'center', lineHeight: 1, marginTop: '-2px' }}>⌨️</span>
                   </div>
                 )}
               </div>

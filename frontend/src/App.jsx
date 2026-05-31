@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 
 import { ModeProvider, useMode } from './context/ModeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 
 import GridBackground from './components/GridBackground/GridBackground';
 import KineticGridBackground from './components/KineticGridBackground/KineticGridBackground';
@@ -61,6 +62,9 @@ function PersonalContent() {
 
 function AppContent() {
   const { mode, isKineticGridDisabled } = useMode();
+  const { theme } = useTheme();
+
+  const location = useLocation();
 
   // Scroll to top and refresh ScrollTrigger on mode change
   useEffect(() => {
@@ -92,19 +96,27 @@ function AppContent() {
         interactionRadius={200}
         strength={30}
         damping={0.15}
-        lineColor="rgba(0, 255, 153, 0.06)"
-        highlightColor="rgba(0, 255, 153, 0.7)"
+        lineColor={theme === 'light' ? 'rgba(13, 148, 136, 0.08)' : 'rgba(0, 255, 153, 0.06)'}
+        highlightColor={theme === 'light' ? 'rgba(13, 148, 136, 0.5)' : 'rgba(0, 255, 153, 0.7)'}
         highlightLineWidth={1.5}
         lineWidth={1}
         disabled={isKineticGridDisabled}
       />
       <Navbar />
-      <main key={mode}>
+      <main>
+        <div style={{ display: location.pathname === '/portfolio' ? 'block' : 'none' }}>
+          <PortfolioContent />
+        </div>
+        
+        <div style={{ display: location.pathname === '/personal' ? 'block' : 'none' }}>
+          <PersonalContent />
+        </div>
+
         <Routes>
           <Route path="/" element={<Navigate to="/portfolio" replace />} />
-          <Route path="/portfolio" element={<PortfolioContent />} />
           <Route path="/portfolio/projects/:slug" element={<ProjectDetail />} />
-          <Route path="/personal" element={<PersonalContent />} />
+          <Route path="/portfolio" element={null} />
+          <Route path="/personal" element={null} />
           <Route path="*" element={<Navigate to="/portfolio" replace />} />
         </Routes>
       </main>
@@ -117,9 +129,11 @@ function AppContent() {
 
 function App() {
   return (
-    <ModeProvider>
-      <AppContent />
-    </ModeProvider>
+    <ThemeProvider>
+      <ModeProvider>
+        <AppContent />
+      </ModeProvider>
+    </ThemeProvider>
   );
 }
 

@@ -67,3 +67,8 @@
     display: none;
   }
 }
+
+[data-theme='light'] .overlay {
+  background: rgba(248, 250, 252, 0.97);
+}
+

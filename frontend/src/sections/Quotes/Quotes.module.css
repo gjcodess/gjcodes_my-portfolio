@@ -241,3 +241,27 @@
     right: 16px;
   }
 }
+
+/* --- Light Mode Overrides --- */
+:global([data-theme='light']) .thankYouCard {
+  background: var(--color-bg-alt) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+}
+
+:global([data-theme='light']) .thankYouCard:hover {
+  background: #ffffff !important;
+  border-color: rgba(13, 148, 136, 0.2) !important;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.12),
+    0 0 40px rgba(13, 148, 136, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+:global([data-theme='light']) .cornerTopLeft,
+:global([data-theme='light']) .cornerBottomRight {
+  border-color: var(--color-neon-mint) !important;
+  opacity: 0.4 !important;
+}
