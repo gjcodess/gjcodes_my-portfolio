@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 import styles from './KineticGridBackground.module.css';
 
 
@@ -44,6 +44,20 @@ function KineticGridBackground({
   // Timestamp of last cursor/touch movement — used for idle fade on desktop
   const lastMoveRef = useRef(0);
 
+  const [isStatic, setIsStatic] = useState(false);
+
+  useEffect(() => {
+    if (!disabled) {
+      setIsStatic(false);
+    } else {
+      // Let the points spring back to rest over 1 second, then set isStatic to true
+      const timer = setTimeout(() => {
+        setIsStatic(true);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [disabled]);
+
   // ─── Initialise grid point arrays ───────────────────────────────
   const buildGrid = useCallback(() => {
     const { w, h } = dimsRef.current;
@@ -81,15 +95,21 @@ function KineticGridBackground({
       dimsRef.current.w = w;
       dimsRef.current.h = h;
       buildGrid();
+
+      if (disabled) {
+        setIsStatic(false);
+      }
     };
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [buildGrid]);
+  }, [buildGrid, disabled]);
 
   // ─── Input tracking ────────────────────────────────────────────
   useEffect(() => {
+    if (disabled) return;
+
     // Browsers fire synthetic mousemove after touch — track last touch time
     // so we can ignore those fake mouse events.
     let lastTouchTime = 0;
@@ -151,12 +171,10 @@ function KineticGridBackground({
       window.removeEventListener('touchend', onTouchEnd);
       window.removeEventListener('touchcancel', onTouchEnd);
     };
-  }, []);
+  }, [disabled]);
 
   // ─── Animation loop ────────────────────────────────────────────
   useEffect(() => {
-    if (disabled) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -191,7 +209,7 @@ function KineticGridBackground({
         let tx = p.ox;
         let ty = p.oy;
 
-        if (inf > 0) {
+        if (inf > 0 && !disabled) {
           const dx = mx - p.ox;
           const dy = my - p.oy;
           const distSq = dx * dx + dy * dy;
@@ -262,7 +280,7 @@ function KineticGridBackground({
       traceGrid();
 
       // ── Pass 2: Highlight overlay (fades with influence) ──
-      if (inf > 0.001 && mx > -9000 && my > -9000) {
+      if (inf > 0.001 && mx > -9000 && my > -9000 && !disabled) {
         ctx.save();
         ctx.globalAlpha = inf;
 
@@ -279,7 +297,9 @@ function KineticGridBackground({
 
       ctx.restore();
 
-      rafRef.current = requestAnimationFrame(tick);
+      if (!isStatic) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
     };
 
     rafRef.current = requestAnimationFrame(tick);
@@ -287,7 +307,7 @@ function KineticGridBackground({
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [disabled, interactionRadius, strength, damping, lineColor, lineWidth, highlightColor, highlightLineWidth]);
+  }, [isStatic, disabled, interactionRadius, strength, damping, lineColor, lineWidth, highlightColor, highlightLineWidth]);
 
   return (
     <canvas

@@ -6,9 +6,11 @@ import { personalInfo } from '../../data/content';
 import Button from '../../components/Button/Button';
 import SocialLinks from '../../components/SocialLinks/SocialLinks';
 import Modal from '../../components/Modal/Modal';
+import { useMode } from '../../context/ModeContext';
 import styles from './Hero.module.css';
 
 function Hero() {
+  const { toggleKineticGrid, setKineticGridDisabled } = useMode();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -104,10 +106,74 @@ function Hero() {
       return false;
     };
 
+    const isWindowsBtn = (obj) => {
+      if (!obj) return false;
+      const name = (obj.name || '').toLowerCase();
+      if (
+        name === 'windows-btn' ||
+        name.includes('windows') ||
+        name === 'cube 8' ||
+        name.includes('window')
+      ) {
+        return true;
+      }
+
+      if (app) {
+        const windowsBtn = app.findObjectByName('windows-btn');
+        if (windowsBtn && isDescendant(windowsBtn, obj)) return true;
+      }
+
+      // Fallback parent traversal
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (
+          name === 'windows-btn' ||
+          name.includes('windows') ||
+          name === 'cube 8' ||
+          name.includes('window')
+        ) {
+          return true;
+        }
+        current = current.parent;
+      }
+      return false;
+    };
+
+    const isHtmlBtn = (obj) => {
+      if (!obj) return false;
+      const name = (obj.name || '').toLowerCase();
+      if (
+        name === 'html-btn' ||
+        name.includes('html')
+      ) {
+        return true;
+      }
+
+      if (app) {
+        const htmlBtn = app.findObjectByName('html-btn');
+        if (htmlBtn && isDescendant(htmlBtn, obj)) return true;
+      }
+
+      // Fallback parent traversal
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (
+          name === 'html-btn' ||
+          name.includes('html')
+        ) {
+          return true;
+        }
+        current = current.parent;
+      }
+      return false;
+    };
+
     const handleSplineMouseDown = (e) => {
       if (!e.target) return;
       console.log('[Spline] mouseDown object:', e.target.name, e.target.id);
-      
+
       // Print hierarchy for debugging
       let path = [];
       let cur = e.target;
@@ -122,6 +188,16 @@ function Hero() {
         transitionTimeout = setTimeout(() => {
           setShow3D(false);
         }, 500); // 500ms delay to let the keypress animation play out
+      }
+
+      if (isWindowsBtn(e.target)) {
+        console.log('[Spline] Windows button clicked, disabling kinetic grid.');
+        setKineticGridDisabled(true);
+      }
+
+      if (isHtmlBtn(e.target)) {
+        console.log('[Spline] HTML button clicked, enabling kinetic grid.');
+        setKineticGridDisabled(false);
       }
     };
 
@@ -168,7 +244,7 @@ function Hero() {
 
         app = new Application(canvas);
         splineAppRef.current = app;
-        await app.load('https://prod.spline.design/dIei1GwXDuVMhVV4/scene.splinecode');
+        await app.load('https://prod.spline.design/dIei1GwXDuVMhVV4/scene.splinecode?v=' + Date.now());
 
         if (cancelled) { app.dispose(); return; }
 
@@ -180,7 +256,11 @@ function Hero() {
           const objs = app.getAllObjects();
           console.log('[Spline] All objects:', objs.map(o => o.name));
           const btn = objs.find(o => o.name === 'enter-btn');
+          const winBtn = objs.find(o => o.name === 'windows-btn');
+          const htmlBtn = objs.find(o => o.name === 'html-btn');
           console.log('[Spline] enter-btn found:', !!btn);
+          console.log('[Spline] windows-btn found:', !!winBtn);
+          console.log('[Spline] html-btn found:', !!htmlBtn);
         }
 
         app.addEventListener('mouseDown', handleSplineMouseDown);
@@ -327,9 +407,8 @@ function Hero() {
             {/* 3D Keyboard Scene (Desktop only) */}
             {isDesktop && (
               <div
-                className={`${styles.splineWrapper} ${
-                  show3D ? styles.visualActive : styles.visualInactive
-                }`}
+                className={`${styles.splineWrapper} ${show3D ? styles.visualActive : styles.visualInactive
+                  }`}
               >
                 {is3DLoading && (
                   <div className={styles.loaderContainer}>
@@ -352,19 +431,18 @@ function Hero() {
 
             {/* 2D Profile Avatar */}
             <div
-              className={`${styles.avatarWrapper} ${
-                !show3D || !isDesktop ? styles.visualActive : styles.visualInactive
-              } ${!isDesktop ? styles.avatarDisabled : ''}`}
+              className={`${styles.avatarWrapper} ${!show3D || !isDesktop ? styles.visualActive : styles.visualInactive
+                } ${!isDesktop ? styles.avatarDisabled : ''}`}
               onClick={isDesktop ? () => setShow3D(true) : undefined}
               role={isDesktop ? 'button' : undefined}
               tabIndex={isDesktop ? 0 : -1}
               onKeyDown={
                 isDesktop
                   ? (e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        setShow3D(true);
-                      }
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setShow3D(true);
                     }
+                  }
                   : undefined
               }
             >

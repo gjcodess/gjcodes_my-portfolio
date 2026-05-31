@@ -25,6 +25,39 @@ export function ModeProvider({ children }) {
   const [transitionText, setTransitionText] = useState('');
   const transitionCallbackRef = useRef(null);
 
+  const [isKineticGridDisabled, setIsKineticGridDisabled] = useState(() => {
+    try {
+      const stored = localStorage.getItem('kinetic-grid-disabled');
+      if (stored !== null) {
+        return stored === 'true';
+      }
+      return true; // Default to disabled on first load
+    } catch {
+      return true;
+    }
+  });
+
+  const toggleKineticGrid = useCallback(() => {
+    setIsKineticGridDisabled((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem('kinetic-grid-disabled', String(next));
+      } catch {
+        // silent fail
+      }
+      return next;
+    });
+  }, []);
+
+  const setKineticGridDisabled = useCallback((disabledValue) => {
+    setIsKineticGridDisabled(disabledValue);
+    try {
+      localStorage.setItem('kinetic-grid-disabled', String(disabledValue));
+    } catch {
+      // silent fail
+    }
+  }, []);
+
   // Keep state synced if URL changes via back/forward buttons
   useEffect(() => {
     const currentMode = location.pathname.startsWith('/personal') ? 'personal' : 'portfolio';
@@ -92,7 +125,19 @@ export function ModeProvider({ children }) {
   }, [mode, setMode]);
 
   return (
-    <ModeContext.Provider value={{ mode, setMode, toggleMode, isTransitioning, transitionText, triggerTransition }}>
+    <ModeContext.Provider
+      value={{
+        mode,
+        setMode,
+        toggleMode,
+        isTransitioning,
+        transitionText,
+        triggerTransition,
+        isKineticGridDisabled,
+        toggleKineticGrid,
+        setKineticGridDisabled,
+      }}
+    >
       {children}
     </ModeContext.Provider>
   );

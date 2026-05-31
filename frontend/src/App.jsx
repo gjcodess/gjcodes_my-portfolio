@@ -61,7 +61,7 @@ function PersonalContent() {
 }
 
 function AppContent() {
-  const { mode } = useMode();
+  const { mode, isKineticGridDisabled } = useMode();
 
   // Scroll to top and refresh ScrollTrigger on mode change
   useEffect(() => {
@@ -97,6 +97,7 @@ function AppContent() {
         highlightColor="rgba(0, 255, 153, 0.7)"
         highlightLineWidth={1.5}
         lineWidth={1}
+        disabled={isKineticGridDisabled}
       />
       <Navbar />
       <main key={mode}>
