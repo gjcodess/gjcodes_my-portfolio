@@ -88,6 +88,19 @@ function AppContent() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Handle restoring scroll position when returning to portfolio main view
+  useEffect(() => {
+    if (location.pathname === '/portfolio') {
+      const savedScrollPos = sessionStorage.getItem('portfolio_scroll_pos');
+      if (savedScrollPos) {
+        setTimeout(() => {
+          window.scrollTo({ top: parseInt(savedScrollPos, 10), behavior: 'instant' });
+          sessionStorage.removeItem('portfolio_scroll_pos');
+        }, 50); // Small delay to ensure display: block is fully applied
+      }
+    }
+  }, [location.pathname]);
+
   return (
     <>
       <ModeTransition />
