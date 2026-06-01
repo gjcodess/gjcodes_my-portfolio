@@ -519,6 +519,14 @@
   .headingName::before {
     display: none;
   }
+  
+  .headingName:hover span {
+    color: var(--color-neon-mint) !important;
+  }
+  
+  .headingName {
+    cursor: default;
+  }
 
   .tagline {
     font-size: var(--text-caption);

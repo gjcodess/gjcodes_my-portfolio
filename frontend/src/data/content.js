@@ -193,18 +193,27 @@ export const experiences = [
   // },
   {
     id: 2,
-    role: 'Web Developer Intern',
-    company: 'Associated Labor Unions - Luzon Region',
-    period: 'Feb 2026 - May 2026',
-    description: 'Developed the core LaborConnect web application with a modern, responsive interface. Project Manager & Lead Researcher of the group. Coordinated the overall research and development process. Oversaw time management, task delegation, and contributed to full-stack development.',
-    technologies: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway"],
+    role: 'Junior IT Personnel, Web Developer (Intern)',
+    company: 'Associated Labor Unions – Luzon',
+    period: '2026',
+    description: [
+      'Developed LaborConnect, a comprehensive labor union web application for the organization.',
+      'Performed hands-on IT support tasks including employee desktop troubleshooting, network maintenance, and sound system configuration.',
+      'Completed a rigorous 486-hour IT internship program over approximately three months, gaining hands-on industry experience.',
+      'Assimilated professional guidance and extensive industry knowledge under the supervision of senior IT personnel.'
+    ],
+    technologies: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway", "IT Support"],
   },
   {
     id: 3,
     role: 'Freelance Technical Support & Designer',
     company: 'Self-Employed',
-    period: '2019 — Present',
-    description: 'Provided freelance technical support and creative design services, delivering custom PC builds, graphic designs for marketing and apparel, and professional video editing for clients and school projects.',
+    period: '2019 — 2025',
+    description: [
+      'Executed computer building commissions, complete Windows/Ubuntu operating system configurations, and routine hardware troubleshooting.',
+      'Designed compelling marketing materials, including digital assets and physical prints for local businesses and clothing brands.',
+      'Edited multimedia projects and short films, achieving the "Best Video Edit" award in 2024 for exceptional post-production quality.'
+    ],
     technologies: ['Computer Assembly', 'Troubleshooting', 'Video Editing', 'Graphic Design', 'Figma', "Photoshop", "Premiere Pro"],
   },
 ];

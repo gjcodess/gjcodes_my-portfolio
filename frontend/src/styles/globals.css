@@ -311,7 +311,7 @@ textarea {
 }
 
 [data-theme='light'] [class*="techBadgeCircle"] {
-  background-color: var(--color-bg-alt) !important;
+  background-color: #e2e8f0 !important;
   border-color: rgba(0, 0, 0, 0.1) !important;
 }
 

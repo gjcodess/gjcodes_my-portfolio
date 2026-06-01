@@ -102,6 +102,19 @@
   margin-bottom: var(--space-sm);
 }
 
+.descList {
+  font-size: var(--text-btn-sm);
+  color: var(--color-dark-gray);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-lg);
+  list-style-type: disc;
+}
+
+.descList li {
+  margin-bottom: 4px;
+}
+
 .techList {
   display: flex;
   flex-wrap: wrap;

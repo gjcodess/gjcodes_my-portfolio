@@ -114,6 +114,20 @@
   min-height: 220px;
 }
 
+.techCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -5px;
+  bottom: 0;
+  width: 90px;
+  background: var(--color-bg-alt);
+  mask-image: linear-gradient(to left, black 10%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black 10%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
 .techCardLeft {
   display: flex;
   flex-direction: column;
@@ -121,10 +135,20 @@
   padding: var(--space-xl);
   z-index: 2;
   position: relative;
-  background: linear-gradient(to right, var(--color-bg-alt) 50%, transparent);
   height: 100%;
   justify-content: center;
   transition: transform var(--transition-normal);
+}
+
+.techCardLeft::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg-alt);
+  mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .techLabel {
