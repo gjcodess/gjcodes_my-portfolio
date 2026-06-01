@@ -30,14 +30,6 @@ function Projects() {
     sessionStorage.setItem('portfolio_showAll', showAll);
   }, [showAll]);
 
-  useLayoutEffect(() => {
-    const savedScrollPos = sessionStorage.getItem('portfolio_scroll_pos');
-    if (savedScrollPos) {
-      window.scrollTo({ top: parseInt(savedScrollPos, 10), behavior: 'instant' });
-      sessionStorage.removeItem('portfolio_scroll_pos');
-    }
-  }, []);
-
   const toggleShowAll = () => {
     if (!gridRef.current) {
       setShowAll(!showAll);

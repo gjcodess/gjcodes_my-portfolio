@@ -7,7 +7,7 @@ import styles from './Modal.module.css';
  * Reusable modal component for displaying PDF documents (like resumes)
  * with built-in action headers (download, open in new tab) and mobile responsiveness.
  */
-function Modal({ isOpen, onClose, pdfUrl, title = 'Curriculum Vitae', subtitle = 'Resume-Glenn.pdf' }) {
+function Modal({ isOpen, onClose, pdfUrl, title = 'Curriculum Vitae', subtitle = 'Curriculum-Vitae_Corpus.pdf' }) {
   // Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -75,7 +75,7 @@ function Modal({ isOpen, onClose, pdfUrl, title = 'Curriculum Vitae', subtitle =
             {/* Download Button */}
             <a
               href={pdfUrl}
-              download="Resume-Glenn.pdf"
+              download="Curriculum-Vitae_Corpus.pdf"
               className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}
               onClick={handleDownload}
               title="Download PDF"
@@ -118,7 +118,7 @@ function Modal({ isOpen, onClose, pdfUrl, title = 'Curriculum Vitae', subtitle =
             <div className={styles.buttonGroup}>
               <a
                 href={pdfUrl}
-                download="Resume-Glenn.pdf"
+                download="Curriculum-Vitae_Corpus.pdf"
                 className={`${styles.fallbackBtn} ${styles.fallbackBtnPrimary}`}
               >
                 <Download size={18} />

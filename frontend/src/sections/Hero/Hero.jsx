@@ -519,7 +519,7 @@ function Hero() {
         onClose={() => setIsModalOpen(false)}
         pdfUrl={personalInfo.resumeUrl}
         title="Curriculum Vitae"
-        subtitle="Resume-Glenn.pdf"
+        subtitle="Curriculum-Vitae_Corpus.pdf"
       />
     </section>
   );
