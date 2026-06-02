@@ -1,4 +1,3 @@
-import * as LucideIcons from 'lucide-react';
 import { services } from '../../data/content';
 import SectionWrapper from '../../components/SectionWrapper/SectionWrapper';
 import useScrollReveal from '../../hooks/useScrollReveal';
@@ -15,18 +14,16 @@ function Services() {
       subtitle="Services and expertise I bring to every project"
     >
       <div className={styles.servicesGrid} ref={gridRef}>
-        {services.map((service) => {
-          const Icon = LucideIcons[service.icon];
-          return (
-            <div key={service.title} className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>
-                {Icon && <Icon size={24} />}
-              </div>
+        {services.map((service) => (
+          <div key={service.title} className={styles.serviceCard}>
+            {/* Animated glowing border */}
+            <div className={styles.glowBorder} />
+            <div className={styles.cardContent}>
               <h3 className={styles.serviceTitle}>{service.title}</h3>
               <p className={styles.serviceDesc}>{service.description}</p>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </SectionWrapper>
   );

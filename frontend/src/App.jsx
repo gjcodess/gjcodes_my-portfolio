@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import { ModeProvider, useMode } from './context/ModeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 
 import GridBackground from './components/GridBackground/GridBackground';
+import KineticGridBackground from './components/KineticGridBackground/KineticGridBackground';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/Loader/Loader';
 import Footer from './components/Footer/Footer';
@@ -29,6 +31,7 @@ import Hobbies from './sections/Hobbies/Hobbies';
 import Favorites from './sections/Favorites/Favorites';
 import Gallery from './sections/Gallery/Gallery';
 import Quotes from './sections/Quotes/Quotes';
+import ProjectDetail from './sections/ProjectDetail/ProjectDetail';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,7 +62,10 @@ function PersonalContent() {
 }
 
 function AppContent() {
-  const { mode } = useMode();
+  const { mode, isKineticGridDisabled } = useMode();
+  const { theme } = useTheme();
+
+  const location = useLocation();
 
   // Scroll to top and refresh ScrollTrigger on mode change
   useEffect(() => {
@@ -82,17 +88,49 @@ function AppContent() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Handle restoring scroll position when returning to portfolio main view
+  useEffect(() => {
+    if (location.pathname === '/portfolio') {
+      const savedScrollPos = sessionStorage.getItem('portfolio_scroll_pos');
+      if (savedScrollPos) {
+        setTimeout(() => {
+          window.scrollTo({ top: parseInt(savedScrollPos, 10), behavior: 'instant' });
+          sessionStorage.removeItem('portfolio_scroll_pos');
+        }, 50); // Small delay to ensure display: block is fully applied
+      }
+    }
+  }, [location.pathname]);
+
   return (
     <>
       <ModeTransition />
       <Loader />
-      <GridBackground />
+      <KineticGridBackground
+        gridSize={60}
+        interactionRadius={200}
+        strength={30}
+        damping={0.15}
+        lineColor={theme === 'light' ? 'rgba(13, 148, 136, 0.08)' : 'rgba(0, 255, 153, 0.06)'}
+        highlightColor={theme === 'light' ? 'rgba(13, 148, 136, 0.5)' : 'rgba(0, 255, 153, 0.7)'}
+        highlightLineWidth={1.5}
+        lineWidth={1}
+        disabled={isKineticGridDisabled}
+      />
       <Navbar />
-      <main key={mode}>
+      <main>
+        <div style={{ display: location.pathname === '/portfolio' ? 'block' : 'none' }}>
+          <PortfolioContent />
+        </div>
+        
+        <div style={{ display: location.pathname === '/personal' ? 'block' : 'none' }}>
+          <PersonalContent />
+        </div>
+
         <Routes>
           <Route path="/" element={<Navigate to="/portfolio" replace />} />
-          <Route path="/portfolio" element={<PortfolioContent />} />
-          <Route path="/personal" element={<PersonalContent />} />
+          <Route path="/portfolio/projects/:slug" element={<ProjectDetail />} />
+          <Route path="/portfolio" element={null} />
+          <Route path="/personal" element={null} />
           <Route path="*" element={<Navigate to="/portfolio" replace />} />
         </Routes>
       </main>
@@ -106,9 +144,11 @@ function AppContent() {
 
 function App() {
   return (
-    <ModeProvider>
-      <AppContent />
-    </ModeProvider>
+    <ThemeProvider>
+      <ModeProvider>
+        <AppContent />
+      </ModeProvider>
+    </ThemeProvider>
   );
 }
 

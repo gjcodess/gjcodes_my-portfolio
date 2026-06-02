@@ -34,6 +34,12 @@
   width: 400px;
   height: 400px;
   flex-shrink: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.avatarDisabled {
+  cursor: default !important;
 }
 
 .avatarRingOuter {
@@ -50,6 +56,11 @@
   border-radius: 50%;
   border: 2px dotted rgba(0, 255, 153, 0.5);
   animation: localRotate 30s linear infinite reverse;
+}
+
+/* Light mode override for inner ring visibility */
+:global([data-theme='light']) .avatarRingInner {
+  border-color: rgba(13, 148, 136, 0.6); /* Darker teal for better contrast in light mode */
 }
 
 @keyframes localRotate {
@@ -87,6 +98,149 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.hoverBadge {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(15, 14, 26, 0.75);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 255, 153, 0.3);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  color: var(--color-white);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-bold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.avatarWrapper:hover .hoverBadge {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Light mode override for hoverBadge */
+:global([data-theme='light']) .hoverBadge {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--color-mint-border);
+  color: var(--color-neon-mint);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Visual Layout Wrappers ── */
+.visualContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  width: 650px;
+  /* Fixed width on desktop to prevent layout shifts */
+}
+
+.visualWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  width: 100%;
+}
+
+.splineWrapper {
+  width: 650px;
+  height: 650px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.splineWrapper spline-viewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── Crossfade transitions ── */
+.visualActive {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.5s;
+}
+
+.visualInactive {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.5s;
+}
+
+@media (min-width: 1025px) {
+  .visualWrapper {
+    height: 650px;
+  }
+
+  .splineWrapper,
+  .avatarWrapper {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+/* ── Mode Toggle Button ── */
+.modeToggleButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  background: transparent;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  margin-left: 2px;
+  /* Slight separation from social links */
+}
+
+.modeToggleButton:hover {
+  color: var(--color-neon-mint);
+  border-color: var(--color-neon-mint);
+  box-shadow: 0 0 12px rgba(0, 255, 153, 0.2);
+  transform: translateY(-2px);
+}
+
+.modeToggleButtonActive {
+  color: var(--color-neon-mint) !important;
+  border-color: var(--color-neon-mint) !important;
+  background: var(--color-mint-ghost) !important;
+  box-shadow: 0 0 16px rgba(0, 255, 153, 0.25) !important;
+}
+
+.modeToggleButton:active {
+  transform: translateY(0);
 }
 
 /* ── Role Badge ── */
@@ -177,6 +331,7 @@
 .socialArea {
   display: flex;
   align-items: center;
+  gap: var(--space-md);
 }
 
 /* ── Scroll Indicator ── */
@@ -295,6 +450,10 @@
 
 /* ── Responsive — Tablet ── */
 @media (max-width: 1024px) {
+  .visualContainer {
+    width: auto;
+  }
+
   .heroContent {
     gap: var(--space-2xl);
     padding: var(--space-5xl) var(--space-xl) var(--space-4xl);
@@ -322,7 +481,8 @@
 /* ── Responsive — Mobile ── */
 @media (max-width: 768px) {
   .heroContent {
-    flex-direction: column-reverse; /* Avatar goes on top, text below */
+    flex-direction: column-reverse;
+    /* Avatar goes on top, text below */
     align-items: center;
     text-align: center;
     padding: calc(var(--space-5xl) + 20px) var(--space-md) var(--space-3xl);
@@ -359,6 +519,14 @@
   .headingName::before {
     display: none;
   }
+  
+  .headingName:hover span {
+    color: var(--color-neon-mint) !important;
+  }
+  
+  .headingName {
+    cursor: default;
+  }
 
   .tagline {
     font-size: var(--text-caption);
@@ -393,11 +561,63 @@
     justify-content: center;
   }
 
-  .socialArea > div {
+  .socialArea>div {
     justify-content: center;
   }
 
   .scrollIndicator {
     display: none;
+  }
+}
+
+/* ── 3D Scene Loader ── */
+.loaderContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  z-index: 5;
+  background: rgba(15, 14, 26, 0.4);
+  pointer-events: none;
+}
+
+.loaderRing {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 255, 153, 0.1);
+  border-top-color: var(--color-neon-mint);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 15px rgba(0, 255, 153, 0.2);
+}
+
+.loaderText {
+  font-size: var(--text-caption);
+  color: var(--color-neon-mint);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: pulse 1.5s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(0, 255, 153, 0.4);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
   }
 }

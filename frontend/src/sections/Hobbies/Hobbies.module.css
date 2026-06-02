@@ -201,3 +201,16 @@
     padding: var(--space-xl);
   }
 }
+
+/* --- Light Mode Overrides --- */
+:global([data-theme='light']) .card {
+  background: var(--color-bg-alt) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+:global([data-theme='light']) .card:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12),
+    0 0 30px rgba(13, 148, 136, 0.1) !important;
+  border-color: rgba(13, 148, 136, 0.25) !important;
+}

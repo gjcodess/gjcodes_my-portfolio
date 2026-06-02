@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
 import styles from './ModeSwitcher.module.css';
 
 function ModeSwitcher() {
   const { mode, setMode } = useMode();
+  const location = useLocation();
   const [visible, setVisible] = useState(false);
+
+  const isDetailPage = location.pathname.startsWith('/portfolio/projects/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +21,8 @@ function ModeSwitcher() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (isDetailPage) return null;
 
   return (
     <div

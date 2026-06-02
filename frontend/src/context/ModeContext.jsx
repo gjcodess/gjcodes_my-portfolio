@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const ModeContext = createContext(null);
@@ -23,6 +23,40 @@ export function ModeProvider({ children }) {
 
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionText, setTransitionText] = useState('');
+  const transitionCallbackRef = useRef(null);
+
+  const [isKineticGridDisabled, setIsKineticGridDisabled] = useState(() => {
+    try {
+      const stored = localStorage.getItem('kinetic-grid-disabled');
+      if (stored !== null) {
+        return stored === 'true';
+      }
+      return true; // Default to disabled on first load
+    } catch {
+      return true;
+    }
+  });
+
+  const toggleKineticGrid = useCallback(() => {
+    setIsKineticGridDisabled((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem('kinetic-grid-disabled', String(next));
+      } catch {
+        // silent fail
+      }
+      return next;
+    });
+  }, []);
+
+  const setKineticGridDisabled = useCallback((disabledValue) => {
+    setIsKineticGridDisabled(disabledValue);
+    try {
+      localStorage.setItem('kinetic-grid-disabled', String(disabledValue));
+    } catch {
+      // silent fail
+    }
+  }, []);
 
   // Keep state synced if URL changes via back/forward buttons
   useEffect(() => {
@@ -68,13 +102,42 @@ export function ModeProvider({ children }) {
     }, 650);
   }, [mode, isTransitioning, navigate]);
 
+  // Generic page transition — fires green bars then calls the callback mid-animation
+  const triggerTransition = useCallback((callback, label = '') => {
+    if (isTransitioning) return;
+    transitionCallbackRef.current = callback;
+    setTransitionText(label);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      if (transitionCallbackRef.current) {
+        transitionCallbackRef.current();
+        transitionCallbackRef.current = null;
+      }
+    }, 600);
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 650);
+  }, [isTransitioning]);
+
   const toggleMode = useCallback(() => {
     const nextMode = mode === 'portfolio' ? 'personal' : 'portfolio';
     setMode(nextMode);
   }, [mode, setMode]);
 
   return (
-    <ModeContext.Provider value={{ mode, setMode, toggleMode, isTransitioning, transitionText }}>
+    <ModeContext.Provider
+      value={{
+        mode,
+        setMode,
+        toggleMode,
+        isTransitioning,
+        transitionText,
+        triggerTransition,
+        isKineticGridDisabled,
+        toggleKineticGrid,
+        setKineticGridDisabled,
+      }}
+    >
       {children}
     </ModeContext.Provider>
   );

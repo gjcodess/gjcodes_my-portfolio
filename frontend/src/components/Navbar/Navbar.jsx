@@ -1,18 +1,35 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { navLinks } from '../../data/content';
 import { personalNavLinks } from '../../data/personalContent';
 import { useMode } from '../../context/ModeContext';
 import { scrollToSection, scrollToTop } from '../../utils/smoothScroll';
 import MobileMenu from '../MobileMenu/MobileMenu';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import styles from './Navbar.module.css';
 
 function Navbar() {
-  const { mode } = useMode();
+  const { mode, triggerTransition } = useMode();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
 
   const currentLinks = mode === 'personal' ? personalNavLinks : navLinks;
+
+  // Handle redirect scroll if we came from another page
+  useEffect(() => {
+    const targetSection = sessionStorage.getItem('scroll_to_section');
+    const targetPath = mode === 'personal' ? '/personal' : '/portfolio';
+    if (targetSection && location.pathname === targetPath) {
+      const timer = setTimeout(() => {
+        scrollToSection(targetSection);
+        sessionStorage.removeItem('scroll_to_section');
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname, mode]);
 
   // Track scroll position for nav background
   useEffect(() => {
@@ -51,9 +68,16 @@ function Navbar() {
   const handleNavClick = useCallback((e, href) => {
     e.preventDefault();
     const sectionId = href.replace('#', '');
-    scrollToSection(sectionId);
+    const targetPath = mode === 'personal' ? '/personal' : '/portfolio';
+    
+    if (location.pathname !== targetPath) {
+      sessionStorage.setItem('scroll_to_section', sectionId);
+      triggerTransition(() => navigate(targetPath));
+    } else {
+      scrollToSection(sectionId);
+    }
     setMenuOpen(false);
-  }, []);
+  }, [location.pathname, mode, navigate, triggerTransition]);
 
   // Close menu on mode switch
   useEffect(() => {
@@ -83,41 +107,52 @@ function Navbar() {
           className={styles.logo}
           onClick={(e) => {
             e.preventDefault();
-            scrollToTop();
+            const targetPath = mode === 'personal' ? '/personal' : '/portfolio';
+            if (location.pathname !== targetPath) {
+              triggerTransition(() => navigate(targetPath));
+            } else {
+              scrollToTop();
+            }
           }}
           aria-label="Go to top"
         >
           gjcodes<span className={styles.logoDot}>.</span>
         </a>
 
-        {/* Desktop Links */}
-        <div className={styles.navLinks}>
-          {currentLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`${styles.navLink} ${activeSection === link.href.replace('#', '')
-                  ? styles.navLinkActive
-                  : ''
-                }`}
-              onClick={(e) => handleNavClick(e, link.href)}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
+        {/* Nav Actions (Desktop Links + Theme Toggle + Mobile Hamburger) */}
+        <div className={styles.navActions}>
+          {/* Desktop Links */}
+          <div className={styles.navLinks}>
+            {currentLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`${styles.navLink} ${activeSection === link.href.replace('#', '')
+                    ? styles.navLinkActive
+                    : ''
+                  }`}
+                onClick={(e) => handleNavClick(e, link.href)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
 
-        {/* Hamburger */}
-        <button
-          className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-        >
-          <span className={styles.hamburgerLine} />
-          <span className={styles.hamburgerLine} />
-          <span className={styles.hamburgerLine} />
-        </button>
+          {/* Theme Toggle Button */}
+          <ThemeToggle />
+
+          {/* Hamburger */}
+          <button
+            className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+            <span className={styles.hamburgerLine} />
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}

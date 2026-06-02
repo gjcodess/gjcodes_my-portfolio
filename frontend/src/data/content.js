@@ -12,7 +12,7 @@ export const personalInfo = {
   email: 'glennjoshuacorpus@gmail.com',
   location: 'Philippines, Parañaque City',
   currentPosition: 'Soon-to-be IT Graduate',
-  resumeUrl: '/Resume-Glenn.pdf',
+  resumeUrl: '/Curriculum-Vitae_Corpus.pdf',
   avatar: '\my-photo.jpg',
 };
 
@@ -70,17 +70,19 @@ export const projects = [
     github: 'https://github.com/imapoopzz/ThesisProj',
     live: 'https://www.laborconnect.app',
     featured: true,
+    type: 'Administrative Web Application',
   },
 
   {
     id: 2,
     title: 'MangaVerse',
     description: 'A modern, immersive UI/UX design for MangaVerse — a Japanese comics (manga) and anime reading mobile application.',
-    tags: ['Figma', 'User Interface', 'Mobile Application Design', 'Prototyping'],
+    tags: ['Figma'],
     imageBase: 'MangaVerse-1',
     github: ' ',
     live: 'https://www.figma.com/proto/y3JbsPe7btzPUtRmEN71ni/MangaVerse?node-id=283-1625&t=tS9s8rszJlWNVM4u-1&starting-point-node-id=285%3A2486',
     featured: true,
+    type: 'Mobile UI/UX Design',
   },
 
   {
@@ -92,39 +94,43 @@ export const projects = [
     github: 'https://github.com/imapoopzz/WebDev_Project',
     live: ' ',
     featured: true,
+    type: 'E-Commerce Store',
   },
 
   {
     id: 4,
     title: 'kAIn',
     description: 'KAIN (a Filipino word for “eat”) is a smart, intuitive mobile application that helps users effortlessly track their daily food intake, monitor nutrition, and build healthier eating habits with the assistance of Artificial Intelligence.',
-    tags: ['Figma', 'User Interface', 'Mobile Application Design', 'Prototyping'],
+    tags: ['Figma'],
     imageBase: 'kAIn-1',
     github: ' ',
     live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
     featured: true,
+    type: 'AI Mobile UI/UX',
   },
 
   {
     id: 5,
     title: 'CSSGen',
     description: 'Visually create advanced CSS effects with real-time previews, instant code generation, and one-click export. Built for developers who want precision without the hassle.',
-    tags: ['React', 'CSS', 'JavaScript', 'HTML'],
+    tags: ['React', 'CSS', 'JavaScript', 'HTML', "Vercel"],
     imageBases: ['CSSGen-1', 'CSSGen-2', 'CSSGen-3', 'CSSGen-4'],
     github: 'https://github.com/imapoopzz/css-generator',
     live: 'https://css-generator-gamma.vercel.app/',
     featured: false,
+    type: 'Frontend Styling Tool',
   },
 
   {
     id: 6,
     title: 'Sorting Algorithms Visualization',
     description: 'A full-stack sorting algorithms visualizer web app with interactive animations, adjustable speed and controls, and an API-backed random array generator for learning and demonstrations.',
-    tags: ['React', 'CSS', 'JavaScript', 'HTML'],
+    tags: ['React', 'CSS', 'JavaScript', 'HTML', "Vercel"],
     imageBases: ['SortingAlgo-1', 'SortingAlgo-2', 'SortingAlgo-3'],
     github: 'https://github.com/imapoopzz/SortingAlgo',
     live: 'https://sorting-algo-visualizer-smoky.vercel.app/',
     featured: false,
+    type: 'Educational Tool',
   },
 
   {
@@ -136,6 +142,7 @@ export const projects = [
     github: ' ',
     live: ' ',
     featured: false,
+    type: 'Console Grading System',
   },
 
   {
@@ -147,6 +154,7 @@ export const projects = [
     github: ' ',
     live: ' ',
     featured: false,
+    type: 'Console Terminal Game',
   },
 
   {
@@ -158,17 +166,19 @@ export const projects = [
     github: ' ',
     live: ' ',
     featured: false,
+    type: 'Console ATM Simulation',
   },
 
   {
     id: 10,
     title: 'Arithmetic Practice Game',
     description: 'An object-oriented C++ arithmetic-practice game with linked-list player management, secure login, per-operation scoring (add/sub/mul/div), Top-10 leaderboard and averages, file-backed persistence, interactive console UI, and reusable modules for classroom demonstrations and skill-building.',
-    tags: ['C++ Language', 'Object-Oriented Programming'],
+    tags: ['C++ Language'],
     imageBase: 'Arith-1',
     github: ' ',
     live: ' ',
     featured: false,
+    type: 'Console Arithmetic Game',
   },
 ];
 
@@ -183,18 +193,27 @@ export const experiences = [
   // },
   {
     id: 2,
-    role: 'Web Developer Intern',
-    company: 'Associated Labor Unions - Luzon Region',
-    period: 'Feb 2026 - May 2026',
-    description: 'Developed the core LaborConnect web application with a modern, responsive interface. Project Manager & Lead Researcher of the group. Coordinated the overall research and development process. Oversaw time management, task delegation, and contributed to full-stack development.',
-    technologies: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway"],
+    role: 'Junior IT Personnel, Web Developer (Intern)',
+    company: 'Associated Labor Unions – Luzon',
+    period: '2026',
+    description: [
+      'Developed LaborConnect, a full-stack labor union management system featuring membership management, venue booking, ticketing, and workflow automation modules.',
+      'Resolved hardware, software, and network issues for employees, improving operational continuity and reducing technical downtime.',
+      'Completed 486 hours of hands-on internship experience involving web development, technical support, system administration, and network troubleshooting.',
+      'Collaborated with senior IT personnel on troubleshooting, system maintenance, and web application development initiatives.'
+    ],
+    technologies: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway", "IT Support"],
   },
   {
     id: 3,
     role: 'Freelance Technical Support & Designer',
     company: 'Self-Employed',
-    period: '2019 — Present',
-    description: 'Provided freelance technical support and creative design services, delivering custom PC builds, graphic designs for marketing and apparel, and professional video editing for clients and school projects.',
+    period: '2019 — 2025',
+    description: [
+      'Executed computer building commissions, complete Windows/Ubuntu operating system configurations, and routine hardware troubleshooting.',
+      'Designed compelling marketing materials, including digital assets and physical prints for local businesses and clothing brands.',
+      'Edited multimedia projects and short films, achieving the "Best Video Edit" award in 2024 for exceptional post-production quality.'
+    ],
     technologies: ['Computer Assembly', 'Troubleshooting', 'Video Editing', 'Graphic Design', 'Figma', "Photoshop", "Premiere Pro"],
   },
 ];
@@ -203,6 +222,7 @@ export const education = [
   {
     id: 1,
     degree: 'College - Bachelor of Science in Information Technology',
+    shortDegree: 'College - BSIT',
     school: 'Technological University of the Philippines, Manila',
     period: '2022 — Present',
     description: 'Consistent President\'s Lister (A.Y. 2022-Present), 4th Placer in University Hackathon 2025, 2nd Placer in Best Capstone Project 2026',
@@ -210,6 +230,7 @@ export const education = [
   {
     id: 2,
     degree: 'Senior High School - Science, Technology, Engineering, and Mathematics',
+    shortDegree: 'Senior High School - S.T.E.M.',
     school: 'San Juan de Dios Educational Foundation Inc., Pasay',
     period: '2020 — 2022',
     description: 'Graduated with High Honors, Ranked 1st in Batch and Strand Ranking (A.Y. 2020-2021)',

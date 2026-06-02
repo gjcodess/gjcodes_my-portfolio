@@ -1,22 +1,19 @@
 <div align="center">
 
 <!-- Logo Placeholder -->
-<img src="https://github.com/imapoopzz/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="120" height="120" />
+<img src="https://github.com/imapoopzz/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="250" height="100" />
 
 # ✦ Interactive Developer Portfolio
 
 **A dual-sided, motion-rich personal and professional portfolio experience.** <br>
 Built with React, GSAP, Vite, and Express to showcase technical capability and personal narrative.
 
-[![GitHub stars](https://img.shields.io/github/stars/imapoopzz/personal-portfolio?style=for-the-badge&color=00FF99&labelColor=0F0E1A)](https://github.com/imapoopzz/personal-portfolio/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/imapoopzz/personal-portfolio?style=for-the-badge&color=00FF99&labelColor=0F0E1A)](https://github.com/imapoopzz/personal-portfolio/network)
-[![License: MIT](https://img.shields.io/badge/License-MIT-00FF99.svg?style=for-the-badge&labelColor=0F0E1A)](https://opensource.org/licenses/MIT)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-00FF99?style=for-the-badge&labelColor=0F0E1A&logo=vercel)](https://vercel.com)
 [![React](https://img.shields.io/badge/React-18.x-00FF99?style=for-the-badge&labelColor=0F0E1A&logo=react)](https://react.dev/)
 
 <br>
 
-[**View Live Demo**](#) • [**Read Documentation**](#installation) • [**Report Bug**](#) • [**Request Feature**](#)
+[**View Live Demo**](https://www.gjcodes.me)
 
 <br>
 </div>
@@ -32,6 +29,7 @@ Powered by **React**, **Vite**, and **GSAP**, the application delivers buttery-s
 ### Key Innovations
 - **Dual-Perspective Routing**: Seamlessly toggle between professional and personal modes.
 - **Cinematic Animations**: Advanced `ScrollTrigger` animations integrated directly into the React lifecycle.
+- **WebGL & Physics Canvas Integration**: Spline 3D scene-graph interactions and dynamic canvas spring-physics background effects.
 - **Adaptive Design System**: A bespoke dark-first theme utilizing JetBrains Mono and vibrant cyan-green (`#00FF99`) accents.
 
 ---
@@ -40,9 +38,9 @@ Powered by **React**, **Vite**, and **GSAP**, the application delivers buttery-s
 
 | Category | Features |
 | :--- | :--- |
-| **🎨 UI / UX** | <ul><li>**Portfolio/Personal Modes:** Dynamic mode switcher with localized context caching.</li><li>**Grid Background:** Custom animated geometric grid backgrounds.</li><li>**Typography:** Monospace-driven aesthetic for a "developer-first" feel.</li></ul> |
+| **🎨 UI / UX** | <ul><li>**Portfolio/Personal Modes:** Dynamic mode switcher with localized context caching.</li><li>**Bento Grid Layouts:** Modern, responsive grids structuring the *About* and *Skills* sections for clear visual separation.</li><li>**Typography:** Monospace-driven aesthetic using JetBrains Mono for a developer-centric layout.</li></ul> |
 | **⚡ Performance** | <ul><li>**Vite Optimized:** Instant HMR and hyper-fast build times.</li><li>**Image Optimization:** Built-in Sharp scripts for Gallery and Project assets.</li><li>**Asset Lazy Loading:** Route-level component lazy loading.</li></ul> |
-| **🧠 Interactive** | <ul><li>**GSAP ScrollTrigger:** Elements reveal intelligently based on viewport position.</li><li>**Custom Cursor/Loader:** Bespoke loading states and transitions.</li></ul> |
+| **🧠 Interactive** | <ul><li>**Spline 3D Hero Scene:** Responsive, interactive 3D model in the Hero section (desktop) with custom click events, mouse-wheel hijacking prevention, and touch/click listeners.</li><li>**Kinetic Grid Background:** High-performance Canvas-based grid overlay that warps dynamically near the cursor and touchpoints using spring physics.</li><li>**GSAP ScrollTrigger:** Elements reveal intelligently based on viewport position.</li><li>**Custom Cursor/Loader:** Bespoke page transitions and loading states.</li></ul> |
 | **⚙️ Backend & APIs**| <ul><li>**Contact Form API:** Secure Express backend for handling inquiries.</li><li>**Vercel Serverless:** Support for Resend email API integration.</li></ul> |
 
 ---
@@ -54,7 +52,7 @@ Powered by **React**, **Vite**, and **GSAP**, the application delivers buttery-s
 | Area | Technologies |
 | :--- | :--- |
 | **Frontend Framework** | ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat-square&logo=vite&logoColor=FFD62E) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white) |
-| **Animation & UI** | ![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=white) ![Lucide](https://img.shields.io/badge/Lucide_Icons-FF6C37?style=flat-square&logo=lucide&logoColor=white) |
+| **Animation & UI** | ![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=white) ![Spline 3D](https://img.shields.io/badge/Spline_3D-FF4081?style=flat-square&logo=spline&logoColor=white) ![Lucide](https://img.shields.io/badge/Lucide_Icons-FF6C37?style=flat-square&logo=lucide&logoColor=white) |
 | **Backend API** | ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white) |
 | **Infrastructure** | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white) ![Vercel Analytics](https://img.shields.io/badge/Analytics-000000?style=flat-square&logo=vercel&logoColor=white) |
 
@@ -213,6 +211,8 @@ Content-Type: application/json
 
 - **Pre-computed Assets:** Custom Node.js scripts utilize `sharp` to convert and optimize heavy imagery into WebP format before build time.
 - **ScrollTrigger Garbage Collection:** `App.jsx` handles strict lifecycle cleanup of GSAP instances to prevent memory leaks during SPA route changes.
+- **3D Resource Disposal:** The Spline 3D viewport handles strict event listener teardowns (wheel, touch, mouse actions) and calls `.dispose()` on the `@splinetool/runtime` instance when resizing below desktop viewport widths or unmounting components to avoid memory leak build-ups.
+- **Canvas Grid Optimization:** The `KineticGridBackground` is optimized for high refresh-rate monitors, throttle-tracking cursor changes, and disposing/canceling `requestAnimationFrame` animation loops on component unmount.
 - **Edge Delivery:** Configured for Vercel edge deployment, utilizing caching and localized serverless execution for minimal TTFB.
 
 ---
@@ -222,9 +222,9 @@ Content-Type: application/json
 - [x] Establish dual-sided routing (Portfolio / Personal)
 - [x] Integrate GSAP ScrollTrigger animations
 - [x] Implement Dark/Light mode context
+- [x] Implement interactive Spline 3D Hero Scene & Kinetic Grid Background
 - [ ] Connect PostgreSQL database for dynamic project fetching
 - [ ] Add CMS integration (Sanity/Strapi) for blog posts
-- [ ] Implement WebGL / Three.js hero interactive background
 
 ---
 
@@ -237,12 +237,6 @@ Contributions are what make the open source community such an amazing place to l
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
----
-
-## 📝 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 

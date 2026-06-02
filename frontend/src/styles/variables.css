@@ -108,3 +108,55 @@
   --z-modal: 1000;
   --z-loader: 9999;
 }
+
+/* ── Light Theme Overrides ── */
+[data-theme='light'] {
+  /* ── Colors: Primary ── */
+  --color-neon-mint: #0D9488;
+  /* High-contrast teal-600 */
+  --color-deep-ink: #E2E8F0;
+  /* Slate-200 background */
+  --color-bg-alt: #FFFFFF;
+  /* Pure white for panels/cards */
+
+  /* ── Colors: Accent ── */
+  --color-cyber-cyan: #0284C7;
+  /* Sky-600 */
+  --color-sky-cyan: #0891B2;
+  /* Cyan-600 */
+  --color-forest-green: #15803D;
+  /* Green-700 */
+
+  /* ── Colors: Interactive ── */
+  --color-mint-ghost: rgba(13, 148, 136, 0.08);
+  --color-mint-glow: rgba(13, 148, 136, 0.15);
+  --color-mint-border: rgba(13, 148, 136, 0.2);
+  --color-mint-dim: rgba(13, 148, 136, 0.45);
+
+  /* ── Colors: Neutral Scale ── */
+  --color-white: #0F172A;
+  /* Slate-900 for dark text (headings/active navigation) */
+  --color-light-gray: #334155;
+  /* Slate-700 for main body/paragraphs */
+  --color-soft-gray: #1E293B;
+  /* Slate-800 for titles in widgets */
+  --color-cool-gray: #0F172A;
+  /* Dark slate */
+  --color-medium-gray: #4B5563;
+  /* Gray-600 for subtext and labels */
+  --color-dark-gray: #6B7280;
+  /* Gray-500 for secondary details/muted text */
+  --color-deep-gray: #E2E8F0;
+  /* Slate-200 for thin borders/lines */
+  --color-black: #FFFFFF;
+  /* Reverse black to white */
+  --color-charcoal: #F8FAFC;
+  /* Slate-50 for panel backgrounds */
+
+  /* ── Elevation / Shadows (Softer and clean for light background) ── */
+  --shadow-sm: 0px 4px 6px -1px rgba(13, 148, 136, 0.08), 0px 2px 4px -2px rgba(13, 148, 136, 0.05);
+  --shadow-md: 0px 8px 16px 0px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0px 12px 24px 0px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0px 4px 12px rgba(13, 148, 136, 0.15);
+  --shadow-glow-lg: 0px 8px 24px rgba(13, 148, 136, 0.1);
+}

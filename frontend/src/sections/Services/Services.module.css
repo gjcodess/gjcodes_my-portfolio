@@ -1,63 +1,91 @@
 .servicesGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
 }
 
+/* ── Card shell — clips the rotating glow ── */
 .serviceCard {
+  position: relative;
+  border-radius: 14px;
+  padding: 2px;
+  /* space for the glow border */
+  background: transparent;
+  overflow: hidden;
+  cursor: default;
+}
+
+/* ── Rotating conic-gradient glow ring ── */
+.glowBorder {
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 300deg,
+      rgba(0, 255, 153, 0.9) 330deg,
+      rgba(0, 255, 153, 1) 345deg,
+      rgba(180, 255, 220, 1) 352deg,
+      rgba(0, 255, 153, 0.9) 358deg,
+      transparent 360deg);
+  animation: spinBorder 6s linear infinite;
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(2px);
+}
+
+@keyframes spinBorder {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Inner card surface (sits on top of glow) ── */
+.cardContent {
+  position: relative;
+  z-index: 1;
   background: var(--color-bg-alt);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-subtle);
-  padding: var(--space-xl) var(--space-lg);
-  transition: all var(--transition-normal);
+  border-radius: 13px;
+  padding: var(--space-xl) var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  height: 100%;
+  /* Subtle green ambient glow on the card bg */
+  box-shadow: inset 0 0 60px rgba(0, 255, 153, 0.03);
+  transition: box-shadow var(--transition-normal);
 }
 
-.serviceCard:hover {
-  border-color: var(--color-mint-border);
-  box-shadow: var(--shadow-glow-lg);
-  transform: translateY(-4px);
-}
-
-.serviceIcon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-subtle);
-  background: var(--color-mint-ghost);
-  border: 1px solid rgba(0, 255, 153, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-neon-mint);
-  transition: all var(--transition-normal);
-}
-
-.serviceCard:hover .serviceIcon {
-  box-shadow: 0 0 12px rgba(0, 255, 153, 0.2);
+.serviceCard:hover .cardContent {
+  box-shadow:
+    inset 0 0 80px rgba(0, 255, 153, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .serviceTitle {
-  font-size: var(--text-body);
+  font-size: 18px;
   font-weight: var(--weight-semibold);
   color: var(--color-white);
+  line-height: 1.3;
 }
 
 .serviceDesc {
   font-size: var(--text-btn-sm);
   color: var(--color-medium-gray);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-@media (max-width: 1024px) {
-  .servicesGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .servicesGrid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Light Mode Overrides */
+:global([data-theme='light']) .cardContent {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
 }

@@ -6,16 +6,16 @@
   z-index: var(--z-overlay);
   display: flex;
   align-items: center;
-  background: rgba(22, 22, 30, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(18, 18, 28, 0.3);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   padding: 6px;
   gap: 0;
   box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.5),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    0 20px 48px rgba(0, 0, 0, 0.6),
+    inset 2px 1px 6px rgba(255, 255, 255, 0.27);
   opacity: 0;
   visibility: hidden;
   transition:
@@ -40,17 +40,17 @@
 /* Sliding pill indicator */
 .indicator {
   position: absolute;
-  top: 6px;
-  left: 6px;
-  width: calc(50% - 6px);
-  height: calc(100% - 12px);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  top: 5px;
+  left: 5px;
+  width: calc(50% - 5px);
+  height: calc(100% - 10px);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 100px;
   transition: transform 450ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.2),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   pointer-events: none;
 }
 
@@ -91,4 +91,33 @@
     font-size: 12px;
     padding: 8px 18px;
   }
+}
+
+/* Light Mode Overrides */
+:global([data-theme='light']) .switcher {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(10.5px) !important;
+  -webkit-backdrop-filter: blur(10.5px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.05),
+    inset 2px 1px 6px rgba(255, 255, 255, 0.45) !important;
+}
+
+:global([data-theme='light']) .indicator {
+  background: var(--color-bg-alt) !important; /* Pure white */
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+:global([data-theme='light']) .option {
+  color: var(--color-dark-gray) !important;
+}
+
+:global([data-theme='light']) .option:hover {
+  color: var(--color-white) !important; /* Slate-900 in light mode */
+}
+
+:global([data-theme='light']) .active {
+  color: var(--color-neon-mint) !important; /* Teal-600 in light mode */
 }

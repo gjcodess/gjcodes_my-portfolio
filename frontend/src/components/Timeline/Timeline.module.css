@@ -11,11 +11,9 @@
   left: 11px;
   width: 2px;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    var(--color-neon-mint) 0%,
-    rgba(0, 255, 153, 0.2) 100%
-  );
+  background: linear-gradient(180deg,
+      var(--color-neon-mint) 0%,
+      rgba(0, 255, 153, 0.2) 100%);
 }
 
 /* ── Timeline Item ── */
@@ -40,6 +38,13 @@
   border: 2px solid var(--color-neon-mint);
   z-index: 2;
   box-shadow: 0 0 8px rgba(0, 255, 153, 0.3);
+  transition: all var(--transition-normal);
+}
+
+.item:hover .node {
+  transform: scale(1.25);
+  background: var(--color-neon-mint);
+  box-shadow: 0 0 12px rgba(0, 255, 153, 0.5);
 }
 
 .itemContent {
@@ -51,8 +56,7 @@
 }
 
 .itemContent:hover {
-  border-color: var(--color-mint-border);
-  box-shadow: var(--shadow-glow-lg);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .period {
@@ -62,6 +66,20 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: var(--space-xs);
+  display: inline-block;
+  transition: transform var(--transition-normal);
+}
+
+.cardContent {
+  transition: transform var(--transition-normal);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemContent:hover .cardContent {
+  transform: translateX(8px);
 }
 
 .role {
@@ -69,6 +87,14 @@
   font-weight: var(--weight-semibold);
   color: var(--color-white);
   margin-bottom: 4px;
+}
+
+.desktopOnly {
+  display: inline;
+}
+
+.mobileOnly {
+  display: none;
 }
 
 .company {
@@ -82,6 +108,19 @@
   color: var(--color-dark-gray);
   line-height: 1.6;
   margin-bottom: var(--space-sm);
+}
+
+.descList {
+  font-size: var(--text-btn-sm);
+  color: var(--color-dark-gray);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-lg);
+  list-style-type: disc;
+}
+
+.descList li {
+  margin-bottom: 4px;
 }
 
 .techList {
@@ -118,4 +157,19 @@
   .itemContent {
     padding: var(--space-md);
   }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: inline;
+  }
+}
+
+/* Light Mode Overrides */
+:global([data-theme='light']) .itemContent {
+  background: var(--color-bg-alt) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important;
 }

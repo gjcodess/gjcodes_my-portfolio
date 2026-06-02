@@ -1,35 +1,356 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback, useLayoutEffect } from 'react';
+import { Application } from '@splinetool/runtime';
 import { gsap } from 'gsap';
 import { ArrowRight } from 'lucide-react';
 import { personalInfo } from '../../data/content';
-import useMouseParallax from '../../hooks/useMouseParallax';
 import Button from '../../components/Button/Button';
 import SocialLinks from '../../components/SocialLinks/SocialLinks';
 import Modal from '../../components/Modal/Modal';
+import { useMode } from '../../context/ModeContext';
+import { useTheme } from '../../context/ThemeContext';
 import styles from './Hero.module.css';
 
 function Hero() {
+  const { toggleKineticGrid, setKineticGridDisabled } = useMode();
+  const { setTheme } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(min-width: 1025px)').matches;
+    }
+    return false;
+  });
+  const [show3D, setShow3D] = useState(false);
+  const [is3DLoading, setIs3DLoading] = useState(true);
   const contentRef = useRef(null);
-  const parallax = useMouseParallax(0.015);
+  const splineAppRef = useRef(null);
+  const cleanupRef = useRef(null);
 
+  // Check if we are on desktop
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1025px)');
+    const handler = (e) => setIsDesktop(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // Cleanup Spline when switching away from desktop mode
+  useEffect(() => {
+    if (!isDesktop) {
+      if (cleanupRef.current) {
+        cleanupRef.current();
+        cleanupRef.current = null;
+      }
+    }
+  }, [isDesktop]);
+
+  // useCallback ref: fires when the canvas element mounts/unmounts
+  const canvasRef = useCallback((canvas) => {
+    // Cleanup previous instance if any
+    if (cleanupRef.current) {
+      cleanupRef.current();
+      cleanupRef.current = null;
+    }
+
+    if (!canvas) return; // canvas unmounted
+
+    let app = null;
+    let cancelled = false;
+    let transitionTimeout = null;
+
+    const isDescendant = (parent, target) => {
+      if (!parent || !target) return false;
+      if (
+        parent.id === target.id ||
+        (parent.name && target.name && parent.name === target.name)
+      ) {
+        return true;
+      }
+      if (parent.children && parent.children.length > 0) {
+        for (const child of parent.children) {
+          if (isDescendant(child, target)) return true;
+        }
+      }
+      return false;
+    };
+
+    const isEnterBtn = (obj) => {
+      if (!obj) return false;
+      const name = (obj.name || '').toLowerCase();
+      if (
+        name === 'enter-btn' ||
+        name.includes('enter') ||
+        name === 'cube 9' ||
+        name === 'icons8-forward-arrow-96'
+      ) {
+        return true;
+      }
+
+      if (app) {
+        const enterBtn = app.findObjectByName('enter-btn');
+        if (enterBtn && isDescendant(enterBtn, obj)) return true;
+      }
+
+      // Fallback parent traversal
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (
+          name === 'enter-btn' ||
+          name.includes('enter') ||
+          name === 'cube 9' ||
+          name === 'icons8-forward-arrow-96'
+        ) {
+          return true;
+        }
+        current = current.parent;
+      }
+      return false;
+    };
+
+    const isWindowsBtn = (obj) => {
+      if (!obj) return false;
+      const name = (obj.name || '').toLowerCase();
+      if (
+        name === 'windows-btn' ||
+        name.includes('windows') ||
+        name === 'cube 8' ||
+        name.includes('window')
+      ) {
+        return true;
+      }
+
+      if (app) {
+        const windowsBtn = app.findObjectByName('windows-btn');
+        if (windowsBtn && isDescendant(windowsBtn, obj)) return true;
+      }
+
+      // Fallback parent traversal
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (
+          name === 'windows-btn' ||
+          name.includes('windows') ||
+          name === 'cube 8' ||
+          name.includes('window')
+        ) {
+          return true;
+        }
+        current = current.parent;
+      }
+      return false;
+    };
+
+    const isHtmlBtn = (obj) => {
+      if (!obj) return false;
+      const name = (obj.name || '').toLowerCase();
+      if (
+        name === 'html-btn' ||
+        name.includes('html')
+      ) {
+        return true;
+      }
+
+      if (app) {
+        const htmlBtn = app.findObjectByName('html-btn');
+        if (htmlBtn && isDescendant(htmlBtn, obj)) return true;
+      }
+
+      // Fallback parent traversal
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (
+          name === 'html-btn' ||
+          name.includes('html')
+        ) {
+          return true;
+        }
+        current = current.parent;
+      }
+      return false;
+    };
+
+    const isNetBtn = (obj) => {
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (name === 'net-btn' || name.includes('net-btn') || name.includes('icons8-net')) return true;
+        current = current.parent;
+      }
+      return false;
+    };
+
+    const isCssBtn = (obj) => {
+      let current = obj;
+      while (current) {
+        const name = (current.name || '').toLowerCase();
+        if (name === 'css-btn' || name.includes('css-btn') || name.includes('icons8-css')) return true;
+        current = current.parent;
+      }
+      return false;
+    };
+
+    const handleSplineMouseDown = (e) => {
+      if (!e.target) return;
+      console.log('[Spline] mouseDown object:', e.target.name, e.target.id);
+
+      // Print hierarchy for debugging
+      let path = [];
+      let cur = e.target;
+      while (cur) {
+        path.push(`${cur.name || 'unnamed'} (${cur.type || 'Object3D'})`);
+        cur = cur.parent;
+      }
+      console.log('[Spline] Click hierarchy:', path.join(' -> '));
+
+      if (isEnterBtn(e.target)) {
+        if (transitionTimeout) clearTimeout(transitionTimeout);
+        transitionTimeout = setTimeout(() => {
+          setShow3D(false);
+        }, 500); // 500ms delay to let the keypress animation play out
+      }
+
+      if (isWindowsBtn(e.target)) {
+        console.log('[Spline] Windows button clicked, disabling kinetic grid.');
+        setKineticGridDisabled(true);
+      }
+
+      if (isHtmlBtn(e.target)) {
+        console.log('[Spline] HTML button clicked, enabling kinetic grid.');
+        setKineticGridDisabled(false);
+      }
+
+      if (isNetBtn(e.target)) {
+        console.log('[Spline] NET button clicked, setting dark mode.');
+        setTheme('dark');
+      }
+
+      if (isCssBtn(e.target)) {
+        console.log('[Spline] CSS button clicked, setting light mode.');
+        setTheme('light');
+      }
+    };
+
+    const preventWheel = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
+    canvas.addEventListener('wheel', preventWheel, { capture: true, passive: false });
+
+    // Prevent middle click (scroll button) dragging/panning/orbiting
+    const preventMiddleClick = (e) => {
+      if (e.button === 1 || (e.buttons & 4)) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+    canvas.addEventListener('mousedown', preventMiddleClick, { capture: true });
+    canvas.addEventListener('mouseup', preventMiddleClick, { capture: true });
+    canvas.addEventListener('mousemove', preventMiddleClick, { capture: true });
+    canvas.addEventListener('pointerdown', preventMiddleClick, { capture: true });
+    canvas.addEventListener('pointerup', preventMiddleClick, { capture: true });
+    canvas.addEventListener('pointermove', preventMiddleClick, { capture: true });
+
+    // Prevent multi-touch zoom/pan
+    const preventMultiTouch = (e) => {
+      if (e.touches && e.touches.length > 1) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+    canvas.addEventListener('touchstart', preventMultiTouch, { capture: true, passive: false });
+    canvas.addEventListener('touchmove', preventMultiTouch, { capture: true, passive: false });
+
+    const initSpline = async () => {
+      try {
+        // ⚠️ Critical: set canvas pixel dimensions to match its CSS size
+        // Default canvas is 300×150 — this causes raycasting misses
+        const wrapper = canvas.parentElement;
+        const w = wrapper ? wrapper.offsetWidth : 650;
+        const h = wrapper ? wrapper.offsetHeight : 650;
+        canvas.width = w;
+        canvas.height = h;
+        console.log(`[Spline] Canvas set to ${w}×${h}px`);
+
+        app = new Application(canvas);
+        splineAppRef.current = app;
+        await app.load('https://prod.spline.design/dIei1GwXDuVMhVV4/scene.splinecode?v=' + Date.now());
+
+        if (cancelled) { app.dispose(); return; }
+
+        // Sync size after load in case runtime resized internally
+        app.setSize(w, h);
+
+        // Log all objects to verify exact names
+        if (typeof app.getAllObjects === 'function') {
+          const objs = app.getAllObjects();
+          console.log('[Spline] All objects:', objs.map(o => o.name));
+          const btn = objs.find(o => o.name === 'enter-btn');
+          const winBtn = objs.find(o => o.name === 'windows-btn');
+          const htmlBtn = objs.find(o => o.name === 'html-btn');
+          console.log('[Spline] enter-btn found:', !!btn);
+          console.log('[Spline] windows-btn found:', !!winBtn);
+          console.log('[Spline] html-btn found:', !!htmlBtn);
+        }
+
+        app.addEventListener('mouseDown', handleSplineMouseDown);
+        app.addEventListener('mousePress', handleSplineMouseDown);
+        setIs3DLoading(false);
+        console.log('[Spline] ✅ Scene loaded & listeners attached');
+      } catch (err) {
+        console.error('[Spline] ❌ Load error:', err);
+        setIs3DLoading(false);
+      }
+    };
+
+    initSpline();
+
+    // Store cleanup
+    cleanupRef.current = () => {
+      cancelled = true;
+      if (transitionTimeout) clearTimeout(transitionTimeout);
+      canvas.removeEventListener('wheel', preventWheel, { capture: true });
+      canvas.removeEventListener('mousedown', preventMiddleClick, { capture: true });
+      canvas.removeEventListener('mouseup', preventMiddleClick, { capture: true });
+      canvas.removeEventListener('mousemove', preventMiddleClick, { capture: true });
+      canvas.removeEventListener('pointerdown', preventMiddleClick, { capture: true });
+      canvas.removeEventListener('pointerup', preventMiddleClick, { capture: true });
+      canvas.removeEventListener('pointermove', preventMiddleClick, { capture: true });
+      canvas.removeEventListener('touchstart', preventMultiTouch, { capture: true });
+      canvas.removeEventListener('touchmove', preventMultiTouch, { capture: true });
+      if (app) {
+        app.removeEventListener('mouseDown', handleSplineMouseDown);
+        app.removeEventListener('mousePress', handleSplineMouseDown);
+        app.dispose();
+      }
+      splineAppRef.current = null;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useLayoutEffect(() => {
     const el = contentRef.current;
     if (!el) return;
 
     const tl = gsap.timeline({ delay: 1 });
 
+    const visualEl = el.querySelector(`.${styles.visualWrapper}`);
+    if (visualEl) {
+      tl.fromTo(
+        visualEl,
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' }
+      );
+    }
+
     tl.fromTo(
-      el.querySelector(`.${styles.avatarWrapper}`),
-      { scale: 0.8, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' }
+      el.querySelector(`.${styles.roleBadge}`),
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
+      '-=0.3'
     )
-      .fromTo(
-        el.querySelector(`.${styles.roleBadge}`),
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
-        '-=0.3'
-      )
       .fromTo(
         el.querySelector(`.${styles.headingGreet}`),
         { y: 30, opacity: 0 },
@@ -77,9 +398,6 @@ function Hero() {
       <div
         className={styles.heroContent}
         ref={contentRef}
-        style={{
-          transform: `translate(${parallax.x}px, ${parallax.y}px)`,
-        }}
       >
         {/* Left Side Text Content */}
         <div className={styles.textContent}>
@@ -115,22 +433,74 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right Side Avatar */}
-        <div className={styles.avatarWrapper}>
-          <div className={styles.avatarRingOuter} />
-          <div className={styles.avatarRingInner} />
-          <div className={styles.avatarCircle}>
-            {personalInfo.avatar ? (
-              <img
-                src={personalInfo.avatar}
-                alt={personalInfo.name}
-                className={styles.avatarImg}
-              />
-            ) : (
-              <span className={styles.avatarInitials}>
-                {personalInfo.name.charAt(0)}
-              </span>
+        {/* Right Side Visuals (Avatar or 3D) */}
+        <div className={styles.visualContainer}>
+          <div className={styles.visualWrapper}>
+            {/* 3D Keyboard Scene (Desktop only) */}
+            {isDesktop && (
+              <div
+                className={`${styles.splineWrapper} ${show3D ? styles.visualActive : styles.visualInactive
+                  }`}
+              >
+                {is3DLoading && (
+                  <div className={styles.loaderContainer}>
+                    <div className={styles.loaderRing}></div>
+                    <span className={styles.loaderText}>Loading 3D Scene</span>
+                  </div>
+                )}
+                <canvas
+                  ref={canvasRef}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    opacity: is3DLoading ? 0 : 1,
+                    transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                    display: 'block',
+                  }}
+                />
+              </div>
             )}
+
+            {/* 2D Profile Avatar */}
+            <div
+              className={`${styles.avatarWrapper} ${!show3D || !isDesktop ? styles.visualActive : styles.visualInactive
+                } ${!isDesktop ? styles.avatarDisabled : ''}`}
+              onClick={isDesktop ? () => setShow3D(true) : undefined}
+              role={isDesktop ? 'button' : undefined}
+              tabIndex={isDesktop ? 0 : -1}
+              onKeyDown={
+                isDesktop
+                  ? (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setShow3D(true);
+                    }
+                  }
+                  : undefined
+              }
+            >
+              <div className={styles.avatarRingOuter} />
+              <div className={styles.avatarRingInner} />
+              <div className={styles.avatarCircle}>
+                {personalInfo.avatar ? (
+                  <img
+                    src={personalInfo.avatar}
+                    alt={personalInfo.name}
+                    className={styles.avatarImg}
+                  />
+                ) : (
+                  <span className={styles.avatarInitials}>
+                    {personalInfo.name.charAt(0)}
+                  </span>
+                )}
+                {/* Hover Badge */}
+                {isDesktop && (
+                  <div className={styles.hoverBadge}>
+                    <span>CLICK ME</span>
+                    <span style={{ display: 'flex', alignItems: 'center', lineHeight: 1, marginTop: '-2px' }}>⌨️</span>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -149,7 +519,7 @@ function Hero() {
         onClose={() => setIsModalOpen(false)}
         pdfUrl={personalInfo.resumeUrl}
         title="Curriculum Vitae"
-        subtitle="Resume-Glenn.pdf"
+        subtitle="Curriculum-Vitae_Corpus.pdf"
       />
     </section>
   );

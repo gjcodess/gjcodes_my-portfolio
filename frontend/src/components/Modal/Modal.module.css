@@ -226,7 +226,12 @@
 /* Responsive Handling */
 @media (max-width: 768px) {
   .modal {
-    height: 90vh;
+    height: auto;
+    max-height: 80vh;
+  }
+
+  .body {
+    overflow-y: auto;
   }
 
   .header {
@@ -257,6 +262,8 @@
 
   .mobileFallback {
     display: flex;
+    height: auto;
+    padding: var(--space-xl) var(--space-md);
   }
 }
 
@@ -281,4 +288,55 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ── Light Mode Overrides ── */
+:global([data-theme='light']) .header {
+  background-color: #F8FAFC;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme='light']) .title {
+  text-shadow: none;
+}
+
+:global([data-theme='light']) .subtitle {
+  color: var(--color-medium-gray);
+}
+
+:global([data-theme='light']) .actionBtn {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--color-light-gray);
+}
+
+:global([data-theme='light']) .actionBtn:hover {
+  background-color: #F1F5F9;
+  border-color: var(--color-neon-mint);
+  color: var(--color-neon-mint);
+}
+
+:global([data-theme='light']) .actionBtnPrimary {
+  color: #fff;
+}
+
+:global([data-theme='light']) .actionBtnPrimary:hover {
+  color: var(--color-neon-mint);
+  background-color: transparent;
+}
+
+:global([data-theme='light']) .closeBtn {
+  color: var(--color-light-gray);
+}
+
+:global([data-theme='light']) .closeBtn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+}
+
+:global([data-theme='light']) .body {
+  background-color: var(--color-bg-alt);
+}
+
+:global([data-theme='light']) .iframeContainer {
+  background: var(--color-bg-alt);
 }
