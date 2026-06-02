@@ -16,7 +16,16 @@ function Timeline({ items }) {
           <div className={styles.itemContent}>
             <div className={styles.cardContent}>
               <span className={styles.period}>{item.period}</span>
-              <h3 className={styles.role}>{item.role || item.degree}</h3>
+              <h3 className={styles.role}>
+                {item.shortRole || item.shortDegree ? (
+                  <>
+                    <span className={styles.desktopOnly}>{item.role || item.degree}</span>
+                    <span className={styles.mobileOnly}>{item.shortRole || item.shortDegree}</span>
+                  </>
+                ) : (
+                  item.role || item.degree
+                )}
+              </h3>
               <p className={styles.company}>{item.company || item.school}</p>
               {Array.isArray(item.description) ? (
                 <ul className={styles.descList}>
