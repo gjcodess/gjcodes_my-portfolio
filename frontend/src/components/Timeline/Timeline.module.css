@@ -89,6 +89,14 @@
   margin-bottom: 4px;
 }
 
+.desktopOnly {
+  display: inline;
+}
+
+.mobileOnly {
+  display: none;
+}
+
 .company {
   font-size: var(--text-btn-sm);
   color: var(--color-medium-gray);
@@ -148,6 +156,14 @@
 
   .itemContent {
     padding: var(--space-md);
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: inline;
   }
 }
 

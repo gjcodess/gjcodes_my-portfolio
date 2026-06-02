@@ -197,10 +197,10 @@ export const experiences = [
     company: 'Associated Labor Unions – Luzon',
     period: '2026',
     description: [
-      'Developed LaborConnect, a comprehensive labor union web application for the organization.',
-      'Performed hands-on IT support tasks including employee desktop troubleshooting, network maintenance, and sound system configuration.',
-      'Completed a rigorous 486-hour IT internship program over approximately three months, gaining hands-on industry experience.',
-      'Assimilated professional guidance and extensive industry knowledge under the supervision of senior IT personnel.'
+      'Developed LaborConnect, a full-stack labor union management system featuring membership management, venue booking, ticketing, and workflow automation modules.',
+      'Resolved hardware, software, and network issues for employees, improving operational continuity and reducing technical downtime.',
+      'Completed 486 hours of hands-on internship experience involving web development, technical support, system administration, and network troubleshooting.',
+      'Collaborated with senior IT personnel on troubleshooting, system maintenance, and web application development initiatives.'
     ],
     technologies: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway", "IT Support"],
   },
@@ -222,6 +222,7 @@ export const education = [
   {
     id: 1,
     degree: 'College - Bachelor of Science in Information Technology',
+    shortDegree: 'College - BSIT',
     school: 'Technological University of the Philippines, Manila',
     period: '2022 — Present',
     description: 'Consistent President\'s Lister (A.Y. 2022-Present), 4th Placer in University Hackathon 2025, 2nd Placer in Best Capstone Project 2026',
@@ -229,6 +230,7 @@ export const education = [
   {
     id: 2,
     degree: 'Senior High School - Science, Technology, Engineering, and Mathematics',
+    shortDegree: 'Senior High School - S.T.E.M.',
     school: 'San Juan de Dios Educational Foundation Inc., Pasay',
     period: '2020 — 2022',
     description: 'Graduated with High Honors, Ranked 1st in Batch and Strand Ranking (A.Y. 2020-2021)',
