@@ -70,24 +70,6 @@ The repository is structured as a decoupled full-stack application:
 
 ---
 
-## 📸 Screenshots & UI Showcase
-
-<details open>
-<summary><b>Click to expand UI Showcase</b></summary>
-<br>
-
-| Portfolio View | Personal View |
-| :---: | :---: |
-| <img src="https://via.placeholder.com/600x400/0F0E1A/00FF99?text=Portfolio+Dashboard" alt="Portfolio Dashboard" /> | <img src="https://via.placeholder.com/600x400/FFFFFF/3B82F6?text=Personal+Gallery" alt="Personal View" /> |
-
-| Contact Section | Mobile Responsive Layout |
-| :---: | :---: |
-| <img src="https://via.placeholder.com/600x400/0F0E1A/A855F7?text=Contact+Form" alt="Contact Form" /> | <img src="https://via.placeholder.com/600x400/0F0E1A/00FF99?text=Mobile+View" alt="Mobile UI" /> |
-
-</details>
-
----
-
 ## 🚀 Installation & Local Setup
 
 ### Prerequisites
