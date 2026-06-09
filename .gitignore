@@ -37,3 +37,21 @@ lerna-debug.log*
 
 .vercel
 .env*
+
+
+# Personal documents and design notes
+Resume-Glenn.docx
+www.radnaabazar.com-DESIGN (PERSONAL SIDE).md
+www.radnaabazar.com-DESIGN.md
+Featured Project Details/
+
+# Images 
+# Note: Ignoring all images might hide logos or assets needed by your frontend. 
+# If you are sure you want to ignore all images, uncomment the following lines:
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.svg
+# *.webp
+# *.ico
