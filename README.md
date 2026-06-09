@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Logo Placeholder -->
-<img src="https://github.com/imapoopzz/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="250" height="100" />
+<img src="https://github.com/gjcodess/personal-portfolio/raw/main/frontend/public/title-logo.png" alt="Project Logo" width="250" height="100" />
 
 # ✦ Interactive Developer Portfolio
 
@@ -242,10 +242,10 @@ Contributions are what make the open source community such an amazing place to l
 
 <div align="center">
 
-**Built with 💻 & ☕ by [Glenn](https://github.com/imapoopzz)**
+**Built with 💻 & ☕ by [Glenn](https://github.com/gjcodess)**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/glenn-joshua-corpus-671b5b18a/)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/imapoopzz)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/gjcodess)
 [![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/corpus.glenn.joshua.7)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/imapoopypie/)
 [![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/nnelgsuproc)
