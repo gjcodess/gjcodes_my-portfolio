@@ -68,14 +68,14 @@ export const favoritesData = {
   },
   music: {
     label: 'Favorite Music',
-    title: "I Don't Love You",
-    artist: 'My Chemical Romance',
-    quote: `"When you go, would you even turn to say, 'I don't love you like I did yesterday?'"`,
-    quoteAuthor: 'My Chemical Romance',
-    description: `This poignant line captures the bittersweet reality of evolving feelings and the painful inevitability of growth. It taught me to embrace love's complexities and cherish fleeting moments that leave a permanent impact. Most importantly, it reinforces the value of showing affection to those who matter, as every single interaction shapes our journey.`,
-    readMoreUrl: 'https://genius.com/My-chemical-romance-i-dont-love-you-lyrics',
-    audioSrc: '/i-dont-love-you.mp3',
-    albumArt: '/mcr-album-art.jpg',
+    title: 'Minsan',
+    artist: 'Eraserheads (covered by Munimuni)',
+    quote: `"Sana'y huwag kalimutan ang ating mga pinagsamahan... Na minsan tayo ay naging tunay na magkaibigan."`,
+    quoteAuthor: 'Eraserheads',
+    description: `This poignant line speaks to the impermanence of time and the lasting value of genuine friendships. Even as we grow apart and life inevitably changes, the memories of shared moments and the bonds we forge remain forever. It's a beautiful reminder to cherish the connections we make, as they become an irreplaceable part of our story.`,
+    readMoreUrl: 'https://www.youtube.com/watch?v=_dBTJPvXfx8&list=RD_dBTJPvXfx8&start_radio=1',
+    audioSrc: '/Minsan.mp3',
+    albumArt: '/minsan-artwork.jpg',
   },
 };
 

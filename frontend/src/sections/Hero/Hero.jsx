@@ -12,7 +12,7 @@ import styles from './Hero.module.css';
 
 function Hero() {
   const { toggleKineticGrid, setKineticGridDisabled } = useMode();
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -481,17 +481,11 @@ function Hero() {
               <div className={styles.avatarRingOuter} />
               <div className={styles.avatarRingInner} />
               <div className={styles.avatarCircle}>
-                {personalInfo.avatar ? (
-                  <img
-                    src={personalInfo.avatar}
-                    alt={personalInfo.name}
-                    className={styles.avatarImg}
-                  />
-                ) : (
-                  <span className={styles.avatarInitials}>
-                    {personalInfo.name.charAt(0)}
-                  </span>
-                )}
+                <img
+                  src={theme === 'light' ? '/my-photo-light.jpg' : '/my-photo-dark.jpg'}
+                  alt={personalInfo.name}
+                  className={styles.avatarImg}
+                />
                 {/* Hover Badge */}
                 {isDesktop && (
                   <div className={styles.hoverBadge}>
