@@ -75,23 +75,72 @@ function LinkUnavailableModal({ linkType, onClose }) {
 const getTechIcon = (tag, theme) => {
   const normalized = tag.toLowerCase().trim();
   
+  // Inline SVG icons for reliable rendering (no CDN dependency)
+  if (normalized === 'css' || normalized === 'css3') {
+    return (
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+        <path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"/>
+        <path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354h-45.16v106.49z"/>
+        <path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h31.337l-.327 3.594-3.382 37.896H64.001V51.429z"/>
+        <path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.404-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018v-14.39z"/>
+        <path fill="#fff" d="M81.127 64.675l-1.666 18.522-15.426 4.164v14.39l28.354-7.858.208-2.337 2.406-26.881H81.127z"/>
+        <path fill="#EBEBEB" d="M64.048 23.435v13.831H33.886l-.273-3.005-.622-6.979-.331-3.847h31.388zm-.047 27.994v13.831H48.792l-.277-3.01-.616-6.966-.33-3.855h16.432z"/>
+      </svg>
+    );
+  }
+
+  if (normalized === 'sqlite') {
+    return (
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+        <path fill="#0b7fcc" d="M69.5 99.176c-.059-.73-.094-1.2-.094-1.2S67.2 83.087 64.57 78.642c-.414-.707.043-3.594 1.207-7.88.68 1.169 3.54 6.192 4.118 7.81.648 1.824.78 2.347.78 2.347s-1.57-8.082-4.144-12.797a162.286 162.286 0 012.004-6.265c.973 1.71 3.313 5.859 3.828 7.3.648 1.77.918 3.207.918 3.207s-1.219-7.57-3.61-12.359c3.52-18.328 15.531-42.824 27.84-53.754H16.9c-5.387 0-9.789 4.406-9.789 9.789v88.57c0 5.383 4.406 9.789 9.79 9.789h52.897a118.657 118.657 0 01-.297-14.652"/>
+        <path fill="#154f7a" d="M96.648 6.293C87.098 14.977 77.5 32.602 72.44 49.629c2.633 3.906 4.61 9.07 5.97 14.437 3.508-1.465 8.59-2.344 14.367-2.344 13.184 0 23.879 4.766 23.879 10.645 0 5.878-10.695 10.648-23.879 10.648-7.3 0-13.812-1.656-17.859-4.207-.086 1.082-.156 2.152-.207 3.207 3.684 3.203 10.016 5.316 17.242 5.316 12.063 0 21.848-4.77 21.848-10.648V6.293z"/>
+        <ellipse fill="#3dbaeb" cx="92.777" cy="72.367" rx="23.879" ry="10.648"/>
+        <ellipse fill="#0b7fcc" cx="92.777" cy="72.367" rx="12.004" ry="5.461"/>
+      </svg>
+    );
+  }
+
+  if (normalized === 'vite') {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style={{ width: '100%', height: '100%' }}>
+        <defs>
+          <linearGradient id="vite-grad-a" x1="6" x2="235" y1="33" y2="344" gradientTransform="translate(0 .937) scale(.3122)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#41d1ff"/>
+            <stop offset="1" stopColor="#bd34fe"/>
+          </linearGradient>
+          <linearGradient id="vite-grad-b" x1="194.651" x2="236.076" y1="8.818" y2="292.989" gradientTransform="translate(0 .937) scale(.3122)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#ffea83"/>
+            <stop offset=".083" stopColor="#ffdd35"/>
+            <stop offset="1" stopColor="#ffa800"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#vite-grad-a)" d="M124.766 1.686L67.393 113.148c-1.23 2.353-4.57 2.373-5.83.038L3.229 1.727C1.89-.787 4.154-3.726 6.942-3.03l56.463 14.22a3.348 3.348 0 001.64.007L121.794-3C124.577-3.716 126.852-.8 124.766 1.686z"/>
+        <path fill="url(#vite-grad-b)" d="M91.026 0L52.595 7.91a1.67 1.67 0 00-1.327 1.52l-2.547 44.303a1.669 1.669 0 001.938 1.745l10.91-2.474a1.67 1.67 0 011.938 2.083l-3.243 11.155a1.67 1.67 0 001.92 2.106l6.73-1.624c1.352-.326 2.56.86 2.24 2.212L66.09 85.94c-.414 1.73 1.868 2.67 2.795 1.162l.618-1.008 34.109-68.087c.713-1.425-.513-3.034-2.083-2.718l-11.226 2.167a1.67 1.67 0 01-1.919-2.114l3.73-13.67C92.665 1.04 91.966.161 91.026 0z"/>
+      </svg>
+    );
+  }
+
+  if (normalized === 'javascript' || normalized === 'js') {
+    return (
+      <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+        <path fill="#F7DF1E" d="M1.408 1.408h125.184v125.185H1.408z"/>
+        <path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.78-.512-2.783-.226-3.862.917-3.68 4.908-4.782 8.32-3.467 2.316.787 4.499 2.723 5.936 5.574 6.296-4.105 6.296-4.105 10.668-6.898-1.651-2.569-2.434-3.71-3.499-4.746-3.745-4.161-8.804-6.325-16.239-6.325l-4.065.476c-3.866.99-7.563 3.443-9.731 6.337-6.504 7.308-4.64 20.135 1.338 25.394 6.078 5.567 14.947 6.83 16.085 12.096.817 5.936-4.396 7.844-9.949 7.148-4.358-.692-6.75-3.017-9.37-6.967l-11.015 6.35c1.09 2.516 2.314 3.629 4.169 5.888 8.943 9.055 31.017 8.212 35.382.023 2.516-1.587 4.383-3.809 5.302-6.891.979-3.867 1.547-8.12.38-14.984zm-43.325-58.54h-13.634l-.046 30.022c0 6.38.333 12.569-2.109 15.154-2.385 4.123-7.802 3.546-10.271 2.565-2.58-1.163-3.896-2.926-5.443-5.782-1.333-2.135-2.171-3.751-2.284-3.823l-13.038 7.98c2.12 4.258 5.164 8.228 9.151 10.707 5.892 3.727 13.7 4.921 21.47 3.18 5.083-1.267 9.718-4.363 12.054-9.197 3.397-6.584 2.915-14.695 2.88-22.27l.189-28.536z"/>
+      </svg>
+    );
+  }
+
   const deviconPaths = {
     'react': 'react/react-original.svg',
     'react.js': 'react/react-original.svg',
     'react native': 'react/react-original.svg',
     'next.js': 'nextjs/nextjs-original.svg',
     'next': 'nextjs/nextjs-original.svg',
-    'vite': 'vitejs/vitejs-original.svg',
     'node.js': 'nodejs/nodejs-original.svg',
     'node': 'nodejs/nodejs-original.svg',
     'express': 'express/express-original.svg',
     'express.js': 'express/express-original.svg',
     'typescript': 'typescript/typescript-original.svg',
     'ts': 'typescript/typescript-original.svg',
-    'javascript': 'javascript/javascript-original.svg',
-    'js': 'javascript/javascript-original.svg',
-    'css': 'css3/css3-original.svg',
-    'css3': 'css3/css3-original.svg',
     'html': 'html5/html5-original.svg',
     'html5': 'html5/html5-original.svg',
     'mysql': 'mysql/mysql-original.svg',
@@ -99,7 +148,6 @@ const getTechIcon = (tag, theme) => {
     'tailwindcss': 'tailwindcss/tailwindcss-original.svg',
     'figma': 'figma/figma-original.svg',
     'electron': 'electron/electron-original.svg',
-    'sqlite': 'sqlite/sqlite-original.svg',
     'c++': 'cplusplus/cplusplus-original.svg',
     'c++ language': 'cplusplus/cplusplus-original.svg',
     'python': 'python/python-original.svg',
@@ -142,24 +190,71 @@ const getTechIcon = (tag, theme) => {
 
   if (normalized === 'zustand') {
     return (
-      <span style={{ fontSize: '18px', lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'translateY(-1px)' }} title="Zustand">
-        🐻
-      </span>
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '90%', height: '90%' }}>
+        {/* Head */}
+        <ellipse cx="50" cy="55" rx="36" ry="32" fill="#8B6914"/>
+        {/* Ears */}
+        <circle cx="20" cy="28" r="13" fill="#8B6914"/>
+        <circle cx="80" cy="28" r="13" fill="#8B6914"/>
+        <circle cx="20" cy="28" r="8" fill="#C9973A"/>
+        <circle cx="80" cy="28" r="8" fill="#C9973A"/>
+        {/* Face */}
+        <ellipse cx="50" cy="60" rx="24" ry="20" fill="#C9973A"/>
+        {/* Eyes */}
+        <circle cx="39" cy="50" r="5" fill="#1a1a1a"/>
+        <circle cx="61" cy="50" r="5" fill="#1a1a1a"/>
+        <circle cx="40.5" cy="48.5" r="1.5" fill="white"/>
+        <circle cx="62.5" cy="48.5" r="1.5" fill="white"/>
+        {/* Nose */}
+        <ellipse cx="50" cy="60" rx="7" ry="4.5" fill="#5a3e1b"/>
+        {/* Mouth */}
+        <path d="M44 65 Q50 71 56 65" stroke="#5a3e1b" strokeWidth="2" fill="none" strokeLinecap="round"/>
+      </svg>
     );
   }
 
   if (normalized === 'watermelondb') {
     return (
-      <span style={{ fontSize: '18px', lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'translateY(-1px)' }} title="WatermelonDB">
-        🍉
-      </span>
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '90%', height: '90%' }}>
+        {/* Outer dark green rind */}
+        <path d="M6 68 A44 44 0 0 1 94 68 Z" fill="#2E7D32"/>
+        {/* Light green inner rind band */}
+        <path d="M11 68 A39 39 0 0 1 89 68 Z" fill="#66BB6A"/>
+        {/* White pith band */}
+        <path d="M16 68 A34 34 0 0 1 84 68 Z" fill="#F1F8E9"/>
+        {/* Red flesh */}
+        <path d="M21 68 A29 29 0 0 1 79 68 Z" fill="#E53935"/>
+        {/* Seeds */}
+        <ellipse cx="50" cy="52" rx="2.5" ry="4" fill="#1B5E20"/>
+        <ellipse cx="37" cy="59" rx="2.5" ry="4" fill="#1B5E20" transform="rotate(-18 37 59)"/>
+        <ellipse cx="63" cy="59" rx="2.5" ry="4" fill="#1B5E20" transform="rotate(18 63 59)"/>
+        <ellipse cx="43" cy="44" rx="2" ry="3.5" fill="#1B5E20" transform="rotate(-8 43 44)"/>
+        <ellipse cx="57" cy="44" rx="2" ry="3.5" fill="#1B5E20" transform="rotate(8 57 44)"/>
+        {/* Flat bottom edge */}
+        <line x1="6" y1="68" x2="94" y2="68" stroke="#1B5E20" strokeWidth="2"/>
+      </svg>
     );
   }
 
   if (normalized === 'reanimated') {
     return (
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ width: '85%', height: '85%' }}>
-        <path fill="currentColor" d="M3 21V5l8 6l8-6v16h-4v-9l-4 3l-4-3v9H3z" />
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: '90%', height: '90%' }}>
+        {/* Reanimated-style animated wave logo */}
+        <defs>
+          <linearGradient id="rea-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#60DBFB"/>
+            <stop offset="100%" stopColor="#7B5CF8"/>
+          </linearGradient>
+        </defs>
+        {/* Circle background */}
+        <circle cx="50" cy="50" r="46" fill="#0F0F1A"/>
+        {/* Wave bars representing animation frames */}
+        <rect x="16" y="42" width="8" height="16" rx="4" fill="url(#rea-grad)" opacity="0.5"/>
+        <rect x="28" y="32" width="8" height="36" rx="4" fill="url(#rea-grad)" opacity="0.7"/>
+        <rect x="40" y="22" width="8" height="56" rx="4" fill="url(#rea-grad)"/>
+        <rect x="52" y="30" width="8" height="40" rx="4" fill="url(#rea-grad)" opacity="0.85"/>
+        <rect x="64" y="38" width="8" height="24" rx="4" fill="url(#rea-grad)" opacity="0.65"/>
+        <rect x="76" y="44" width="8" height="12" rx="4" fill="url(#rea-grad)" opacity="0.45"/>
       </svg>
     );
   }
