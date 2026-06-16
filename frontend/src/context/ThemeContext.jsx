@@ -98,7 +98,7 @@ export function ThemeProvider({ children }) {
           clipPath: isDark ? [...clipPath].reverse() : clipPath,
         },
         {
-          duration: 500,
+          duration: 1000,
           easing: 'ease-in-out',
           pseudoElement: isDark ? '::view-transition-old(root)' : '::view-transition-new(root)',
           fill: 'forwards',
