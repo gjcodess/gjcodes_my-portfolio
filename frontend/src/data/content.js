@@ -36,7 +36,7 @@ export const navLinks = [
 export const skills = [
   {
     category: 'Frontend',
-    items: ['React.js', 'React Native', 'Next.js', 'Tailwind CSS', 'Electron', 'GSAP', 'Zustand', 'HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
+    items: ['React.js', 'React Native', 'Next.js', 'CSS3', 'Electron', 'GSAP', 'Zustand', 'HTML5', 'Tailwind CSS', 'JavaScript', 'Bootstrap'],
   },
   {
     category: 'Backend',
