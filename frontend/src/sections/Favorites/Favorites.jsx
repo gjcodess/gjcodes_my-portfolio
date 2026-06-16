@@ -120,7 +120,7 @@ function AudioPlayer({ src, albumArt, title, artist }) {
           </button>
 
           <button
-            className={styles.playBtn}
+            className={`${styles.controlBtn} ${styles.playBtn}`}
             onClick={togglePlay}
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
@@ -261,7 +261,7 @@ function Favorites() {
         </div>
 
         {/* ── Music Block (reversed) ── */}
-        <div className={styles.favoriteBlockReversed} ref={musicRef}>
+        <div className={`${styles.favoriteBlock} ${styles.favoriteBlockReversed}`} ref={musicRef}>
           <div className={styles.contentColumn}>
             <h3 className={styles.sectionLabel}>
               {music.label.split(' ').slice(0, -1).join(' ')}{' '}

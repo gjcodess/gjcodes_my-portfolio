@@ -62,6 +62,18 @@ export const skills = [
 
 export const projects = [
   {
+    id: 'abono',
+    title: 'Abono — Mobile App',
+    description: 'A premium, mobile-first, offline-first application designed for friend groups to seamlessly track shared expenses and simplify debts. Built with React Native, Expo, Zustand, WatermelonDB, and NativeWind.',
+    tags: ['React Native', 'Expo', 'Zustand', 'WatermelonDB', 'NativeWind', 'Reanimated'],
+    imageBases: ['AbonoApp-1', 'AbonoApp-2', 'AbonoApp-3', 'AbonoApp-4', 'AbonoApp-5'],
+    github: '',
+    live: 'https://www.abono.website/',
+    featured: true,
+    type: 'Mobile Application',
+  },
+
+  {
     id: 1,
     title: 'LaborConnect',
     description: 'A full-stack web app for managing labor union membership, services, and administration. Provides a member self-service portal, a department ticket-handling portal, and a comprehensive admin dashboard for union operations.',
@@ -71,6 +83,18 @@ export const projects = [
     live: 'https://www.laborconnect.app',
     featured: true,
     type: 'Administrative Web Application',
+  },
+
+  {
+    id: 'rds-autobill',
+    title: 'RDS AutoBill',
+    description: 'A robust, desktop-first, offline-first application built as a freelance project for Rameson Drug Distribution Service in Bulacan. It seamlessly generates and tracks sales invoices using Electron, React, better-sqlite3, Tailwind CSS, and PDFMake.',
+    tags: ['Electron', 'React', 'SQLite', 'Tailwind CSS'],
+    imageBases: ['RDS-1', 'RDS-2-new', 'RDS-3', 'RDS-4', 'RDS-5'],
+    github: ' ',
+    live: ' ',
+    featured: true,
+    type: 'Desktop Application',
   },
 
   {
@@ -86,6 +110,18 @@ export const projects = [
   },
 
   {
+    id: 'abono-web',
+    title: 'Abono — Website',
+    description: 'A premium, high-performance landing page designed to showcase the Abono group expense tracker. Built with React, Vite, Tailwind CSS, and GSAP to deliver a beautifully animated and engaging web experience.',
+    tags: ['React', 'Vite', 'Tailwind CSS'],
+    imageBases: ['AbonoWeb-1', 'AbonoWeb-2', 'AbonoWeb-3', 'AbonoWeb-4', 'AbonoWeb-5'],
+    github: '',
+    live: 'https://www.abono.website/',
+    featured: true,
+    type: 'Promotional Website Page',
+  },
+
+  {
     id: 3,
     title: 'Gcorp.',
     description: 'A full-stack e-commerce web app for a computer systems and gadgets store (Gcorp), featuring product browsing, shopping cart, user accounts, order management, and admin tools.',
@@ -93,7 +129,7 @@ export const projects = [
     imageBases: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
     github: 'https://github.com/gjcodess/WebDev_Project',
     live: ' ',
-    featured: true,
+    featured: false,
     type: 'E-Commerce Store',
   },
 
@@ -105,7 +141,7 @@ export const projects = [
     imageBase: 'kAIn-1',
     github: ' ',
     live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
-    featured: true,
+    featured: false,
     type: 'AI Mobile UI/UX',
   },
 
