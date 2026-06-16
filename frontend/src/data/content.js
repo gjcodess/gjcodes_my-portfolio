@@ -36,19 +36,19 @@ export const navLinks = [
 export const skills = [
   {
     category: 'Frontend',
-    items: ['React.js', 'Next.js', 'HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
+    items: ['React.js', 'React Native', 'Next.js', 'Tailwind CSS', 'Electron', 'GSAP', 'Zustand', 'HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express.js', 'Python', 'JavaScript', 'REST APIs'],
+    items: ['Node.js', 'Express.js', 'Python', 'REST APIs'],
   },
   {
     category: 'Database',
-    items: ['MySQL', 'PostgreSQL', 'NeonDB', 'Supabase'],
+    items: ['MySQL', 'PostgreSQL', 'SQLite', 'WatermelonDB', 'NeonDB', 'Supabase'],
   },
   {
     category: 'DevOps & Tools',
-    items: ['Git', 'Linux', 'Vercel', "Railway", 'GitHub Actions', "n8n Automation"],
+    items: ['Git', 'Expo', 'Linux', 'Vercel', "Railway", 'GitHub Actions', "n8n Automation"],
   },
   {
     category: 'Design',
@@ -98,15 +98,15 @@ export const projects = [
   },
 
   {
-    id: 2,
-    title: 'MangaVerse',
-    description: 'A modern, immersive UI/UX design for MangaVerse — a Japanese comics (manga) and anime reading mobile application.',
-    tags: ['Figma'],
-    imageBase: 'MangaVerse-1',
-    github: ' ',
-    live: 'https://www.figma.com/proto/y3JbsPe7btzPUtRmEN71ni/MangaVerse?node-id=283-1625&t=tS9s8rszJlWNVM4u-1&starting-point-node-id=285%3A2486',
-    featured: true,
-    type: 'Mobile UI/UX Design',
+    id: 3,
+    title: 'Gcorp.',
+    description: 'A full-stack e-commerce web app for a computer systems and gadgets store (Gcorp), featuring product browsing, shopping cart, user accounts, order management, and admin tools.',
+    tags: ['React', 'Node.js', 'CSS', 'MySQL'],
+    imageBases: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
+    github: 'https://github.com/gjcodess/WebDev_Project',
+    live: ' ',
+    featured: false,
+    type: 'E-Commerce Store',
   },
 
   {
@@ -122,15 +122,15 @@ export const projects = [
   },
 
   {
-    id: 3,
-    title: 'Gcorp.',
-    description: 'A full-stack e-commerce web app for a computer systems and gadgets store (Gcorp), featuring product browsing, shopping cart, user accounts, order management, and admin tools.',
-    tags: ['React', 'Node.js', 'CSS', 'MySQL'],
-    imageBases: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
-    github: 'https://github.com/gjcodess/WebDev_Project',
-    live: ' ',
-    featured: false,
-    type: 'E-Commerce Store',
+    id: 2,
+    title: 'MangaVerse',
+    description: 'A modern, immersive UI/UX design for MangaVerse — a Japanese comics (manga) and anime reading mobile application.',
+    tags: ['Figma'],
+    imageBase: 'MangaVerse-1',
+    github: ' ',
+    live: 'https://www.figma.com/proto/y3JbsPe7btzPUtRmEN71ni/MangaVerse?node-id=283-1625&t=tS9s8rszJlWNVM4u-1&starting-point-node-id=285%3A2486',
+    featured: true,
+    type: 'Mobile UI/UX Design',
   },
 
   {
