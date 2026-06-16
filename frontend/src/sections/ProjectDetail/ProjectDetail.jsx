@@ -3,6 +3,7 @@ import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ArrowLeft, ExternalLink, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projectDetails } from '../../data/projectDetails';
+import { projects } from '../../data/content';
 import { useMode } from '../../context/ModeContext';
 import styles from './ProjectDetail.module.css';
 
@@ -33,6 +34,13 @@ function ProjectDetail() {
   const [scrolled, setScrolled] = useState(false);
 
   const project = projectDetails.find((p) => p.id === slug);
+
+  const overviewProject = projects.find(
+    (p) =>
+      p.title.toLowerCase() === project?.name?.toLowerCase() ||
+      (project?.cardTitle && project.cardTitle.toLowerCase() === p.title.toLowerCase())
+  );
+  const projectType = project?.type || overviewProject?.type;
 
   // Track scroll position to show/hide floating back button
   useEffect(() => {
@@ -144,6 +152,9 @@ function ProjectDetail() {
                 />
               ) : (
                 <h1 className={styles.projectName}>{project.name}</h1>
+              )}
+              {projectType && (
+                <span className={styles.projectTypeSubtext}>{projectType}</span>
               )}
             </div>
 
