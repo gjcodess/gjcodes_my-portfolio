@@ -261,7 +261,7 @@ export const education = [
     shortDegree: 'College - BSIT',
     school: 'Technological University of the Philippines, Manila',
     period: '2022 — Present',
-    description: 'Consistent President\'s Lister (A.Y. 2022-Present), 4th Placer in University Hackathon 2025, 2nd Placer in Best Capstone Project 2026',
+    description: 'Consistent President\'s Lister (A.Y. 2022-Present)',
   },
   {
     id: 2,
