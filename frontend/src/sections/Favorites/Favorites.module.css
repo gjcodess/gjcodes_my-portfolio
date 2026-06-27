@@ -58,9 +58,6 @@
 }
 
 /* Mirror the second block */
-.favoriteBlockReversed {
-  composes: favoriteBlock;
-}
 
 .favoriteBlockReversed .mediaColumn {
   order: 2;
@@ -329,7 +326,6 @@
 }
 
 .playBtn {
-  composes: controlBtn;
   width: 48px;
   height: 48px;
   background: var(--color-white);
@@ -456,3 +452,25 @@
     height: 24px;
   }
 }
+
+/* ── Light Theme Overrides for Player Card ── */
+:global([data-theme='light']) .playerCard {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme='light']) .playerArtWrapper {
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+:global([data-theme='light']) .waveBar {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+:global([data-theme='light']) .waveBarFilled {
+  background: var(--color-neon-mint);
+}
+
+:global([data-theme='light']) .playerArtPlaceholder {
+  color: rgba(0, 0, 0, 0.15);
+}

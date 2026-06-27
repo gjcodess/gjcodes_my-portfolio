@@ -17,7 +17,7 @@ export const personalInfo = {
 };
 
 export const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/imapoopzz', icon: 'Github' },
+  { name: 'GitHub', url: 'https://github.com/gjcodess', icon: 'Github' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/glenn-joshua-corpus-671b5b18a/', icon: 'Linkedin' },
   { name: 'Facebook', url: 'https://www.facebook.com/corpus.glenn.joshua.7', icon: 'Facebook' },
   { name: 'Instagram', url: 'https://www.instagram.com/imapoopypie/', icon: 'Instagram' },
@@ -36,19 +36,19 @@ export const navLinks = [
 export const skills = [
   {
     category: 'Frontend',
-    items: ['React.js', 'Next.js', 'HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
+    items: ['React.js', 'React Native', 'Next.js', 'CSS3', 'Electron', 'GSAP', 'Zustand', 'HTML5', 'Tailwind CSS', 'JavaScript', 'Bootstrap'],
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express.js', 'Python', 'JavaScript', 'REST APIs'],
+    items: ['Node.js', 'Express.js', 'Python', 'REST APIs'],
   },
   {
     category: 'Database',
-    items: ['MySQL', 'PostgreSQL', 'NeonDB', 'Supabase'],
+    items: ['MySQL', 'PostgreSQL', 'SQLite', 'WatermelonDB', 'NeonDB', 'Supabase'],
   },
   {
     category: 'DevOps & Tools',
-    items: ['Git', 'Linux', 'Vercel', "Railway", 'GitHub Actions', "n8n Automation"],
+    items: ['Git', 'Expo', 'Linux', 'Vercel', "Railway", 'GitHub Actions', "n8n Automation"],
   },
   {
     category: 'Design',
@@ -62,15 +62,63 @@ export const skills = [
 
 export const projects = [
   {
+    id: 'abono',
+    title: 'Abono — Mobile App',
+    description: 'A premium, mobile-first, offline-first application designed for friend groups to seamlessly track shared expenses and simplify debts. Built with React Native, Expo, Zustand, WatermelonDB, and NativeWind.',
+    tags: ['React Native', 'Expo', 'Zustand', 'WatermelonDB', 'NativeWind', 'Reanimated'],
+    imageBases: ['AbonoApp-1', 'AbonoApp-2', 'AbonoApp-3', 'AbonoApp-4', 'AbonoApp-5'],
+    github: '',
+    live: 'https://www.abono.website/',
+    featured: true,
+    type: 'Mobile Application',
+  },
+
+  {
     id: 1,
     title: 'LaborConnect',
     description: 'A full-stack web app for managing labor union membership, services, and administration. Provides a member self-service portal, a department ticket-handling portal, and a comprehensive admin dashboard for union operations.',
     tags: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway"],
     imageBases: ['LaborConnect-1', 'LaborConnect-2', 'LaborConnect-3'],
-    github: 'https://github.com/imapoopzz/ThesisProj',
+    github: 'https://github.com/gjcodess/ThesisProj',
     live: 'https://www.laborconnect.app',
     featured: true,
     type: 'Administrative Web Application',
+  },
+
+  {
+    id: 'rds-autobill',
+    title: 'RDS AutoBill',
+    description: 'A robust, desktop-first, offline-first application built as a freelance project for Rameson Drug Distribution Service in Bulacan. It seamlessly generates and tracks sales invoices using Electron, React, better-sqlite3, Tailwind CSS, and PDFMake.',
+    tags: ['Electron', 'React', 'SQLite', 'Tailwind CSS'],
+    imageBases: ['RDS-1', 'RDS-2-new', 'RDS-3', 'RDS-4', 'RDS-5'],
+    github: ' ',
+    live: ' ',
+    featured: true,
+    type: 'Desktop Application',
+  },
+
+  {
+    id: 3,
+    title: 'Gcorp.',
+    description: 'A full-stack e-commerce web app for a computer systems and gadgets store (Gcorp), featuring product browsing, shopping cart, user accounts, order management, and admin tools.',
+    tags: ['React', 'Node.js', 'CSS', 'MySQL'],
+    imageBases: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
+    github: 'https://github.com/gjcodess/WebDev_Project',
+    live: ' ',
+    featured: false,
+    type: 'E-Commerce Store',
+  },
+
+  {
+    id: 'abono-web',
+    title: 'Abono — Website',
+    description: 'A premium, high-performance landing page designed to showcase the Abono group expense tracker. Built with React, Vite, Tailwind CSS, and GSAP to deliver a beautifully animated and engaging web experience.',
+    tags: ['React', 'Vite', 'Tailwind CSS'],
+    imageBases: ['AbonoWeb-1', 'AbonoWeb-2', 'AbonoWeb-3', 'AbonoWeb-4', 'AbonoWeb-5'],
+    github: '',
+    live: 'https://www.abono.website/',
+    featured: true,
+    type: 'Promotional Website Page',
   },
 
   {
@@ -86,18 +134,6 @@ export const projects = [
   },
 
   {
-    id: 3,
-    title: 'Gcorp.',
-    description: 'A full-stack e-commerce web app for a computer systems and gadgets store (Gcorp), featuring product browsing, shopping cart, user accounts, order management, and admin tools.',
-    tags: ['React', 'Node.js', 'CSS', 'MySQL'],
-    imageBases: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
-    github: 'https://github.com/imapoopzz/WebDev_Project',
-    live: ' ',
-    featured: true,
-    type: 'E-Commerce Store',
-  },
-
-  {
     id: 4,
     title: 'kAIn',
     description: 'KAIN (a Filipino word for “eat”) is a smart, intuitive mobile application that helps users effortlessly track their daily food intake, monitor nutrition, and build healthier eating habits with the assistance of Artificial Intelligence.',
@@ -105,7 +141,7 @@ export const projects = [
     imageBase: 'kAIn-1',
     github: ' ',
     live: 'https://www.figma.com/proto/rPlg6lcGFfdD33MWG6waZ5/UX-TO-GO---KAIN?node-id=36-918&t=EkmEJSsStUOT9Z9b-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
-    featured: true,
+    featured: false,
     type: 'AI Mobile UI/UX',
   },
 
@@ -115,7 +151,7 @@ export const projects = [
     description: 'Visually create advanced CSS effects with real-time previews, instant code generation, and one-click export. Built for developers who want precision without the hassle.',
     tags: ['React', 'CSS', 'JavaScript', 'HTML', "Vercel"],
     imageBases: ['CSSGen-1', 'CSSGen-2', 'CSSGen-3', 'CSSGen-4'],
-    github: 'https://github.com/imapoopzz/css-generator',
+    github: 'https://github.com/gjcodess/css-generator',
     live: 'https://css-generator-gamma.vercel.app/',
     featured: false,
     type: 'Frontend Styling Tool',
@@ -127,7 +163,7 @@ export const projects = [
     description: 'A full-stack sorting algorithms visualizer web app with interactive animations, adjustable speed and controls, and an API-backed random array generator for learning and demonstrations.',
     tags: ['React', 'CSS', 'JavaScript', 'HTML', "Vercel"],
     imageBases: ['SortingAlgo-1', 'SortingAlgo-2', 'SortingAlgo-3'],
-    github: 'https://github.com/imapoopzz/SortingAlgo',
+    github: 'https://github.com/gjcodess/SortingAlgo',
     live: 'https://sorting-algo-visualizer-smoky.vercel.app/',
     featured: false,
     type: 'Educational Tool',
@@ -225,7 +261,7 @@ export const education = [
     shortDegree: 'College - BSIT',
     school: 'Technological University of the Philippines, Manila',
     period: '2022 — Present',
-    description: 'Consistent President\'s Lister (A.Y. 2022-Present), 4th Placer in University Hackathon 2025, 2nd Placer in Best Capstone Project 2026',
+    description: 'Consistent President\'s Lister (A.Y. 2022-Present)',
   },
   {
     id: 2,

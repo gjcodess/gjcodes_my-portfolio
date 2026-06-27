@@ -5,6 +5,63 @@
 
 export const projectDetails = [
   {
+    id: 'abono-web',
+    name: 'Abono — Website',
+    description:
+      'The Abono Official Website serves as the digital front door for my application. It is a modern, responsive single-page application (SPA) built to highlight the core functionalities of the Abono mobile app. It features a custom design system, complex scroll-triggered animations, and floating UI components that simulate the actual mobile app experience directly within the browser.',
+    features: [
+      'Scroll-Triggered Animations powered by GSAP and ScrollTrigger that bring the page to life as the user scrolls',
+      'Interactive Mockups featuring floating UI cards and dynamic phone mockups that showcase the app\'s features in real-time',
+      'Dark/Light Theme with first-class support for both color schemes, seamlessly switching assets and styles',
+      'Responsive Design ensuring the site looks premium across all devices, from large desktop monitors to mobile screens',
+      'Hero Section that captures attention with the core value proposition and floating phones',
+      'Features Showcase with smooth, scroll-linked alternating feature showcases and an interactive timeline',
+      'How It Works section providing a step-by-step guide with dynamic mockups and a visually appealing Bento Grid',
+    ],
+    role: 'Solo Developer. Built the complete landing page utilizing React, Vite, Tailwind CSS, and GSAP to ensure a frictionless, beautifully animated, and engaging web experience.',
+    techStack: [
+      'React.js',
+      'Vite',
+      'Tailwind CSS',
+      'GSAP',
+    ],
+    liveLink: 'https://www.abono.website/',
+    githubRepo: '',
+    logoPath: '/logos/AbonoApp-logo.png',
+    screenshots: ['AbonoWeb-1', 'AbonoWeb-2', 'AbonoWeb-3', 'AbonoWeb-4', 'AbonoWeb-5'],
+  },
+  {
+    id: 'abono',
+    name: 'Abono — Mobile App',
+    description:
+      'A premium, mobile-first, offline-first application designed for friend groups to seamlessly track shared expenses and simplify debts. Built with React Native, Expo, Zustand, WatermelonDB, and NativeWind to deliver a frictionless, beautifully animated, and robust expense tracking experience.',
+    features: [
+      'Offline-First Synchronization powered by WatermelonDB',
+      'Dynamic Debt Simplification algorithms that minimize the number of transactions needed to settle group debts',
+      'Premium Animations & Gestures with 60fps micro-animations and spring physics powered by react-native-reanimated',
+      'Local View-Capture Receipts with local receipt sharing capabilities built directly into the expense tracking workflow',
+      'Comprehensive Data Exports to beautiful image receipts, detailed PDF documents, or CSV spreadsheets',
+      'In-App Notifications for real-time group expense updates and settlements',
+      'Expense Categorization with tailored categories for precise tracking',
+      'Comprehensive Analytics & Insights with visual breakdowns of spending by category and payment method',
+      'Dark Mode Integration with first-class support for comfortable nighttime usage',
+    ],
+    role: 'Solo Developer. Built the complete mobile application utilizing React Native, Expo, Zustand, and WatermelonDB to ensure offline-first capabilities, seamless state management, and an engaging user experience.',
+    techStack: [
+      'React Native',
+      'Expo',
+      'Zustand',
+      'WatermelonDB',
+      'NativeWind',
+      'Reanimated',
+    ],
+    liveLink: 'https://www.abono.website/',
+    githubRepo: '',
+    logoPath: '/logos/AbonoApp-logo.png',
+    screenshots: ['AbonoApp-1', 'AbonoApp-2', 'AbonoApp-3', 'AbonoApp-4', 'AbonoApp-5'],
+  },
+
+  {
     id: 'laborconnect',
     name: 'LaborConnect',
     description:
@@ -42,9 +99,34 @@ export const projectDetails = [
       'Railway',
     ],
     liveLink: 'https://www.laborconnect.app',
-    githubRepo: 'https://github.com/imapoopzz/ThesisProj',
+    githubRepo: 'https://github.com/gjcodess/ThesisProj',
     logoPath: '/logos/LaborConnect-logo.png',
     screenshots: ['LaborConnect-1', 'LaborConnect-2', 'LaborConnect-3'],
+  },
+
+  {
+    id: 'rds-autobill',
+    name: 'RDS AutoBill',
+    description:
+      'RDS AutoBill is a sophisticated, offline-first desktop application built as a freelance project for Rameson Drug Distribution Service, a local business based in Bulacan. Designed to provide a frictionless experience for managing sales and invoices, it features a highly scalable architecture backed by a robust local SQLite database.',
+    features: [
+      'Invoice Management with seamless creation and automatic numbering, product tracking, and reliable offline storage.',
+      'Automated Calculations that handle line item subtotals and grand totals, including flexible discount applications.',
+      'Record Keeping for browsing past invoices securely stored on the local machine.',
+      'Export & Printing using PDFMake for highly customized, professional receipt generation.',
+      'Lightning Fast UI powered by React, Tailwind CSS, and highly optimized local SQLite queries.',
+    ],
+    role: 'Freelance Software Developer. Commissioned to design and develop the complete offline-first desktop application for a local business in Bulacan, utilizing Electron, React, SQLite, and Tailwind CSS to ensure a frictionless and reliable invoicing experience.',
+    techStack: [
+      'Electron',
+      'React.js',
+      'SQLite',
+      'Tailwind CSS',
+    ],
+    liveLink: '',
+    githubRepo: '',
+    logoPath: '/logos/RDS-logo.png',
+    screenshots: ['RDS-1', 'RDS-2-new', 'RDS-3', 'RDS-4', 'RDS-5'],
   },
 
   {
@@ -108,7 +190,7 @@ export const projectDetails = [
       'React Router',
     ],
     liveLink: '',
-    githubRepo: 'https://github.com/imapoopzz/WebDev_Project',
+    githubRepo: 'https://github.com/gjcodess/WebDev_Project',
     logoPath: '/logos/Gcorp-logo.png',
     screenshots: ['Gcorp-1', 'Gcorp-2', 'Gcorp-3'],
   },
@@ -174,7 +256,7 @@ export const projectDetails = [
       'Node.js',
     ],
     liveLink: 'https://css-generator-gamma.vercel.app/',
-    githubRepo: 'https://github.com/imapoopzz/css-generator',
+    githubRepo: 'https://github.com/gjcodess/css-generator',
     logoPath: '/logos/CSSGen-logo.png',
     screenshots: ['CSSGen-1', 'CSSGen-2', 'CSSGen-3', 'CSSGen-4'],
   },
@@ -204,7 +286,7 @@ export const projectDetails = [
       'ESLint',
     ],
     liveLink: 'https://sorting-algo-visualizer-smoky.vercel.app/',
-    githubRepo: 'https://github.com/imapoopzz/SortingAlgo',
+    githubRepo: 'https://github.com/gjcodess/SortingAlgo',
     logoPath: '/logos/SortAlgo-logo.png',
     screenshots: ['SortingAlgo-1', 'SortingAlgo-2', 'SortingAlgo-3'],
   },
