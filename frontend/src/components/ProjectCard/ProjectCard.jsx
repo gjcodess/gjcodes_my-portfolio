@@ -180,6 +180,14 @@ const getTechIcon = (tag, theme) => {
     );
   }
 
+  if (normalized === 'supabase') {
+    return (
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ width: '85%', height: '85%' }}>
+        <path fill="#3ECF8E" d="M21.362 11.606l-8.291-9.53a1.047 1.047 0 00-1.124-.263 1.042 1.042 0 00-.655.975v7.697H4.638a1.047 1.047 0 00-1.018 1.293l8.291 9.53a1.047 1.047 0 001.78-.71v-7.697h6.653a1.047 1.047 0 001.018-1.295z" />
+      </svg>
+    );
+  }
+
   if (normalized === 'expo') {
     return (
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style={{ width: '85%', height: '85%' }}>
