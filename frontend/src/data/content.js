@@ -64,8 +64,8 @@ export const projects = [
   {
     id: 'abono',
     title: 'Abono — Mobile App',
-    description: 'A premium, mobile-first, offline-first application designed for friend groups to seamlessly track shared expenses and simplify debts. Built with React Native, Expo, Zustand, WatermelonDB, and NativeWind.',
-    tags: ['React Native', 'Expo', 'Zustand', 'WatermelonDB', 'NativeWind', 'Reanimated'],
+    description: 'A premium, mobile-first, offline-first application designed for friend groups to seamlessly track shared expenses and simplify debts. Built with React Native, Expo, Zustand, WatermelonDB, Supabase, and NativeWind to deliver a frictionless, beautifully animated, and robust expense tracking experience.',
+    tags: ['React Native', 'Expo', 'Zustand', 'WatermelonDB', 'Supabase', 'NativeWind', 'Reanimated'],
     imageBases: ['AbonoApp-1', 'AbonoApp-2', 'AbonoApp-3', 'AbonoApp-4', 'AbonoApp-5'],
     github: '',
     live: 'https://www.abono.website/',
@@ -219,38 +219,30 @@ export const projects = [
 ];
 
 export const experiences = [
-  // {
-  //   id: 1,
-  //   role: 'Full Stack Developer',
-  //   company: 'Tech Company A',
-  //   period: '2026 — Present',
-  //   description: 'Developing and maintaining scalable web applications. Leading frontend architecture decisions and implementing backend APIs for production systems.',
-  //   technologies: ['React', 'Node.js', 'PostgreSQL'],
-  // },
   {
     id: 2,
-    role: 'Junior IT Personnel, Web Developer (Intern)',
+    role: 'Junior IT Personnel & Web Developer (Intern)',
     company: 'Associated Labor Unions – Luzon',
-    period: '2026',
+    period: 'Feb 2026 — Apr 2026',
     description: [
       'Developed LaborConnect, a full-stack labor union management system featuring membership management, venue booking, ticketing, and workflow automation modules.',
       'Resolved hardware, software, and network issues for employees, improving operational continuity and reducing technical downtime.',
-      'Completed 486 hours of hands-on internship experience involving web development, technical support, system administration, and network troubleshooting.',
       'Collaborated with senior IT personnel on troubleshooting, system maintenance, and web application development initiatives.'
     ],
-    technologies: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', "Vercel", "Railway", "IT Support"],
+    technologies: ['React', 'Node.js', 'CSS', 'MySQL', 'n8n', 'Vercel', 'Railway', 'IT Support'],
   },
   {
     id: 3,
     role: 'Freelance Technical Support & Designer',
     company: 'Self-Employed',
-    period: '2019 — 2025',
+    period: '2019 — Present',
     description: [
       'Executed computer building commissions, complete Windows/Ubuntu operating system configurations, and routine hardware troubleshooting.',
       'Designed compelling marketing materials, including digital assets and physical prints for local businesses and clothing brands.',
-      'Edited multimedia projects and short films, achieving the "Best Video Edit" award in 2024 for exceptional post-production quality.'
+      'Edited multimedia projects and short films, achieving the "Best Video Edit" award in 2024 for exceptional post-production quality.',
+      'Developed RDS AutoBill, offline-first desktop sales invoicing application for a local pharmaceutical distributor in Bulacan to streamline daily operations and eliminate manual calculation errors.'
     ],
-    technologies: ['Computer Assembly', 'Troubleshooting', 'Video Editing', 'Graphic Design', 'Figma', "Photoshop", "Premiere Pro"],
+    technologies: ['Computer Assembly', 'Troubleshooting', 'Video Editing', 'Graphic Design', 'Figma', 'Electron', 'React', 'SQLite'],
   },
 ];
 
@@ -260,8 +252,13 @@ export const education = [
     degree: 'College - Bachelor of Science in Information Technology',
     shortDegree: 'College - BSIT',
     school: 'Technological University of the Philippines, Manila',
-    period: '2022 — Present',
-    description: 'Consistent President\'s Lister (A.Y. 2022-Present)',
+    period: 'Expected Aug 2026',
+    description: [
+      'Magna Cum Laude',
+      'Ranked 2nd in whole College of Science Department',
+      'Ranked 1st in whole IT Program',
+      'Consistent President\'s Lister'
+    ],
   },
   {
     id: 2,
@@ -269,22 +266,27 @@ export const education = [
     shortDegree: 'Senior High School - S.T.E.M.',
     school: 'San Juan de Dios Educational Foundation Inc., Pasay',
     period: '2020 — 2022',
-    description: 'Graduated with High Honors, Ranked 1st in Batch and Strand Ranking (A.Y. 2020-2021)',
+    description: [
+      'Graduated with High Honors',
+      'Ranked 1st in Batch and Strand Ranking (A.Y. 2020-2021)'
+    ],
   },
   {
     id: 3,
     degree: 'Junior High School',
     school: 'Parañaque National High School — Baclaran, Parañaque',
     period: '2016 — 2020',
-    description: 'Completed with High Honors (Valedictorian), Ranked 1st among Grade 10 students (A.Y. 2020)',
+    description: [
+      'Completed with High Honors (Valedictorian)',
+      'Ranked 1st among Grade 10 students (A.Y. 2020)'
+    ],
   },
-
 ];
 
 export const services = [
   {
-    title: 'Full-Stack Development',
-    description: 'Developing end-to-end web applications using React.js, Node.js, and HTML/CSS, with robust server integration.',
+    title: 'Web & Mobile Development',
+    description: 'Developing end-to-end web, mobile, and desktop applications using React, React Native, Node.js, and Electron, with robust server and cloud integration.',
     icon: 'Code2',
   },
   {
@@ -294,17 +296,17 @@ export const services = [
   },
   {
     title: 'Database Management',
-    description: 'Designing relational database schemas with MySQL, optimization of queries, and ensuring reliable data persistence.',
+    description: 'Designing relational database schemas using MySQL, Supabase, and WatermelonDB, optimizing queries for cloud and true offline-first capabilities.',
     icon: 'Database',
   },
   {
     title: 'Hardware & IT Support',
-    description: 'Hands-on experience in computer assembly, operating system setup (Windows/Ubuntu), and technical troubleshooting.',
+    description: 'Hands-on experience in computer assembly, operating system setup (Windows/Ubuntu), and technical network troubleshooting.',
     icon: 'Cpu',
   },
   {
     title: 'Creative Media Design',
-    description: 'Creating graphic designs for marketing and apparel alongside professional video editing for projects.',
+    description: 'Creating graphic designs for marketing and apparel alongside professional video editing for multimedia projects.',
     icon: 'Video',
   },
   {
