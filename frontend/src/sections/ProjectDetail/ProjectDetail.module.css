@@ -181,19 +181,7 @@
 
 /* ── Role Card ── */
 .roleCard {
-  border-left: 3px solid var(--color-neon-mint);
   position: relative;
-}
-
-.roleCard::before {
-  content: '';
-  position: absolute;
-  left: -3px;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--color-neon-mint);
-  box-shadow: 0 0 12px rgba(0, 255, 153, 0.3);
 }
 
 .roleText {

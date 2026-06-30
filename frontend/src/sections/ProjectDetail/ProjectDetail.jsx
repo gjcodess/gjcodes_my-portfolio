@@ -230,6 +230,19 @@ function ProjectDetail() {
               </div>
             </section>
 
+            {/* ── Problem & Solution ── */}
+            {project.solution && (
+              <section className={styles.section} ref={addSectionRef}>
+                <div className={styles.sectionLabel}>
+                  <span className={styles.labelDot} />
+                  Solution & Impact
+                </div>
+                <div className={styles.glassCard}>
+                  <p className={styles.description}>{project.solution}</p>
+                </div>
+              </section>
+            )}
+
             {/* ── Role / Contribution ── */}
             <section className={styles.section} ref={addSectionRef}>
               <div className={styles.sectionLabel}>
