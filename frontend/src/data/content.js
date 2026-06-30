@@ -6,7 +6,7 @@
 export const personalInfo = {
   name: 'Glenn Joshua Corpus',
   lastName: 'Corpus',
-  role: 'IT Student | Aspiring Web Developer ',
+  role: 'IT Student | Software Developer/Engineer',
   tagline: 'Soon-to-be BSIT Graduate | Pragmatic & Delivery-oriented | Tech Enthusiast',
   bio: `I build clean, scalable, and reliable web applications rooted in a deep understanding of computer systems and hardware. Passionate about crafting digital experiences that combine technical precision with thoughtful design. Focused on delivering production-ready systems that make a real impact.`,
   email: 'glennjoshuacorpus@gmail.com',
