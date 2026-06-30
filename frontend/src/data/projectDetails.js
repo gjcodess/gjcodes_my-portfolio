@@ -8,7 +8,9 @@ export const projectDetails = [
     id: 'abono-web',
     name: 'Abono — Website',
     description:
-      'The Abono Official Website serves as the digital front door for my application. It is a modern, responsive single-page application (SPA) built to highlight the core functionalities of the Abono mobile app. It features a custom design system, complex scroll-triggered animations, and floating UI components that simulate the actual mobile app experience directly within the browser.',
+      'The Abono Official Website serves as the digital front door for the Abono mobile application. It is a modern, responsive single-page application (SPA) purposefully built to highlight the core functionalities and premium feel of the Abono ecosystem. It features a custom design system, complex scroll-triggered animations, and floating UI components that simulate the actual mobile app experience directly within the browser, creating an immersive pre-download experience.',
+    solution:
+      'It solves the challenge of effectively communicating a mobile app\'s value proposition before installation. By bridging the gap between static landing pages and interactive app stores, it provides an engaging, hands-on preview that drives user conversions and builds trust.',
     features: [
       'Scroll-Triggered Animations powered by GSAP and ScrollTrigger that bring the page to life as the user scrolls',
       'Interactive Mockups featuring floating UI cards and dynamic phone mockups that showcase the app\'s features in real-time',
@@ -34,7 +36,9 @@ export const projectDetails = [
     id: 'abono',
     name: 'Abono — Mobile App',
     description:
-      'A premium, mobile-first, offline-first application designed for friend groups to seamlessly track shared expenses and simplify debts. Built with React Native, Expo, Zustand, WatermelonDB, Supabase, and NativeWind to deliver a frictionless, beautifully animated, and robust expense tracking experience.',
+      'A premium, mobile-first, offline-first application meticulously designed for friend groups, roommates, and travelers to seamlessly track shared expenses and simplify complex debts. Built with React Native, Expo, Zustand, WatermelonDB, Supabase, and NativeWind to deliver a frictionless, beautifully animated, and robust expense tracking experience. It features multiplayer cloud sync and true offline capabilities, ensuring users can manage finances anywhere, anytime.',
+    solution:
+      'Abono eliminates the awkwardness and mathematical friction of splitting bills among friends. It bridges the gap between manual spreadsheets and complex financial apps by providing an intuitive, automated debt simplification engine that figures out exactly who owes whom, minimizing total transactions.',
     features: [
       'Multiplayer Cloud Sync for real-time collaboration powered by Supabase. Create an account, invite friends via QR codes or shortcodes, and sync offline changes automatically.',
       'Role-Based Access Control (Owner, Member, Guest) ensuring data integrity and safe multiplayer collaboration.',
@@ -68,7 +72,9 @@ export const projectDetails = [
     id: 'laborconnect',
     name: 'LaborConnect',
     description:
-      'A full-stack web application for managing labor union membership, services, and administration. LaborConnect provides a member self-service portal, a department ticket-handling portal, and a comprehensive admin dashboard for union operations. Built for Philippine labor unions with a split-deployment architecture across four independently deployed services.',
+      'A comprehensive full-stack web application dedicated to modernizing labor union membership, services, and administration. LaborConnect provides a seamless member self-service portal, an efficient department ticket-handling portal, and a powerful admin dashboard for overseeing union operations. Tailored for Philippine labor unions, it leverages a split-deployment architecture across four independently deployed services to ensure high availability, security, and scalability.',
+    solution:
+      'It addresses the inefficiencies of traditional, paper-based union management. LaborConnect bridges the gap between union members and administrators by digitizing ID systems, automating ticket routing, and centralizing data, resulting in faster service delivery, improved transparency, and significantly reduced administrative overhead.',
     features: [
       'Three-portal structure: Member Portal, Admin Dashboard, and Department Portal',
       'Multi-layered authentication with Email/Password, Mobile OTP (Twilio), Google OAuth 2.0, and Trusted Device support',
@@ -111,7 +117,9 @@ export const projectDetails = [
     id: 'rds-autobill',
     name: 'RDS AutoBill',
     description:
-      'RDS AutoBill is a sophisticated, offline-first desktop application built as a freelance project for Rameson Drug Distribution Service, a local business based in Bulacan. Designed to provide a frictionless experience for managing sales and invoices, it features a highly scalable architecture backed by a robust local SQLite database.',
+      'RDS AutoBill is a sophisticated, offline-first desktop application built as a bespoke freelance project for Rameson Drug Distribution Service, a prominent local business based in Bulacan. Designed to provide a frictionless, lightning-fast experience for managing day-to-day sales and invoices, it features a highly scalable architecture backed by a robust local SQLite database. It streamlines the entire checkout and record-keeping pipeline without relying on an active internet connection.',
+    solution:
+      'RDS AutoBill solves the problem of slow, error-prone manual invoicing and unreliable cloud-based POS systems in areas with spotty internet. It bridges the gap by offering a blazing-fast, strictly local solution that automates calculations, formats professional receipts, and safely archives sales data on-premise.',
     features: [
       'Invoice Management with seamless creation and automatic numbering, product tracking, and reliable offline storage.',
       'Automated Calculations that handle line item subtotals and grand totals, including flexible discount applications.',
@@ -136,7 +144,9 @@ export const projectDetails = [
     id: 'mangaverse',
     name: 'MangaVerse',
     description:
-      'A modern manga reading and discovery UI/UX concept designed for immersive storytelling and seamless user experience. Crafted in Figma with an anime-inspired visual identity, clean layouts, and smooth user-centered design principles. MangaVerse combines entertainment-focused design with modern UI/UX standards commonly seen in streaming and digital reading platforms.',
+      'A modern, highly polished manga reading and discovery UI/UX concept engineered for immersive storytelling and a frictionless user journey. Crafted in Figma with a distinct anime-inspired visual identity, clean structural layouts, and smooth user-centered design principles. MangaVerse successfully combines entertainment-focused aesthetics with the rigorous modern UI/UX standards typically found in top-tier video streaming and digital reading platforms.',
+    solution:
+      'It solves the cluttered, unintuitive interfaces plaguing many existing online manga readers. MangaVerse bridges the gap between generic reading apps and premium entertainment platforms by offering a tailored, distraction-free environment that prioritizes content discovery, reading comfort, and personalized libraries.',
     features: [
       'Trending manga showcase and genre browsing layouts',
       'Featured banners and promotional sections with modern card-based displays',
@@ -167,7 +177,9 @@ export const projectDetails = [
     id: 'gcorp',
     name: 'Gcorp.',
     description:
-      'A comprehensive full-stack e-commerce web application designed for modern retail, with a focus on footwear and apparel. Features a highly scalable client-server architecture with a dynamic frontend for customer interaction and a robust backend for secure data processing, authentication, and inventory management.',
+      'A comprehensive full-stack e-commerce web application designed for the modern retail landscape, with a specialized focus on premium footwear and apparel. It features a highly scalable client-server architecture combining a dynamic, responsive frontend for engaging customer interactions with a robust backend for secure data processing, advanced JWT authentication, and real-time inventory management. The platform delivers an end-to-end shopping experience from product discovery to secure checkout.',
+    solution:
+      'Gcorp addresses the need for a customizable, highly performant online storefront independent of rigid third-party platforms. It provides full control over the user experience and data pipeline, solving inventory synchronization issues and offering a seamless, branded purchasing journey for the end user.',
     features: [
       'JWT-based authentication with custom multi-factor mobile verification and password recovery',
       'Dynamic cart system with real-time add, remove, and quantity updates',
@@ -202,7 +214,9 @@ export const projectDetails = [
     id: 'kain',
     name: 'kAIn',
     description:
-      'An innovative food discovery and smart dining UI/UX concept developed during University Hackathon 2025, achieving 4th Place. Designed in Figma to create a modern, accessible, and intelligent food experience focused on convenience, discovery, and user engagement. KAIN (a Filipino word for "eat") helps users effortlessly track daily food intake and build healthier eating habits with AI.',
+      'An innovative food discovery and smart dining UI/UX concept developed under intense time constraints during the University Hackathon 2025, proudly achieving 4th Place overall. Designed meticulously in Figma, it envisions a modern, highly accessible, and intelligent food platform focused on convenience, targeted discovery, and deep user engagement. KAIN (derived from the Filipino word for "eat") integrates conceptual AI features to help users effortlessly track daily food intake and cultivate healthier, more informed eating habits.',
+    solution:
+      'It tackles the dual problems of meal decision fatigue and poor nutritional tracking. KAIN bridges the gap between generic food delivery apps and strict health trackers by gamifying healthy eating, offering AI-driven personalized meal recommendations, and making food discovery an intuitive, enjoyable daily habit.',
     features: [
       'Trending food showcase sections and restaurant browsing interface',
       'Featured meals and promotions with category-based food exploration',
@@ -234,7 +248,9 @@ export const projectDetails = [
     name: 'CSS Generator & Exporter Tools',
     cardTitle: 'CSSGen',
     description:
-      'A premium, interactive toolkit for crafting modern CSS effects with real-time previews, instant code generation, and one-click export. A modular suite of generators including Neumorphism, Glassmorphism, Gradients, Box Shadow, Border Radius, Flexbox, Grid, and Animations — all with a live preview engine and syntax-highlighted output.',
+      'A premium, interactive web-based toolkit designed specifically for frontend developers and designers to craft modern CSS effects with real-time previews, instant code generation, and one-click export capabilities. It houses a comprehensive, modular suite of generators including Neumorphism, Glassmorphism, Complex Gradients, Box Shadows, Border Radius, Flexbox layouts, Grid systems, and Keyframe Animations. Every tool is backed by a lightning-fast live preview engine and provides clean, syntax-highlighted output.',
+    solution:
+      'It eliminates the tedious trial-and-error process of writing complex CSS properties from scratch. CSSGen bridges the gap between visual design intent and actual code by providing a tactile, visual interface that instantly compiles complex styling into production-ready CSS, significantly accelerating frontend development workflows.',
     features: [
       'Neumorphism, Glassmorphism, Gradient, Box Shadow, and Border Radius builders',
       'Flexbox & Grid layout helpers for rapid UI structure',
@@ -268,7 +284,9 @@ export const projectDetails = [
     id: 'sortalgo',
     name: 'Sorting Algorithms Visualization',
     description:
-      'A dynamic, fully interactive visualizer for grasping sorting algorithms. Spanning from foundational methods like Bubble Sort to advanced divide-and-conquer strategies like Quick Sort, the visualizer breaks down algorithmic execution into digestible, frame-by-frame animations with precise playback controls.',
+      'A dynamic, fully interactive educational visualizer engineered for grasping the inner workings of sorting algorithms. Spanning from foundational methods like Bubble Sort to advanced divide-and-conquer strategies like Quick Sort and non-comparison algorithms like Radix Sort, the platform breaks down complex algorithmic execution into digestible, frame-by-frame animations. It features precise playback controls, adjustable speeds, and real-time state highlighting.',
+    solution:
+      'It addresses the steep learning curve IT and programming students face when learning abstract algorithms. SortAlgo bridges the gap between theoretical pseudocode and practical understanding by providing a tangible, visual representation of data manipulation, making complex sorting mechanics intuitive and accessible.',
     features: [
       'Live render engine with sequential bar swapping, comparing, and locking animations',
       'Play, Pause, and Resume controls for deep algorithmic inspection',
@@ -299,7 +317,9 @@ export const projectDetails = [
     name: '2048 Console Puzzle Game',
     cardTitle: 'Two-dimensional puzzle game: 2048',
     description:
-      'A console-based adaptation of the popular 2048 sliding block puzzle game, developed entirely in C. Features a responsive user interface with colored outputs, real-time keyboard event handling, matrix manipulation algorithms, and persistent gameplay history tracking.',
+      'A faithful, console-based adaptation of the widely popular 2048 sliding block puzzle game, developed entirely in the C programming language from scratch. It features a surprisingly responsive user interface enriched with ANSI colored outputs, real-time non-blocking keyboard event handling, sophisticated 2D matrix manipulation algorithms, and a robust file I/O system for persistent gameplay history and high-score tracking.',
+    solution:
+      'This project serves as a practical demonstration of advanced C programming concepts. It solves the challenge of creating interactive, state-driven applications within a terminal environment, bridging the gap between fundamental data structures (like 2D arrays) and engaging, playable software.',
     features: [
       'Classic 4x4 grid with sliding numbered tiles and number merging mechanics',
       'Win/Loss detection: reaching 2048 wins, full grid with no valid moves loses',
@@ -324,7 +344,9 @@ export const projectDetails = [
     name: 'ATM Simulation System',
     cardTitle: 'ATM Simulator',
     description:
-      'A console-based ATM simulation in C++ implementing ADT List Operations. Simulates real-world ATM banking functionalities including account registration with simulated card insertion, encrypted PIN handling, file-backed persistence, and comprehensive transaction processing.',
+      'A comprehensive console-based ATM simulation engineered in C++ that heavily implements Abstract Data Type (ADT) List Operations. It successfully simulates real-world ATM banking functionalities including secure account registration, simulated physical card insertion via external drive detection, custom encrypted PIN handling, file-backed data persistence, and a full suite of transaction processing like withdrawals, deposits, and transfers.',
+    solution:
+      'It addresses the need for a realistic, secure system modeling project in an academic IT curriculum. The simulator bridges the gap between theoretical data structures and real-world financial software by providing a secure, persistent, and interactive environment for processing simulated banking transactions safely.',
     features: [
       'Account registration with personal details, contact number, and initial deposit',
       '5-digit PIN protection with basic symbol-based encryption/decryption',
@@ -349,7 +371,9 @@ export const projectDetails = [
     name: 'Arithmetic Practice Game & Leaderboard',
     cardTitle: 'Arithmetic Practice Game',
     description:
-      'A comprehensive, interactive console-based arithmetic practice game built with C++ Object-Oriented Programming. Features custom Linked Lists for seamless gameplay, secure authentication with password masking, dynamic leaderboard sorting, and persistent data storage.',
+      'A comprehensive, interactive console-based arithmetic practice game meticulously built utilizing C++ Object-Oriented Programming (OOP) principles. It features custom-built Singly Linked Lists for seamless user and score management, a secure authentication system with live password masking, dynamic leaderboard sorting algorithms, and reliable persistent data storage to track player progression over time.',
+    solution:
+      'It solves the problem of monotonous math drills for students. By gamifying basic arithmetic, it bridges the gap between boring repetition and engaging practice, offering competitive leaderboards and varied difficulty modes to motivate continuous improvement in fundamental math skills.',
     features: [
       'User registration and login with live password masking (asterisk replacement)',
       'Character validation restricting usernames to 15 characters max',
@@ -380,7 +404,9 @@ export const projectDetails = [
     name: 'TUP - Academic Information System',
     cardTitle: 'TUP - Academic Information System (AIS)',
     description:
-      'A comprehensive, interactive console-based grading and academic management system built in C. Features a dual-portal architecture with a Teachers Access Module for administrative grading operations and a Student Access Module for viewing schedules, enrollments, and academic performance.',
+      'A comprehensive, interactive console-based grading and academic information management system built entirely in C. It features a robust dual-portal architecture: a secure Teachers Access Module for administrative grading operations, data entry, and evaluation, alongside a distinct Student Access Module for safely viewing schedules, official enrollments, and real-time academic performance metrics.',
+    solution:
+      'It replaces fragmented, paper-based grading systems with a centralized digital repository. TUP-AIS bridges the gap between faculty administration and student transparency by automating GWA calculations, standardizing grade sheets, and providing a unified, secure platform for academic record keeping.',
     features: [
       'Dual-portal workflow: Teacher Module (Admin) and Student Module',
       'Authentication system with hidden password masking',

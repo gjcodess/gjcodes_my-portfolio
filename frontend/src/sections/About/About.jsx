@@ -126,7 +126,7 @@ function About() {
         <div className={styles.roleCard}>
           <div className={styles.cardContent}>
             <h3 className={styles.roleText}>
-              Tech Enthusiast,<br />Aspiring Web Developer
+              Software Developer/Engineer
             </h3>
           </div>
           <div className={styles.uiMockup}>
